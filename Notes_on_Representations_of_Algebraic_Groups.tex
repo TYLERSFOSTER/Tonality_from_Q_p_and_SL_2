@@ -513,11 +513,25 @@ This is a situation ripe for techniques from frequency modulation. For instance,
 	\ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ 
 	\theta_2(t)\ =\ \text{sin}(\omega\ t)\ \ \ \text{for some}\ \omega\in\RR_{>0},
 	$$
-then the formulas in Equations \eqref{FM style 1} and \eqref{FM style 2} become instances of \href{https://en.wikipedia.org/wiki/Frequency_modulation_synthesis}{{\em FM synthesis}}. We can also see that the formulas in Equations \eqref{FM style 1} and \eqref{FM style 2} give us a broad generalization of FM synthesis, in that we can use any pair of functions
+then the formulas in Equations \eqref{FM style 1} and \eqref{FM style 2} become instances of \href{https://en.wikipedia.org/wiki/Frequency_modulation_synthesis}{{\em FM synthesis}}. We can also see that the formulas in Equations \eqref{FM style 1} and \eqref{FM style 2} give us a broad generalization of FM synthesis, in that we can use any pair of real-valued functions
 	$$
 	\theta_1(t)\ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \theta_2(t)
 	$$
 of $t$ that we like. In this way, a kind of generalized FM synthesis realizes one version of the notion of ``pitch movement in $2$ dimensions.''  It is important to keep in mind here that the linear independence between the $2$ dimensions here is happening in the logarithm here. In other words, the linear independence is in the variable $z$, not in the value $e^{z}$.
+	\begin{figure}[ht]
+	$$
+	\begin{tikzpicture}
+	\fill[black!10] (2,2) -- (-2,2) -- (-2, -2) -- (2, -2) -- cycle;
+	\draw[black!50, very thick, ->] (-2.2,0) -- (2.2,0);
+	\draw[black!50, very thick, ->] (0,-2.2) -- (0,2.2);
+	\draw[black, ultra thick, ->] (-2.2,-1) to [out=45, in=180] (-1,-1.5) to [out=0, in=180] (-.5,-.5) to [out=0, in=-45] (.5,.5) to [out=135, in=180] (1, 1.5) to [out=0, in=180] (2.2,.5);
+	\node[black!50] at (2.4, 0) {\scalebox{.8}{$\theta_1$}};
+	\node[black!50] at (0, 2.4) {\scalebox{.8}{$\theta_2$}};	
+	\node[black] at (1.1, 1.75) {\scalebox{.8}{$\pmb{\big(\theta_1(t),\ \!\theta_2(t)\big)}$}};
+	\end{tikzpicture}
+	$$
+	\caption{General FM-synthesis from curves in the real plane.}
+	\end{figure}
 
 This begins to move into the realm of harmony. We pause our development of harmony here, and pick it back up in {\color{red} \S[...]}
 
