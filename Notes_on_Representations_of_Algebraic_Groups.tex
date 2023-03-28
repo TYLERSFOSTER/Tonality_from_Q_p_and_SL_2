@@ -543,6 +543,63 @@ of $t$ that we like. In this way, a kind of generalized FM synthesis realizes on
 Let us briefly remark here that, although it is not usually presented in this way, {\em ring modulation} in signal processing arises when we evaluate the real and imaginary parts of the monomial $xy$ at $x=e^{z_1}$ and $y=e^{z_2}$. In this way, ring modulation becomes a special case of the above discussion.
 \end{example}
 
+\begin{example}
+\normalfont
+{\bf Logarithmic representations.}
+Consider the case of a single complex-valued function $z(t)=i2\pi\lambda t$ of the real variable $t$. How might we transform such a function. One obvious way is to consider all {\em $\RR$-affine transformations} of $t$, that is, all transformations that can be described by an $\RR$-linear polynomial:
+	$$
+	t
+	\ \longmapsto\ 
+	a+bt.
+	$$
+The group of all such transformations is denoted $\text{Aff}(\RR)$. It admits a normal decomposition
+	$$
+	0
+	\longrightarrow
+	\RR
+	\longrightarrow
+	\text{Aff}(\RR)
+	\longrightarrow
+	\RR^\times
+	\longrightarrow
+	1
+	$$
+that gives this group a semidirect product decomposition
+	$$
+	\text{Aff}(\RR)\ \cong\ \RR\rtimes\RR^\times.
+	$$
+We can effectively ``mod out'' the {\em translation} action by the normal subgroup $\RR\lhd\text{Aff}(\RR)$ by focus on the action of the non-normal, multiplicative subgroup $\RR^{\times}\subset\text{Aff}(\RR)$.
+
+If we work with $e^{z}=e^{i2\pi\lambda t}$, the translation action $t\mapsto a+t$ by the normal subgroup $\mathbb{R}\rtimes\text{Aff}(\RR)$ amounts to phase shifting, as it takes
+	$$
+	e^{i2\pi\lambda t}
+	\ \longmapsto\ 
+	e^{i(2\pi\lambda t+\phi)},
+	\ \ \ \text{where}\ 
+	\phi=2\pi\lambda a.
+	$$
+If we take a musical perspective that ignores the effects of phase shifting, then we can focus on the action of the non-normal multiplicative subgroup $\RR^\times\subset\text{Aff}(\RR)$. It is common to use logarithmic coordinates for this group by writing $b=e^{s}$. We obtain transformations of the form
+	$$
+	e^{i2\pi\lambda t}
+	\ \longmapsto\ 
+	e^{i2\pi\lambda e^s t}.
+	$$
+Writing $\lambda=e^{s_0}$, this becomes
+	$$
+	e^{i2\pi e^{s_0} t}
+	\ \longmapsto\ 
+	e^{i2\pi e^{s_0+s} t}.
+	$$
+The charged particle dynamics in {\em Voice Leader\ \textemdash\ DISPL.} take place in something like the Lie algebra of the multiplicative group $\RR^\times$ that acts on the frequency specturm. Ignoring the negative component of this Lie algebra amounts to the assertion that we do not consider backward movement through time in musical contexts.
+
+This leads us to the following questions for the case of $2$ independent variables $z_1$ and $z_2$.
+\end{example}
+
+\begin{question}
+\normalfont
+What is the right ``space'' to do dynamics in when there are two variables?... (frequency or log-frequency). 
+\end{question}
+
 \begin{question}
 \normalfont
 What is the Lie bracket on the tangent space $T_{(\bold{q},\bold{p})}M$ of phase space $M$ at a state $(\bold{q},\bold{p})$?
