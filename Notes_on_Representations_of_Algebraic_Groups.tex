@@ -454,8 +454,8 @@ respectively. If we fix $A$ and let $\theta$ change linearly at the rate of $1$ 
 \end{subsection}
 
 \begin{subsection}{Independent complex variables}
-	[...]
-	$$
+Suppose now that we choose two complex numbers $z_1,z_2\in\CC$, independently of one another, with corresponding exponentials
+	\begin{equation}\label{same P}
 	e^{z_1}
 	=
 	A_1\ e^{i2\pi\lambda\theta_1}
@@ -463,8 +463,8 @@ respectively. If we fix $A$ and let $\theta$ change linearly at the rate of $1$ 
 	e^{z_2}
 	=
 	A_2\ e^{i2\pi\lambda\theta_2}.
-	$$
-Note the possibility here of choosing two different values for our period, $P_1$ and $P_2$ say, to get
+	\end{equation}
+In Equation \eqref{same P}, we assume that we've fixed a single period $P$, hence a single frequency $\lambda$, that $z_1$ and $z_2$ share. However, we could just as well choose two different periods, $P_1$ and $P_2$ say, and thus two different frequencies $\lambda_1=\tfrac{1}{P_1}$ and $\lambda_2=\tfrac{1}{P_2}$, to get
 	$$
 	e^{z_1}
 	=
@@ -517,7 +517,8 @@ then the formulas in Equations \eqref{FM style 1} and \eqref{FM style 2} become 
 	$$
 	\theta_1(t)\ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \theta_2(t)
 	$$
-of $t$ that we like. In this way, a kind of generalized FM synthesis realizes one version of the notion of ``pitch movement in $2$ dimensions.''  It is important to keep in mind here that the linear independence between the $2$ dimensions here is happening in the logarithm here. In other words, the linear independence is in the variable $z$, not in the value $e^{z}$.
+of $t$ that we like. In this way, a kind of generalized FM synthesis realizes one version of the notion of ``pitch movement in $2$ dimensions.'' See Figure \ref{figure: ring modulation 2 dimensions}.
+%It is important to keep in mind that the linear independence between the $2$ dimensions here is happening in the logarithm. In other words, the linear independence is in the variable $z$, not in the value $e^{z}$.
 	\begin{figure}[ht]
 	$$
 	\begin{tikzpicture}
@@ -531,10 +532,114 @@ of $t$ that we like. In this way, a kind of generalized FM synthesis realizes on
 	\end{tikzpicture}
 	$$
 	\caption{General FM-synthesis from curves in the real plane.}
+	\label{figure: ring modulation 2 dimensions}
 	\end{figure}
 
-This begins to move into the realm of harmony. We pause our development of harmony here, and pick it back up in {\color{red} \S[...]}
+%This begins to move into the realm of harmony. We pause our development of harmony here, and pick it back up in {\color{red} \S[...]}
 
+\begin{example}
+\normalfont
+{\bf Ring modulation as a special case.}
+Let us briefly remark here that, although it is not usually presented in this way, {\em ring modulation} in signal processing arises when we evaluate the real and imaginary parts of the monomial $xy$ at $x=e^{z_1}$ and $y=e^{z_2}$. In this way, ring modulation becomes a special case of the above discussion.
+\end{example}
+
+\end{subsection}
+
+\begin{subsection}{Homogenous linear combinations of independent complex variables}
+If $x$ and $y$ are independent complex variables, then a $\CC$-linear combination of monomials in $x$ and $y$, say
+	\begin{equation}\label{homogeneous linear comb 1}
+	a_{1}x^{m_1}y^{n_1}
+	+
+	a_{2}x^{m_2}y^{n_2}
+	+
+	\cdots
+	+
+	a_{\ell}x^{m_\ell}y^{n_\ell},
+	\ \ \ a_1,a_2,\dots,a_\ell\in\CC
+	\end{equation}
+is {\em homogeneous of degree $d$} if $m_i+n_i=d$ for all $1\le i\le \ell$, in other words, if all monomials $x^my^n$ in the linear combination have the same {\em total degree} $m+n$, equal to $d$. When the linear combination in Equation \eqref{homogeneous linear comb 1} is homogeneous of degree $d$, we refer to it as a {\em homogeneous polynomial of degree $d$} in the variables $x$ and $y$ over $\CC$.
+
+Notice that, from a musical perspective, a homogeneous linear combination in Equation \eqref{homogeneous linear comb 1} combines two distinct ideas in a way that isn't possible with a single variable. It packages multiple instances of ring modulation into a single chord-like structure. Indeed, 
+
+The general homogeneous polynomial of degree $d$ in $x$ and $y$ can be written
+	$$
+	f(x,y)
+	\ =\ 
+	a_{0}x^d+a_1x^{d-1}y+a_2x^{d-2}y^2+\cdots+a_{d-1}xy^{d-1}+a_{d}y^d,
+	$$
+with coefficients $a_0,a_1,\dots,a_d\in\CC$. We can write this more succinctly as
+	$$
+	f(x,y)
+	\ =\ 
+	\sum_{n=0}^{d}a_nx^{d-n}y^n.
+	$$
+Evaluating this polynomial at $x=e^{z_1}$ and $y=e^{z_2}$, we obtain
+	\begin{equation}\label{equation: homogeneous eval at e^z}
+	f(e^{z_1},e^{z_2})
+	\ =\ 
+	\sum_{n=0}^{d}a_{n}A_{1}^{d-n}A_{2}^{n}e^{i2\pi\big(\tfrac{d-n}{P_1}\theta_1+\tfrac{n}{P_2}\theta_2\big)}.
+	\end{equation}
+To get a slightly clearer picture of this, let us assume that $a_i=1$ for all $0\le i\le d$ and that $A_1=A_2=1$. Then the right-hand side of Equation \eqref{equation: homogeneous eval at e^z} becomes
+	\begin{equation}\label{equation: all amplitudes =1}
+	\sum_{n=0}^{d}e^{i2\pi\big(\tfrac{d-n}{P_1}\theta_1+\tfrac{n}{P_2}\theta_2\big)}.
+	\end{equation}
+We play with this expression a bit more in Example \ref{example: relationship to standard chords} below.
+
+\begin{example}\label{example: relationship to standard chords}
+\normalfont
+[...]
+
+{\bf Special case: $\pmb{\theta_1=\theta_2}$ and $\pmb{P_1=P_2}$.}
+	[...]
+	Equation \eqref{equation: all amplitudes =1} becomes
+	$$
+	(d+1)e^{i2\pi\tfrac{d}{P}\theta}
+	\ =\ 
+	(d+1)e^{i2\pi d\lambda\theta}
+	$$
+
+{\bf Special case: $\pmb{\theta_1=0}$.}
+	[...]
+	Equation \eqref{equation: all amplitudes =1} becomes
+	$$
+	\sum_{n=0}^{d}e^{i2\pi\tfrac{n}{P}\theta}
+	\ =\ 
+	1
+	+
+	e^{i2\pi\tfrac{1}{P}\theta}
+	+
+	e^{i2\pi\tfrac{2}{P}\theta}
+	+
+	\dots
+	+
+	e^{i2\pi\tfrac{d}{P}\theta},
+	$$
+or in terms of frequency,
+	$$
+	1
+	+
+	e^{i2\pi \lambda\theta}
+	+
+	e^{i2\pi 2\lambda\theta}
+	+
+	\dots
+	+
+	e^{i2\pi d \lambda\theta}.
+	$$
+Ignoring the constant term ``$1$,'' this is just an equi-voiced\footnote{\ We say that a chord is {\em equi-voiced} if the notes of a chord are equally loud. I don't know if this is standard terminology.} overtone chord with root at $\lambda\ \text{Hz}$.
+\end{example}
+
+\begin{question}
+\normalfont
+{\color{red} [Voicing and orchestration questions...]}
+\end{question}
+
+
+\begin{remark}
+\normalfont
+{\color{red} [Model movement of several $(\theta_1,\ \theta_2)$-pairs on particle dynamics in $2$-dimensional space. This provides an FM version of the particle dynamics experiment from {\em Voice Leader\ \textemdash\ DISPL.}...]}
+\end{remark}
+[...]
 \end{subsection}
 
 
