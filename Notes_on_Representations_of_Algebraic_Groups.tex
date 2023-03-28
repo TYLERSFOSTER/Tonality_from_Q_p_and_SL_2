@@ -525,10 +525,10 @@ of $t$ that we like. In this way, a kind of generalized FM synthesis realizes on
 	\fill[black!10] (2,2) -- (-2,2) -- (-2, -2) -- (2, -2) -- cycle;
 	\draw[black!50, very thick, ->] (-2.2,0) -- (2.2,0);
 	\draw[black!50, very thick, ->] (0,-2.2) -- (0,2.2);
-	\draw[black, ultra thick, ->] (-2.2,-1) to [out=45, in=180] (-1,-1.5) to [out=0, in=180] (-.5,-.5) to [out=0, in=-45] (.5,.5) to [out=135, in=180] (1, 1.5) to [out=0, in=180] (2.2,.5);
+	\draw[red!90!black!100, ultra thick, ->] (-2.2,-1) to [out=45, in=180] (-1,-1.5) to [out=0, in=180] (-.5,-.5) to [out=0, in=-45] (.5,.5) to [out=135, in=180] (1, 1.5) to [out=0, in=180] (2.2,.5);
 	\node[black!50] at (2.4, 0) {\scalebox{.8}{$\theta_1$}};
 	\node[black!50] at (0, 2.4) {\scalebox{.8}{$\theta_2$}};	
-	\node[black] at (1.1, 1.75) {\scalebox{.8}{$\pmb{\big(\theta_1(t),\ \!\theta_2(t)\big)}$}};
+	\node[red!90!black!100] at (1.1, 1.75) {\scalebox{.8}{$\pmb{\big(\theta_1(t),\ \!\theta_2(t)\big)}$}};
 	\end{tikzpicture}
 	$$
 	\caption{General FM-synthesis from curves in the real plane.}
@@ -542,6 +542,13 @@ of $t$ that we like. In this way, a kind of generalized FM synthesis realizes on
 {\bf Ring modulation as a special case.}
 Let us briefly remark here that, although it is not usually presented in this way, {\em ring modulation} in signal processing arises when we evaluate the real and imaginary parts of the monomial $xy$ at $x=e^{z_1}$ and $y=e^{z_2}$. In this way, ring modulation becomes a special case of the above discussion.
 \end{example}
+
+\begin{question}
+\normalfont
+What is the Lie bracket on the tangent space $T_{(\bold{q},\bold{p})}M$ of phase space $M$ at a state $(\bold{q},\bold{p})$?
+
+{\em Relevance of the question to representations of algebraic groups.} {\color{red}\bf [...]}
+\end{question}
 
 \end{subsection}
 
@@ -587,10 +594,10 @@ We play with this expression a bit more in Example \ref{example: relationship to
 
 \begin{example}\label{example: relationship to standard chords}
 \normalfont
-[...]
+{\color{red} [...]}
 
 {\bf Special case: $\pmb{\theta_1=\theta_2}$ and $\pmb{P_1=P_2}$.}
-	[...]
+{\color{red} [...]}
 	Equation \eqref{equation: all amplitudes =1} becomes
 	$$
 	(d+1)e^{i2\pi\tfrac{d}{P}\theta}
@@ -599,7 +606,7 @@ We play with this expression a bit more in Example \ref{example: relationship to
 	$$
 
 {\bf Special case: $\pmb{\theta_1=0}$.}
-	[...]
+{\color{red} [...]}
 	Equation \eqref{equation: all amplitudes =1} becomes
 	$$
 	\sum_{n=0}^{d}e^{i2\pi\tfrac{n}{P}\theta}
@@ -616,6 +623,8 @@ We play with this expression a bit more in Example \ref{example: relationship to
 	$$
 or in terms of frequency,
 	$$
+	f(1,e^{i2\pi\lambda\theta})
+	\ =\ 
 	1
 	+
 	e^{i2\pi \lambda\theta}
@@ -626,7 +635,23 @@ or in terms of frequency,
 	+
 	e^{i2\pi d \lambda\theta}.
 	$$
-Ignoring the constant term ``$1$,'' this is just an equi-voiced\footnote{\ We say that a chord is {\em equi-voiced} if the notes of a chord are equally loud. I don't know if this is standard terminology.} overtone chord with root at $\lambda\ \text{Hz}$.
+Ignoring the constant term ``$1$,'' this is just an equi-voiced\footnote{\ We say that a chord is {\em equi-voiced} if the notes of a chord are equally loud. I don't know if this is standard terminology.} overtone chord with root at $\lambda\ \text{Hz}$, and including overtones $1$ through $d$.
+
+If we let $A_1=1$ and $A_2=\varepsilon$, where $0<\varepsilon <1$, then this becomes
+	$$
+	f(1,\varepsilon e^{i2\pi\lambda\theta})
+	\ =\ 
+	1
+	+
+	\varepsilon e^{i2\pi \lambda\theta}
+	+
+	\varepsilon^2 e^{i2\pi 2\lambda\theta}
+	+
+	\dots
+	+
+	\varepsilon^d e^{i2\pi d \lambda\theta}.
+	$$
+This is the same overtone chord, but with voicing that falls of like a geometric series as we move up the overtone scale.
 \end{example}
 
 \begin{question}
