@@ -449,7 +449,7 @@ with real and imaginary parts
 	\ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ 
 	\text{Im}(e^{z})\ =\ A\ \text{sin}(2\pi\lambda\theta),
 	$$
-respectively. If we fix $A$ and let $\theta$ change linearly at the rate of $1$ unit per second, then both $\text{Re}(e^{z})$ and $\text{Im}(e^{z})$ describe a ``pure'' tone playing with amplitude $A$ at $\lambda\ \text{Hz}$,\footnote{\ Here $A$ is measured in units of $A_0 \ e^{20\text{dB}}$, where $A_{0}$ is some fixed reference amplitude.} such that the tone associated to $\text{Re}(e^{z})$ and the tone associated to $\text{Im}(e^{z})$ are out of phase by a quarter period $\frac{P}{4}$.
+respectively. If we fix $A$ and let $\theta$ change linearly at the rate of $1$ unit per second, then both $\text{Re}(e^{z})$ and $\text{Im}(e^{z})$ describe a ``pure'' tone playing with amplitude $A$ at $\lambda\ \text{Hz}$. Here $A$ is measured in units of $A_0 \ e^{20\ \text{dB}}$, where $A_{0}$ is some fixed reference amplitude. The tone associated to $\text{Re}(e^{z})$ and the tone associated to $\text{Im}(e^{z})$ are out of phase by a quarter period $\frac{P}{4}$.
 
 \end{subsection}
 
@@ -511,7 +511,7 @@ This is a situation ripe for techniques from frequency modulation. For instance,
 	$$
 	\theta_1(t)\ =\ t
 	\ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ 
-	\theta_2(t)\ =\ \text{sin}(\omega\ t)\ \ \ \text{for some}\ \omega\in\RR_{>0},
+	\theta_2(t)\ =\ \text{sin}(\omega\ \!t)\ \ \ \text{for some}\ \omega\in\RR_{>0},
 	$$
 then the formulas in Equations \eqref{FM style 1} and \eqref{FM style 2} become instances of \href{https://en.wikipedia.org/wiki/Frequency_modulation_synthesis}{{\em FM synthesis}}. We can also see that the formulas in Equations \eqref{FM style 1} and \eqref{FM style 2} give us a broad generalization of FM synthesis, in that we can use any pair of real-valued functions
 	$$
@@ -598,6 +598,8 @@ This leads us to the following questions for the case of $2$ independent variabl
 \begin{question}
 \normalfont
 What is the right ``space'' to do dynamics in when there are two variables?... (frequency or log-frequency). 
+
+There are going to be competing pictures, throughout these notes, for what level ``space'' should be taken at...
 \end{question}
 
 \begin{question}
@@ -649,7 +651,7 @@ Evaluating this polynomial at $x=e^{z_1}$ and $y=e^{z_2}$, we obtain
 	\ =\ 
 	\sum_{n=0}^{d}a_{n}A_{1}^{d-n}A_{2}^{n}e^{i2\pi\big(\tfrac{d-n}{P_1}\theta_1+\tfrac{n}{P_2}\theta_2\big)}.
 	\end{equation}
-To get a slightly clearer picture of this, let us assume that $a_i=1$ for all $0\le i\le d$ and that $A_1=A_2=1$. Then the right-hand side of Equation \eqref{equation: homogeneous eval at e^z} becomes
+To get a slightly clearer picture of this, let us assume that $a_i=1$ for all $0\le i\le d$ {\color{red} [change $i$ to different letter...]} and that $A_1=A_2=1$. Then the right-hand side of Equation \eqref{equation: homogeneous eval at e^z} becomes
 	\begin{equation}\label{equation: all amplitudes =1}
 	\sum_{n=0}^{d}e^{i2\pi\big(\tfrac{d-n}{P_1}\theta_1+\tfrac{n}{P_2}\theta_2\big)}.
 	\end{equation}
@@ -738,7 +740,125 @@ This is the same overtone chord, but with voicing that falls of like a geometric
 
 \begin{section}{Representations of $\text{SL}_{2}(\CC)$.}
 
+\begin{subsection}{The Cartan-Weyl basis.} The $3$-dimensional Lie algebra
+	$$
+	\mathfrak{sl}_2(\CC)
+	\ =\ 
+	\left\{
+	\left(\!\begin{array}{cc}a & b \\ c & \!\!-a\end{array}\!\right)\in\text{Mat}_{2\times2}(\CC)
+	\right\}
+	$$
+admits a standard basis, sometimes called the {\em Cartan-Weyl basis}, given by
+	$$
+	E:=\left(\!\begin{array}{cc}0 & 1 \\ 0 & 0\end{array}\!\right),
+	\ \ \ \ \ \ 
+	H:=\left(\!\begin{array}{cc}1 & 0 \\ 0 & \!\!-1\end{array}\!\right),
+	\ \ \ \ \ \ 
+	\text{and}
+	\ \ \ \ \ \ 
+	F:=\left(\!\begin{array}{cc} 0 & 0 \\ 1 & 0\end{array}\!\right).
+	$$
+The $1$-parameter subgroups gotten by exponentiation of these basis vectors have general element
+	$$
+	e^{zE}
+	\ =\ 
+	\text{I}+zE+\frac{z^2}{2}{\color{red} \cancelto{0}{{\color{black} E^2}}}+\frac{z^3}{3!}{\color{red} \cancelto{0}{{\color{black} E^3}}}+\cdots
+	\ =\ 
+	\left(\!\begin{array}{cc} 1 & z \\ 0 & 1\end{array}\!\right),
+	$$
+	$$
+	e^{zF}
+	\ =\ 
+	\text{I}+zF+\frac{z^2}{2}{\color{red} \cancelto{0}{{\color{black} F^2}}}+\frac{z^3}{3!}{\color{red} \cancelto{0}{{\color{black} F^3}}}+\cdots
+	\ =\ 
+	\left(\!\begin{array}{cc} 1 & 0 \\ z & 1\end{array}\!\right),
+	$$
+and
+	$$
+	\begin{array}{rclcl}
+	e^{zH}
+	& \!\!=\!\! &
+	I+zH+\frac{z^2}{2}H^2+\frac{z^3}{3!}H^3+\cdots
+	\\[20pt]
+	& \!\!=\!\! &
+	\left(\ \!\begin{array}{cc} 1+z+\tfrac{z^2}{2}+\tfrac{z^3}{3!}+\cdots & 0 \\[7pt] 0 & 1-z+\tfrac{z^2}{2}-\tfrac{z^3}{3!}+\cdots\end{array}\!\ \right)
+	& \!\!=\!\! &
+	\left(\!\begin{array}{cc} e^z & 0 \\ 0 & e^{-z}\end{array}\!\right),
+	\end{array}
+	$$
+respectively. One recurring theme in these notes is the question ``should we work in the space where our variable is $z$, or in the space where are variable is $q=e^{z}$. Note, though, that this distinction gets confused in $\text{SL}_{2}(\CC)$, since the complex parameter $z$ acts by multiplication directly in the $1$-parameter subgroups $$\{e^{zE}:z\in\CC\}\ \ \text{and}\ \ \{e^{zF}:z\in\CC\}\subset\text{SL}_{2}(\CC),$$ but acts through multiplication by in the $1$-parameter subgroup $$\{e^{zH}:z\in\CC\}\subset\text{SL}_{2}(\CC).$$
+
+Every element $\left(\begin{smallmatrix} a & b \\ c & d\end{smallmatrix}\right)\in\text{SL}_{2}(\CC)$ admits a factorization
+	$$
+	\left(\!\begin{array}{cc}a & b \\ c & d\end{array}\!\right)
+	\ =\ 
+	e^{u F}e^{v H}e^{w E}
+	\ =\ 
+	\left(\!\begin{array}{cc}1 & 0 \\ u & 1\end{array}\!\right)
+	\left(\!\begin{array}{cc}e^{v} & 0 \\ 0 & e^{-v}\end{array}\!\right)
+	\left(\!\begin{array}{cc}1 & w \\ 1 & 0\end{array}\!\right)
+	$$
+for some $u,v,w\in\CC$. To compute $u,v,w$, observe that the matrix product on the right is equal to
+	$$
+%	\left(\!\begin{array}{cc}1 & 0 \\ u & 1\end{array}\!\right)
+%	\left(\!\begin{array}{cc}e^v & we^v \\ e^{-v} & 0\end{array}\!\right)
+%	\ =\ 
+	\left(\!\begin{array}{cc}e^v & we^v \\ ue^v-e^-v & uwe^v\end{array}\!\right),
+	$$
+{\color{red} [...confusing myself... need to come back to this...]}
+
+{\color{red} [Factorizations coming from other permutations of these $3$ factors...]}
+
+{\color{red} [...]}
+\end{subsection}
+
+\begin{subsection}{Action of $\text{SL}_{2}(\CC)$ on $\CC[x,y]$}
 We let $\text{SL}_{2}(\CC)$ act on $\CC[x,y]$ through its inverse action on the argument $(x,y)$ of each function $f(x,y)\in\CC[x,y]$. Thus the matrix $\left(\begin{smallmatrix}a & b\\ c & d\end{smallmatrix}\right)\in\text{SL}_{2}(\CC)$ acts on each $f(x,y)\in\CC[x,y]$ via the action of its inverse $\left(\begin{smallmatrix}d & -b\ \\ -c\  & a\end{smallmatrix}\right)$
+\end{subsection}
+
+\begin{subsection}{Irreducible representations of $\text{SL}_2(\CC)$ in $\CC[x,y]$}
+[...]
+\end{subsection}
+
+\begin{subsection}{The irreducible $2$-dimensional representation of $\text{SL}_2(\CC)$}
+[...]
+\end{subsection}
+
+\begin{subsection}{The irreducible $3$-dimensional representation of $\text{SL}_2(\CC)$}
+[...]
+\end{subsection}
+
+\begin{subsection}{``Harmonic movement'' for $\text{SL}_2(\CC)$}
+
+\begin{question}\label{question: what is harmonic movement}
+\normalfont
+What sort of movement through the category $\bold{Rep}\big(\text{SL}_{2}(\CC)\big)$ is the ``correct'' generalization of the movement through $\bold{Rep}\big(\mathbb{S}^{1}\big)$ that corresponds to $\ZZ$-multiplicative movement through the terms of a Fourier series?
+
+\vskip .3cm
+
+\noindent
+{\em Temporary answers.} There are many reasonable candidates:
+	\begin{enumerate}[{\em\ \ \ \ \ \ {Answer \ref{question: what is harmonic movement}.}1.}]
+	\item
+	Inductive/restrictive functorial movement along homomorphisms $G\longrightarrow\text{SL}_{2}(\CC)$ and/or $\text{SL}_{2}(\CC)\longrightarrow G$;
+	\item
+	Movement along functors $\text{Hom}(V_{n},-)$;
+	\item
+	Movement along functors $T^{n}=(-)^{\otimes n}$;
+	\item
+	Movement along functors $\text{Sym}^{n}$;
+	\item
+	Movement along functors $\Lambda^{n}$.
+	\end{enumerate}
+{\color{red} [Explain issue of plethysm/fusion rules...]}
+\end{question}
+
+[...]
+\end{subsection}
+
+\begin{subsection}{Plethysm}
+[...]
+\end{subsection}
 
 \end{section}
 
