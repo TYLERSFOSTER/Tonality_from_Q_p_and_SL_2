@@ -426,11 +426,75 @@
 
 \begin{section}{Navigating tonality through the representation theory of $\text{GL}_{1}(\CC)$.}
 
-\begin{subsection}{Representation theory of $\text{GL}_{1}(\CC)$.}
+\begin{subsection}{Representation theory of $\text{GL}_{1}(\CC)$.} The {\em general linear group on the $1$-dimensional complex vector space $\CC$}, denoted $\text{GL}_{1}(\CC)$, is the group of invertible $1\times 1$-matrices under the operation of matrix multiplication. We have a natural identification with the multiplicative group of nonzero elements in $\CC$:
+	$$
+	\text{GL}_{1}(\CC)
+	\ \cong\ 
+	\CC^\times.
+	$$
+This multiplicative Abelian group $\CC^\times$ has a natural decomposition into the Cartesian product of the additive group $\text{log}(\RR^\times)$ and the circle group $\mathbb{S}^{1}$:
+	$$
+	\CC\ \cong\ \text{log}(\RR^\times)\times\mathbb{S}^{1}.
+	$$
+This decomposition of $\CC^\times$ corresponds to the unique representation of any nonzero complex number $q$ as a product
+	$$
+	q
+	\ =\ 
+	e^{\text{log}(A)+i\omega},
+	\ \ \ \ \ \ \text{with}\ \ \ 
+	\text{log}(A)\in\RR
+	\ \ \ \text{and}\ \ \ 
+	0\le \omega<2\pi.
+	$$
+Here $A$ has units of $A_0 \ e^{20\ \text{dB}}$, where $A_{0}$ is some fixed reference amplitude. Thus $\text{log}(A)$ has units of $\text{log}(A_0)+20\ \text{dB}$, where $\text{log}(A_{0})$ is some fixed reference log-amplitude.\footnote{\ It's interesting how I can tell the ``what this has to do with music'' part of the story by naming units.} This $q$ has real and imaginary parts
+	\begin{equation}\label{equation: connection to oscillators}
+	\text{Re}\ q
+	\ =\ 
+	A\ \text{cos}(\omega)
+	\ \ \ \ \ \ \text{and}\ \ \ \ \ \ 
+	\text{Im}\ q
+	\ =\ 
+	A\ \text{sin}(\omega),
+	\end{equation}
+respectively. The functions of $\omega$ in Equation \eqref{equation: connection to oscillators} are what are sometimes, in music production, called pure oscillators. The latter oscillator is the $\frac{\pi}{4}$-phase shift of the former. In these notes, it will often often be useful to reason using the notation ``$e^{\text{log}(A)+i\omega}$,'' instead of the notation in Equation \eqref{equation: connection to oscillators}. This is because the notation ``$e^{\text{log}(A)+i\omega}$'' is more closely related to the theory of representations of algebraic groups, and becomes extremely useful when we move on to algebraic groups other than $\text{GL}_{1}(\CC)$. I think it is fair to think of $e^{\text{log}(A)+i\omega}$ as being an especially simple, highly formalized instance of a {\em klang}, with properties that make it work well as a primitive building block of complex kangs. One of the main things we will do in these notes is play with ideas about how klangs can move by playing with ways klangs can be built.
+
+A somewhat hidden, made-up premise in these notes is that tonality reflects constraints on performance that makes the parameters of (1) {\em phase} and (2) {\em relative amplitude} random variables that sweep out natural cosets. Thus we restrict attention to the quotient group at right in the short exact sequence
+	$$
+	0
+	\ \lra\ 
+	\text{log}(\RR^\times)\xrightarrow{\ \ e^{(-)}\ }
+	\text{GL}_{1}(\CC)
+	\lra
+	\mathbb{S}^{1}
+	\lra
+	1.
+	$$
+
+{\color{red} [Say something about how one would get back to $\bold{Rep}\big(\text{GL}_{1}(\CC)\big)$ through induction/restriction...]}
+
+	We focus on the category $\bold{Rep}(\mathbb{S}^{1})$. {\color{red} [Decomposition above gives us a direct connection to music. Moving up along tensor powers (multiple interpretations) couple with octave equivalence in human perception corresponds directly to perfect fifths, major thirds, etc...]}
+\end{subsection}
+
+\begin{subsection}{Connection to Fourier series}
+\ 	
+\begin{subsubsection}
+\normalfont
+{\bf Timbre as some kind of higher tonality.}
+\end{subsubsection}
+
+\begin{subsubsection}
+\normalfont
+{\bf Rhythm as some kind of lower tonality.}
+\end{subsubsection}
+
 \ {\color{red} [...]}
 \end{subsection}
 
-\begin{subsection}{Tonnetze.}
+\begin{subsection}{Tonnetze and movement through $\bold{Rep}(\mathbb{S}^{1})$.}
+\ {\color{red} [...]}
+\end{subsection}
+
+\begin{subsection}{Modal changes and functors along homomorphisms $\mathbb{S}^{1}\longrightarrow\mathbb{S}^{1}$.}
 \ {\color{red} [...]}
 \end{subsection}
 
