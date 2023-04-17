@@ -87,6 +87,8 @@
   \fi}
 \makeatother
 
+
+
 \renewcommand{\familydefault}{ppl}
 \setlength{\marginparwidth}{1in}
 \setlength{\marginparsep}{0in}
@@ -264,16 +266,7 @@
 \newcommand{\Mgm}{M_{g}{\!\!}^{\text{{\smaller\smaller\smaller\smaller\smaller $\ (m)$}}}}
 
 
-\stackMath
-\newcommand\reallywidehat[1]{%
-\savestack{\tmpbox}{\stretchto{%
-  \scaleto{%
-    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
-    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
-  }{\textheight}% 
-}{0.5ex}}%
-\stackon[1pt]{#1}{\tmpbox}%
-}
+
 
 %changed footnote style
 \renewcommand{\thefootnote}{[\arabic{footnote}]}
@@ -402,6 +395,22 @@
 \makeatother
 
 
+\makeatletter
+\def\@tempa#1{\@xp\@tempb\meaning#1\@nil#1}
+\def\@tempb#1>#2#3 #4\@nil#5{%
+  \@xp\ifx\csname#3\endcsname\mathaccent
+    \@tempc#4?"7777\@nil#5%
+  \else
+    \PackageWarningNoLine{amsmath}{%
+      Unable to redefine math accent \string#5}%
+  \fi
+}
+\def\@tempc#1"#2#3#4#5#6\@nil#7{%
+  \chardef\@tempd="#3\relax\set@mathaccent\@tempd{#7}{#2}{#4#5}}
+
+
+\@tempa\widehat
+\makeatother
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -515,7 +524,309 @@ A somewhat hidden, made-up premise in these notes is that tonality reflects cons
 
 \begin{subsection}{Modal changes and functors along homomorphisms $\mathbb{S}^{1}\longrightarrow\mathbb{S}^{1}$.}
 \ {\color{red} [...]}
+
+\begin{subsubsection}
+\normalfont
+{\bf Approximating functors and 12-TET.}
+A
+\end{subsubsection}
+
+\begin{subsection}{Isomorphisms $(\RR\!\times\!\mathbb{S}^{1})^\wedge\cong\RR^\wedge\!\times\!\ZZ$ and $(\RR\!\times\!\pmb{\mu}_{n})^\wedge\cong\RR^\wedge\!\times\!\ZZ/n\ZZ$.}
+\ {\color{red} [...]}
+
 \end{subsection}
+
+\end{subsection}
+
+\end{section}
+
+\vskip 1cm
+
+\begin{section}{Representations of the $p$-adic groups $\mathbb{A}^{\!1}(\mathbb{Q}_{p})$ and $\text{GL}_{1}(\mathbb{Q}_{p})$.}
+
+
+
+\begin{subsection}{Sources}
+	\begin{enumerate}[{\bf\ \ \ \ \ \ 1.}]
+	\item
+	\cite[Chp. XV\ \textemdash\ J. T. Tate's thesis, 1950]{CF}
+	\item
+	\cite[\S VII]{Lang}
+	\end{enumerate}
+\end{subsection}
+
+\begin{subsection}{Adele-ish products}
+\ 
+{\color{red} [...]}
+
+	$$
+	\ZZ/p^{n_1}_{1}\ZZ
+	\ \times\ 
+	\ZZ/p^{n_2}_{2}\ZZ
+	\ \times\ 
+	\cdots
+	\ \times\ 
+	\ZZ/p^{n_{k}}_{k}\ZZ
+	$$
+For example
+	$$
+	\ZZ/2^{d}\ZZ
+	\ \times\ 
+	\ZZ/3^{e}\ZZ
+	\ \times\ 
+	\ZZ/5^{f}\ZZ,
+	\ \ \ \text{such that}\ \ \frac{2^{d}3^{e}5^{f}}{P}
+	\ \approx\!
+	\underset{
+	{\smaller\smaller\smaller\smaller
+	\begin{array}{c}
+	\text{20\ kHz, doubled for}
+	\\
+	\text{Nyquist–Shannon}
+	\\
+	\text{sampling theorem}
+	\end{array}
+	}\!\!
+	}{\underbrace{40\ 000\ \text{Hz}}}.
+	$$
+The values $d=0$, $e=4$, $f=4$ achieve this. Moreover, since $2\in(\ZZ/3^{e}\ZZ)^{\times}$ and $2\in(\ZZ/5^{f}\ZZ)^{\times}$ for any $e,f\ge 1$, we have a natural octave equivalence in $\ZZ/3^e\ZZ\times\ZZ/5^f\ZZ$, giving us the multiplicative monoid
+	$$
+	\big(\ZZ/3^e\ZZ\times\ZZ/5^f\ZZ\big)\Big/2^{\ZZ}
+	$$
+controlling pitch-class movement. Observe that we have a surjective map
+	$$
+	\text{pr}_{e,f}:(\QQ_{3}\times\QQ_5)\big/2^{\ZZ}
+	\epi
+	\big(\ZZ/3^e\ZZ\times\ZZ/5^f\ZZ\big)\Big/2^{\ZZ}.
+	$$
+We will sometimes argue directly in $(\QQ_{3}\times\QQ_5)\big/2^{\ZZ}$, and then use the projection $\text{pr}_{e,f}$ to derive the appropriate computable approximation.
+
+{\color{red} [...]}
+
+\end{subsection}
+
+\begin{subsection}{Characters and Fourier transforms over the additive {\em p}-adic group.}
+We define a map
+	\begin{equation}\label{equation: base character}
+	\lambda_{1}:\mathbb{A}^{\!1}(\QQ_p)\lra\RR/\ZZ\cong\mathbb{S}^{1}
+	\end{equation}
+as follows. Given $a\in\QQ_p$, write
+	$$
+	a
+	\ \ =\ \ 
+	\underset{a_{-}}{
+	\underbrace{a_{-n}\tfrac{1}{p^n}+a_{-n+1}\tfrac{1}{p^{n-1}}+\cdots+a_{-1}\tfrac{1}{p}}}
+	+
+	\underset{a_{+}}{
+	\underbrace{
+	a_0+a_1 p+a_2 p^2+\cdots
+	}}.
+	$$
+Since $p^{n}a_{-}\in\ZZ$, we have $a_{-}\in\ZZ\big[\tfrac{1}{p}\big]$, and we can define
+	$$
+	\lambda_{1}(a)
+	\ :=\ 
+	\text{class of}\ a_{-}\ \text{in the quotient}\ \ZZ\big[\tfrac{1}{p}\big]\big/\ZZ.
+	$$
+Composing this with the embeddings
+	$$
+	\ZZ\big[\tfrac{1}{p}\big]\big/\ZZ
+	\mono
+	\QQ/\ZZ
+	\mono
+	\RR/\ZZ,
+	$$
+and we obtain a map as in Equation \eqref{equation: base character}. One checks that $\lambda_1$ is a homomorphism of Abelian groups, that
+	$$
+	\lambda_{1}(a+b)
+	\ =\ 
+	\lambda_{1}(a)+\lambda_{1}(b)
+	\ \ \ \ \ \ \text{and}\ \ \ \ \ \ 
+	\lambda_{1}(0)
+	\ =\ 
+	0.
+	$$
+
+	For each element $b\in\QQ_{p}$, we obtain a new homomorphism
+	$$
+	\lambda_{b}:\mathbb{A}^{\!1}(\QQ_{p})\lra\RR/\ZZ
+	$$
+defined by
+	$$
+	\lambda_{b}(a)\ :=\ \lambda_{1}(ba).
+	$$
+In this way, we obtain a bilinear pairing
+	$$
+	\lambda_{(-)}(-):
+	\QQ_{p}\otimes_{\ZZ}\QQ_{p}\lra\RR/\ZZ.
+	$$
+One can show that this pairing is non-degenerate. In this way, we obtain an isomorphism between $\mathbb{A}^{\!1}(\QQ_{p})$ and its own Pontryagin dual. This is sometimes written
+	$$
+	\begin{array}{c}
+	\lambda_{(-)}:\QQ^{+}_{p}\xrightarrow{\ \ \sim\ \ }\ \!\widehat{\QQ^{+}_{p}},
+	\\[6pt]
+	\ \ \ \ \ \ \ \ \ \ b\xmapsto{\ \ \ \ \ \ \ \ \ } \lambda_{b}.
+	\end{array}
+	$$
+	
+	This means that for each $b\in\QQ_{p}$, we obtain a distinct $\CC^\times$-valued character
+	$$
+	\chi_{b}:\mathbb{A}^{\!1}(\QQ_{p})\lra\CC^\times
+	$$
+defined by
+	$$
+	\chi_{b}(a)
+	\ :=\ 
+	e^{i2\pi\lambda_{b}(a)}.
+	$$
+These functions $\chi_{b}(-)$ play the role of ``pure oscillators'' in the Fourier analysis of complex-valued signals
+	$$
+	f:\QQ_{p}\lra\CC,
+	$$
+and the additive topological group $\QQ_{p}$ serves as the spectrum parametrizing the frequencies of these oscillators, with
+	$$
+	\chi_{b}(t)
+	\ =\ 
+	\chi_{1}(bt).
+	$$
+We define the Haar measure $da$ on $\QQ_{p}$ to be the unique translation invariant measure for which
+	$$
+	\int_{\ZZ_{p}}\!\!\!\!da\ =\ 1.
+	$$
+One important feature of this particular Haar measure is that it satisfies $d(ba)=|b|_{p}\ da$. Integrating against the characters $\chi_{b}$ with respect to this measure defines our Fourier transform in this setting:
+	$$
+	\widehat{f}(b)
+	\ :=\ 
+	\int_{\QQ_{p}}\!\!\!f(a)\ \chi_{b}(a)\ da.
+	$$
+Writing this out explicitly, we get a formula strikingly similar to the standard Fourier transform between signals on $\mathbb{S}^{1}$ and signals on $\ZZ\cong\widehat{\mathbb{S}^{1}}$:
+	$$
+	\widehat{f}(b)
+	\ =\ 
+	\int_{\QQ_{p}}\!\!\!f(a)\ e^{i2\pi\lambda_{1}(ba)}\ da.
+	$$
+In the present case, the double-dual introduces a change of sign in the argument:
+	$$
+	\widehat{\text{$\!\!\widehat{f}$}}
+	(a)
+	\ \ =\ \ 
+	f(-a).
+	$$
+
+\ 
+{\color{red} [...]}
+
+\end{subsection}
+
+\begin{subsection}{A class of tonnetze for $\mathbb{A}^{\!1}(\QQ_{p})$}
+\ 
+{\color{red} [...]}
+\end{subsection}
+
+\begin{subsection}{One approach to {\em p}-adic signals.}
+\ 
+{\color{red} [...]}
+
+	$$
+	\begin{tikzpicture}
+	\draw[red, very thick] (0,0) -- (0,2);
+	\draw[red, very thick] (3,0) -- (3,2);
+	\draw[red, very thick] (6,0) -- (6,2);
+	\draw[red, very thick] (9,0) -- (9,2);
+	%
+	\draw[red, very thick] (1,0) -- (1,1);
+	\draw[red, very thick] (2,0) -- (2,1);
+	\draw[red, very thick] (4,0) -- (4,1);
+	\draw[red, very thick] (5,0) -- (5,1);
+	\draw[red, very thick] (7,0) -- (7,1);
+	\draw[red, very thick] (8,0) -- (8,1);
+	%
+	\draw[red, very thick] (1/3,0) -- (1/3,.5);
+	\draw[red, very thick] (2/3,0) -- (2/3,.5);
+	\draw[red, very thick] (1+1/3,0) -- (1+1/3,.5);
+	\draw[red, very thick] (1+2/3,0) -- (1+2/3,.5);
+	\draw[red, very thick] (2+1/3,0) -- (2+1/3,.5);
+	\draw[red, very thick] (2+2/3,0) -- (2+2/3,.5);
+	\draw[red, very thick] (3+1/3,0) -- (3+1/3,.5);
+	\draw[red, very thick] (3+2/3,0) -- (3+2/3,.5);
+	\draw[red, very thick] (4+1/3,0) -- (4+1/3,.5);
+	\draw[red, very thick] (4+2/3,0) -- (4+2/3,.5);
+	\draw[red, very thick] (5+1/3,0) -- (5+1/3,.5);
+	\draw[red, very thick] (5+2/3,0) -- (5+2/3,.5);
+	\draw[red, very thick] (6+1/3,0) -- (6+1/3,.5);
+	\draw[red, very thick] (6+2/3,0) -- (6+2/3,.5);
+	\draw[red, very thick] (7+1/3,0) -- (7+1/3,.5);
+	\draw[red, very thick] (7+2/3,0) -- (7+2/3,.5);
+	\draw[red, very thick] (8+1/3,0) -- (8+1/3,.5);
+	\draw[red, very thick] (8+2/3,0) -- (8+2/3,.5);
+	%
+	\draw[red, very thick] (1/9,0) -- (1/9,.25);
+	\draw[red, very thick] (2/9,0) -- (2/9,.25);
+	\draw[red, very thick] (1/3+1/9,0) -- (1/3+1/9,.25);
+	\draw[red, very thick] (1/3+2/9,0) -- (1/3+2/9,.25);
+	\draw[red, very thick] (2/3+1/9,0) -- (2/3+1/9,.25);
+	\draw[red, very thick] (2/3+2/9,0) -- (2/3+2/9,.25);
+	\draw[red, very thick] (3/3+1/9,0) -- (3/3+1/9,.25);
+	\draw[red, very thick] (3/3+2/9,0) -- (3/3+2/9,.25);
+	\draw[red, very thick] (4/3+1/9,0) -- (4/3+1/9,.25);
+	\draw[red, very thick] (4/3+2/9,0) -- (4/3+2/9,.25);
+	\draw[red, very thick] (5/3+1/9,0) -- (5/3+1/9,.25);
+	\draw[red, very thick] (5/3+2/9,0) -- (5/3+2/9,.25);
+	\draw[red, very thick] (6/3+1/9,0) -- (6/3+1/9,.25);
+	\draw[red, very thick] (6/3+2/9,0) -- (6/3+2/9,.25);
+	\draw[red, very thick] (7/3+1/9,0) -- (7/3+1/9,.25);
+	\draw[red, very thick] (7/3+2/9,0) -- (7/3+2/9,.25);
+	\draw[red, very thick] (8/3+1/9,0) -- (8/3+1/9,.25);
+	\draw[red, very thick] (8/3+2/9,0) -- (8/3+2/9,.25);
+	\draw[red, very thick] (9/3+1/9,0) -- (9/3+1/9,.25);
+	\draw[red, very thick] (9/3+2/9,0) -- (9/3+2/9,.25);
+	\draw[red, very thick] (10/3+1/9,0) -- (10/3+1/9,.25);
+	\draw[red, very thick] (10/3+2/9,0) -- (10/3+2/9,.25);
+	\draw[red, very thick] (11/3+1/9,0) -- (11/3+1/9,.25);
+	\draw[red, very thick] (11/3+2/9,0) -- (11/3+2/9,.25);
+	\draw[red, very thick] (12/3+1/9,0) -- (12/3+1/9,.25);
+	\draw[red, very thick] (12/3+2/9,0) -- (12/3+2/9,.25);
+	\draw[red, very thick] (13/3+1/9,0) -- (13/3+1/9,.25);
+	\draw[red, very thick] (13/3+2/9,0) -- (13/3+2/9,.25);
+	\draw[red, very thick] (14/3+1/9,0) -- (14/3+1/9,.25);
+	\draw[red, very thick] (14/3+2/9,0) -- (14/3+2/9,.25);
+	\draw[red, very thick] (15/3+1/9,0) -- (15/3+1/9,.25);
+	\draw[red, very thick] (15/3+2/9,0) -- (15/3+2/9,.25);
+	\draw[red, very thick] (16/3+1/9,0) -- (16/3+1/9,.25);
+	\draw[red, very thick] (16/3+2/9,0) -- (16/3+2/9,.25);
+	\draw[red, very thick] (17/3+1/9,0) -- (17/3+1/9,.25);
+	\draw[red, very thick] (17/3+2/9,0) -- (17/3+2/9,.25);
+	\draw[red, very thick] (18/3+1/9,0) -- (18/3+1/9,.25);
+	\draw[red, very thick] (18/3+2/9,0) -- (18/3+2/9,.25);
+	\draw[red, very thick] (19/3+1/9,0) -- (19/3+1/9,.25);
+	\draw[red, very thick] (19/3+2/9,0) -- (19/3+2/9,.25);
+	\draw[red, very thick] (20/3+1/9,0) -- (20/3+1/9,.25);
+	\draw[red, very thick] (20/3+2/9,0) -- (20/3+2/9,.25);
+	\draw[red, very thick] (21/3+1/9,0) -- (21/3+1/9,.25);
+	\draw[red, very thick] (21/3+2/9,0) -- (21/3+2/9,.25);
+	\draw[red, very thick] (22/3+1/9,0) -- (22/3+1/9,.25);
+	\draw[red, very thick] (22/3+2/9,0) -- (22/3+2/9,.25);
+	\draw[red, very thick] (23/3+1/9,0) -- (23/3+1/9,.25);
+	\draw[red, very thick] (23/3+2/9,0) -- (23/3+2/9,.25);
+	\draw[red, very thick] (24/3+1/9,0) -- (24/3+1/9,.25);
+	\draw[red, very thick] (24/3+2/9,0) -- (24/3+2/9,.25);
+	\draw[red, very thick] (25/3+1/9,0) -- (25/3+1/9,.25);
+	\draw[red, very thick] (25/3+2/9,0) -- (25/3+2/9,.25);
+	\draw[red, very thick] (26/3+1/9,0) -- (26/3+1/9,.25);
+	\draw[red, very thick] (26/3+2/9,0) -- (26/3+2/9,.25);
+	%
+	\draw[black, ultra thick] (0,0) -- (9,0);
+	\end{tikzpicture}
+	$$
+
+\end{subsection}
+
+\begin{subsection}{A gestural notation.}
+\ 
+{\color{red} [...]}
+
+\end{subsection}
+
 
 \end{section}
 
@@ -721,6 +1032,168 @@ What is the Lie bracket on the tangent space $T_{(\bold{q},\bold{p})}M$ of phase
 
 \end{subsection}
 
+\vskip .2cm
+
+\begin{subsection}{Ring modulation versus products in representation theory}
+	In representation theory, products arise from tensor constructions like tensor powers $V^{\otimes n}$, symmetric powers $\text{Sym}^{n}V$, and exterior powers $\Lambda^{n}V$ of representations $V$. The basic example of an element in one of these representations is the symmetric product $xy$ of two complex variables $x$ and $y$. If we're thinking in terms of irreducible representations, then it is natural to take 
+	\begin{equation}\label{equation: variable assignment for product}
+	x\ =\ e^{i2\pi\lambda t}
+	\ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ 
+	y=e^{i2\pi\mu t}.
+	\end{equation}
+In this case, we have
+	$$
+	xy\ =\ e^{i2\pi(\lambda+\mu)\ \!t}.
+	$$
+Notice that here, products correspond to addition of frequencies.
+
+	Ring modulation, on the other hand, corresponds to the product
+	$$
+	\text{Re}(x)\cdot\text{Re}(y).
+	$$
+If we let $x$ and $y$ take the values in Equation \ref{equation: variable assignment for product}, then this ring modulation product
+	$$
+	\text{sin}(2\pi\lambda t)\cdot\text{sin}(2\pi\mu t).
+	$$
+[...]
+	\begin{equation}\label{equation: first expansion}
+	\begin{array}{rcl}
+	e^{i2\pi(\lambda+\mu)\ \!t}
+	& \!\!=\!\!
+	& \text{cos}\big(2\pi(\lambda+\mu)\ \!t\big)+i\ \text{sin}\big(2\pi(\lambda+\mu)\ \!t\big)
+	\end{array}
+	\end{equation}
+[...]
+	\begin{equation}\label{equation: second expansion}
+	\begin{array}{rcl}
+	e^{i2\pi\lambda t}\cdot e^{i2\pi\mu t}
+	& \!\!=\!\!
+	& \big(\text{cos}(2\pi\lambda t)+i\ \text{sin}(2\pi\lambda t)\big)
+	\cdot
+	\big(\text{cos}(2\pi\mu t)+i\ \text{sin}(2\pi\mu t)\big)
+	\\[6pt]
+	& \!\!=\!\!
+	& \ \ \ \ \ \ \ \!\big(
+	\text{cos}(2\pi\lambda t)\ \!\text{cos}(2\pi\mu t)
+	-
+	\text{sin}(2\pi\lambda t)\ \!\text{sin}(2\pi\mu t)
+	\big)
+	\\[6pt]
+	&
+	& 
+	+\ i\ 
+	\big(\text{cos}(2\pi\lambda t)\text{sin}(2\pi\mu t)+\text{sin}(2\pi\lambda t)\text{cos}(2\pi\mu t)\big)
+	\end{array}
+	\end{equation}
+Identifying Equations \eqref{equation: first expansion} and \eqref{equation: second expansion}, we have
+	\begin{equation}\label{equation: fragment A}
+	\text{sin}(2\pi\lambda t)\cdot\text{sin}(2\pi\mu t)
+	\ =\ 
+	\text{cos}(2\pi\lambda t)\ \!\text{cos}(2\pi\mu t)
+	-
+	\text{cos}\big(2\pi(\lambda+\mu)\ \!t\big).
+	\end{equation}
+[...]
+	\begin{equation}\label{equation: third expansion}
+	\begin{array}{rcl}
+	e^{i2\pi(\lambda-\mu)\ \!t}
+	& \!\!=\!\!
+	& \text{cos}\big(2\pi(\lambda-\mu)\ \!t\big)+i\ \text{sin}\big(2\pi(\lambda-\mu)\ \!t\big)
+	\end{array}
+	\end{equation}
+[...]	\begin{equation}\label{equation: fourth expansion}
+	\begin{array}{rcl}
+	e^{i2\pi\lambda t}\cdot e^{-i2\pi\mu t}
+	& \!\!=\!\!
+	& \big(\text{sin}(2\pi\lambda t)+i\ \text{cos}(2\pi\lambda t)\big)
+	\cdot
+	\big(-\text{sin}(2\pi\mu t)+i\ \text{cos}(2\pi\mu t)\big)
+	\\[6pt]
+	& \!\!=\!\!
+	& \ \ \ \ \ \ \ \!\big(
+	-\text{sin}(2\pi\lambda t)\ \!\text{sin}(2\pi\mu t)
+	-
+	\text{cos}(2\pi\lambda t)\ \!\text{cos}(2\pi\mu t)
+	\big)
+	\\[6pt]
+	&
+	& 
+	+\ i\ 
+	\big(\text{sin}(2\pi\lambda t)\text{cos}(2\pi\mu t)-\text{cos}(2\pi\lambda t)\text{sin}(2\pi\mu t)\big)
+	\end{array}
+	\end{equation}
+Identifying Equations \eqref{equation: third expansion} and \eqref{equation: fourth expansion}, we have
+	\begin{equation}\label{equation: fragment B}
+	\text{cos}(2\pi\lambda t)\cdot\text{cos}(2\pi\mu t)
+	\ =\ 
+	-\text{sin}(2\pi\lambda t)\ \!\text{sin}(2\pi\mu t)
+	-
+	\text{cos}\big(2\pi(\lambda-\mu)\ \!t\big).
+	\end{equation}
+Putting Equations \eqref{equation: fragment A} and \eqref{equation: fragment B} together, we arrive at the identity
+	$$
+	2\ \text{sin}(2\pi\lambda t)\ \!\text{sin}(2\pi\mu t)
+	\ =\ 
+	\text{cos}\big(2\pi(\lambda+\mu)\ \!t\big)+\text{cos}\big(2\pi(\lambda-\mu)\ \!t\big),
+	$$
+more commonly written
+	\begin{equation}\label{equation: trig identity}
+	\text{sin}(2\pi\lambda t)\cdot\text{sin}(2\pi\mu t)
+	\ =\ 
+	\frac{1}{2}\text{cos}\big(2\pi(\lambda+\mu)\ \!t\big)+\frac{1}{2}\text{cos}\big(2\pi(\lambda-\mu)\ \!t\big)
+	\end{equation}
+
+	The point of all of this is that we have competing interpretations of signal multiplication coming from the inequality
+	$$
+	\text{Re}(xy)\ \neq\ \text{Re}(x)\cdot\text{Re}(y)
+	$$
+for complex variables $x$ and $y$.
+	
+\begin{question}
+{\bf A purely Galois version of the identity in Equation \eqref{equation: trig identity}?}
+\normalfont
+We can re-interpret the factor $e^{-i2\pi\mu t}$ in Equation \eqref{equation: fourth expansion} as the Galois conjugate
+	$$
+	e^{-i2\pi\mu t}=\sigma(e^{i2\pi\mu t}),
+	$$
+where $\sigma$ denotes the unique non-trivial automorphism in $\text{Gal}(\CC/\RR)$. In this way, the identity in Equation \eqref{equation: trig identity} can be written in the non-trigonometric form
+	\begin{equation}\label{equation: non-trig form}
+	\text{Re}(x)\text{Re}(y)
+	\ =\ 
+	\frac{1}{2}\text{Re}(xy)+\frac{1}{2}\text{Re}\big(x\cdot\sigma(y)\big).
+	\end{equation}
+We can think of the $\RR$-linear map $\text{Re}:\CC\longrightarrow\RR$ as a projection operation with respect to the $\RR$-linear basis $\{1,i\}$ in $\CC$, where $i$ is a root of the irreducible quadratic polynomial $x^2+1\in\RR[x]$. If we let $\omega$ be the root of some other irreducible quadratic polynomial $x^2+ax+b\in\RR[x]$, we get a new $\RR$-linear basis $\{1,\omega\}$ for $\CC$, and thus a {\em new} projection
+	$$
+	\text{pr}_{\omega}:\CC\longrightarrow\RR.
+	$$
+Is it the case that this new projection satisfies the naive analogue of Equation \eqref{equation: non-trig form}, namely
+	$$
+	\text{pr}_{\omega}(x)\text{pr}_{\omega}(y)
+	\ =\ 
+	\frac{1}{2}\text{pr}_{\omega}(xy)+\frac{1}{2}\text{pr}_{\omega}\big(x\cdot\sigma(y)\big)?
+	$$
+My first guess is that this can't be correct, and that it requires some modification coming from the polynomial $x^2+ax+b$.
+
+	A further generalization might be some formula for any ``norm-type'' product
+	$$
+	\prod_{j,g\in\text{enum}\big(\text{Gal}(E/F)\big)}
+	\!\!\!\!\!\!\!\!\!\!\!g(x_{j}).
+	$$
+My initial guess would be something of the form
+	$$
+	\prod_{j,g\in\text{enum}\big(\text{Gal}(E/F)\big)}
+	\!\!\!\!\!\!\!\!\!\!\!g(x_{j})
+	\ \ \ =\ \ \ 
+	\frac{1}{\#\text{Gal}(E/F)}
+	\sum_{g\in\text{Gal}(E/F)}\!\!\!\!\!\big(?\big)
+	$$
+Probably the right place to look for the answer is some general ``norm-to-trace'' formula in class field theory.
+\end{question}
+	
+\end{subsection}
+
+\vskip .2cm
+
 \begin{subsection}{Homogenous linear combinations of independent complex variables}
 If $x$ and $y$ are independent complex variables, then a $\CC$-linear combination of monomials in $x$ and $y$, say
 	\begin{equation}\label{homogeneous linear comb 1}
@@ -834,6 +1307,12 @@ This is the same overtone chord, but with voicing that falls of like a geometric
 {\color{red} [Model movement of several $(\theta_1,\ \theta_2)$-pairs on particle dynamics in $2$-dimensional space. This provides an FM version of the particle dynamics experiment from {\em Voice Leader\ \textemdash\ DISPL.}...]}
 \end{remark}
 [...]
+\end{subsection}
+
+\begin{subsection}{A gestural notation.}
+\ 
+{\color{red} [...]}
+
 \end{subsection}
 
 \end{section}
@@ -998,6 +1477,12 @@ What sort of movement through the category $\bold{Rep}\big(\text{SL}_{2}(\CC)\bi
 [...]
 \end{subsection}
 
+\begin{subsection}{A gestural notation.}
+\ 
+{\color{red} [...]}
+
+\end{subsection}
+
 \end{section}
 
 \vskip 1cm
@@ -1030,7 +1515,105 @@ What sort of movement through the category $\bold{Rep}\big(\text{SL}_{2}(\CC)\bi
 
 \end{section}
 
+$$
+10,668,000
+\ =\ 
+\left(\!\!
+\begin{array}{c}
+128\\
+4
+\end{array}
+\!\!\right)
+$$
 
+$$
+\mathbb{E}[f]
+\ =\ 
+\int_{S}f(s)ds
+$$
+
+$$
+\underset{
+{\smaller\smaller\smaller\smaller\smaller
+\begin{array}{c}
+\text{paths $\gamma$ in $S$}
+\\
+\text{starting at $s$}
+\end{array}
+}
+}{\text{argmax}}
+\ G(\gamma)
+$$
+
+$$
+\mathbb{E}_\pi[G|s]
+\ =\ 
+\int_{\!\!\mathscr{P}\!(S,s)}\!\!\!\!G(\gamma)\ d\pi
+$$
+
+$$
+\mathbb{E}_{\pi}[G|s]
+\ =\!\!
+\underset{
+{\smaller\smaller\smaller\smaller
+\begin{array}{c}
+\text{actions}
+\\
+\alpha\ \text{at}\ s
+\end{array}
+}
+}{\sum}
+\!\!\!\!
+\Big(
+\Delta_{\alpha}G
++
+\mathbb{E}\big[G\big|\alpha(s)\big]
+\Big)
+\ 
+p_{\pi}(\alpha|s)
+$$
+
+$$
+\mathbb{E}_{\pi}[G|\alpha,s]
+\ =\ 
+\Delta_{\alpha}G
++
+\mathbb{E}\big[G\big|\alpha(s)\big]
+$$
+
+$$
+\mathbb{E}_{\pi}[G|\alpha,s]
+\ =\ 
+\Delta_{\alpha}G
+\ +\!\!\!\!\!\!
+\underset{
+{\smaller\smaller\smaller\smaller
+\begin{array}{c}
+\text{actions}
+\\
+\beta\ \text{at}\ \alpha(s)
+\end{array}
+}
+}{\sum}
+\!\!\!\!
+\mathbb{E}\big[G\big|\beta,\alpha(s)\big]
+\cdot
+p_{\pi\!}\big(\beta\big|\alpha(s)\big)
+$$
+
+$$
+\mathbb{E}_{\pi}[G|\alpha,s]
+\ =\ 
+\Delta_{\alpha}G
+\ +\ 
+\mathbb{E}\big[G\big|\beta_{\text{{\smaller\smaller\smaller\smaller\smaller best}}},\alpha(s)\big]
+$$
+
+$$
+\mathbb{E}[G|\alpha_i,s_i]
+\ =\ 
+R_{\alpha_i}+R_{\alpha_{i+1}}+R_{\alpha_{i+2}}+\cdots+R_{\alpha_n}
+$$
 
 
 
