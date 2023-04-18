@@ -737,9 +737,72 @@ In the present case, the double-dual introduces a change of sign in the argument
 It is well known that $\QQ_2$ is homeomorphic to the standard ``middle thirds'' Cantor set inside the real interval $[0,1]$, and that $\QQ_p$ is homeomorphic to an ``alternating $(2n-1)^\text{ths}$'' Cantor-like set inside the real interval $[0,1]$.
 	\begin{figure}[ht]
 	$$
-	{\color{red} [...]}
+	\text{Step}\ 0:
+	\begin{tikzpicture}
+	\draw[black, ultra thick] (0,0) -- (9,0);
+	\end{tikzpicture}
 	$$
-	\caption{{\bf Cantor-like, ``alternating $\pmb{5^\text{ths}}$'' realization of $\pmb{\QQ_p}$.} {\color{red} [...]}} 
+	$$
+	\text{Step}\ 1:
+	\begin{tikzpicture}
+	\draw[black, ultra thick] (0,0) -- (9,0);
+	%
+	\fill[white] (3,0) circle (.2);
+	\fill[white] (6,0) circle (.2);
+	\end{tikzpicture}
+	$$
+	$$
+	\text{Step}\ 2:
+	\begin{tikzpicture}
+	\draw[black, ultra thick] (0,0) -- (9,0);
+	%
+	\fill[white] (3,0) circle (.2);
+	\fill[white] (6,0) circle (.2);
+	%
+	\fill[white] (1,0) circle (.1);
+	\fill[white] (2,0) circle (.1);
+	\fill[white] (4,0) circle (.1);
+	\fill[white] (5,0) circle (.1);
+	\fill[white] (7,0) circle (.1);
+	\fill[white] (8,0) circle (.1);
+	\end{tikzpicture}
+	$$
+	$$
+	\ \ \ \ \ \ \vdots  \ \ \ \ :
+	\begin{tikzpicture}
+	\draw[black!35, ultra thick] (0,0) -- (9,0);
+	%
+	\fill[white] (3,0) circle (.2);
+	\fill[white] (6,0) circle (.2);
+	%
+	\fill[white] (1,0) circle (.1);
+	\fill[white] (2,0) circle (.1);
+	\fill[white] (4,0) circle (.1);
+	\fill[white] (5,0) circle (.1);
+	\fill[white] (7,0) circle (.1);
+	\fill[white] (8,0) circle (.1);
+	%
+	\fill[white] (1/3,0) circle (.05);
+	\fill[white] (2/3,0) circle (.05);
+	\fill[white] (1+1/3,0) circle (.05);
+	\fill[white] (1+2/3,0) circle (.05);
+	\fill[white] (2+1/3,0) circle (.05);
+	\fill[white] (2+2/3,0) circle (.05);
+	\fill[white] (3+1/3,0) circle (.05);
+	\fill[white] (3+2/3,0) circle (.05);
+	\fill[white] (4+1/3,0) circle (.05);
+	\fill[white] (4+2/3,0) circle (.05);
+	\fill[white] (5+1/3,0) circle (.05);
+	\fill[white] (5+2/3,0) circle (.05);
+	\fill[white] (6+1/3,0) circle (.05);
+	\fill[white] (6+2/3,0) circle (.05);
+	\fill[white] (7+1/3,0) circle (.05);
+	\fill[white] (7+2/3,0) circle (.05);
+	\fill[white] (8+1/3,0) circle (.05);
+	\fill[white] (8+2/3,0) circle (.05); y
+	\end{tikzpicture}
+	$$
+	\caption{{\bf Cantor-like, ``alternating fifths'' realization of $\pmb{\QQ_3}$.} {\color{red} [...]}} 
 	\end{figure}
 
 {\color{red} [...]}
@@ -884,7 +947,7 @@ It is well known that $\QQ_2$ is homeomorphic to the standard ``middle thirds'' 
 	\node[black] at (9,-.35) {\scalebox{1}{$\pmb{T}$}};
 	\end{tikzpicture}
 	$$
-	\caption{{\bf Proposed ``{\em p}-adic'' signal approximation.}\ {\color{red} [$\frac{T}{p^n}$-sample per second signal approximation... Explain that the specific indexing of the samples indicated in this figure is critical to the harmonic/tonal movement...]} {\color{red} [Explain how this can viewed as an actual signal over $\QQ_{p}$ with its correct topology, with a bit of signal inertia...]}}
+	\caption{{\bf Proposed ``{\em p}-adic'' signal approximation in the case $\pmb{p=3}$.}\ {\color{red} [$\frac{T}{p^n}$-sample per second signal approximation... Explain that the specific indexing of the samples indicated in this figure is critical to the harmonic/tonal movement...]} {\color{red} [Explain how this can viewed as an actual signal over $\QQ_{p}$ with its correct topology, with a bit of signal inertia...]}}
 	\label{figure: p-adic signal proposal}
 	\end{figure}
 
