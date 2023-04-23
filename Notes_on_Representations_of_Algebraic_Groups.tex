@@ -18,6 +18,12 @@
 \usepackage{soul}
 \usepackage{xcolor}
 \usepackage{etoolbox}
+\usepackage{algpseudocode}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\SetKw{KwBy}{by}
+\RestyleAlgo{ruled}
 \usepackage{pifont}
 \usetikzlibrary{fadings}
 \usetikzlibrary{calc}
@@ -143,7 +149,6 @@
 \newtheorem{fact}[theorem]{Fact}
 \newtheorem{computation}[theorem]{Computation}
 \newtheorem{observation}[theorem]{Observation}
-\newtheorem{algorithm}[theorem]{Algorithm}
 \newtheorem{setup}[theorem]{Setup}
 \newtheorem{purity hypothesis}[theorem]{Purity hypothesis}
 \newtheorem{corollary of the purity hypothesis}[theorem]{Corollary of the purity hypothesis}
@@ -555,6 +560,10 @@ A
 	\cite[Chp. XV: {\em J. T. Tate's thesis}, 1950]{CF}
 	\item
 	\cite[\S VII]{Lang}
+	\item
+	\cite[\S 1]{GHv1}
+	\item
+	\cite{GHv2}
 	\end{enumerate}
 \end{subsection}
 
@@ -722,8 +731,126 @@ In the present case, the double-dual introduces a change of sign in the argument
 \end{subsection}
 
 \begin{subsection}{Computing Fourier transforms over $\mathbb{A}^{\!1}(\QQ_{p})$}
+This section is dedicated to the explicit computation of the Fourier transforms of several $\CC$-valued functions on $\mathbb{A}^{\!1}(\QQ_{p})$. Serge Lang's \cite[\S VII.1, pp. 92-93]{Lang} provides some fragmentary insight into the problem of computing Fourier transforms over $\mathbb{A}^{1}(\QQ_{p})$ explicitly, but I think my favorite text on this is Dorian Goldfeld and Joseph Hundley's \cite[\S\S 1.5-6, pp. 12-18]{GHv1}.
+
 \ 
-{\color{red} [Characterization of maps $f:\QQ_{p}\lra\CC$...]}
+{\color{red} [Characterization of continuous maps $f:\QQ_{p}\lra\CC$...]}
+
+\begin{problem}\label{problem: Fourier 1}
+\normalfont
+Compute the $p$-adic Fourier transform of the characteristic function $\mathbbm{1}_{\ZZ_p}$ of the integers $\ZZ_{p}$ inside $\QQ_{p}$. In other words, compute the integral
+	$$\widehat{\mathbbm{1}_{\ZZ_{p}}}\!(b)
+	\ =\ 
+	\int_{\QQ_{p}}\!\!\!\mathbbm{1}_{\ZZ_{p}}\!(a)\ e^{i2\pi\lambda_{b\!}(a)}da.
+	$$
+\end{problem}
+
+\noindent
+{\em Solution}.
+We can re-write the integral as
+	$$
+	\int_{\ZZ_{p}}e^{i2\pi\lambda_{1\!}(ba)}da.
+	$$
+Fix $b\in\QQ_{p}$ and write
+	$$
+	b\ =\ p^{m}(b_{0}+b_1 p+b_2p^2+\cdots),
+	$$
+with $b_0\neq 0$ and with $m\in\ZZ$. If $m\ge 0$, then $ba\in \ZZ_p$, hence $\lambda_{1}(ab)=0$, and
+	$$
+	\widehat{\mathbbm{1}_{\ZZ_{p}}}\!(b)
+	\ =\ 
+	\int_{\ZZ_p}\!\!\!da
+	\ =\ 
+	1.
+	$$
+Suppose $m<0$. Define $n:=-m$. Since $b_{0}+b_1 p+b_2p^2+\cdots\in\ZZ^\times_{p}$, we can then rewrite the integral as
+	$$
+	\int_{\ZZ_{p}}e^{i2\pi\lambda_{1\!}(p^ma)}da.
+	$$
+Write
+	$$
+	a
+	\ =\ 
+	a_0+a_1p+\cdots+a_{n-1} p^{n-1}+a_{n}p^{n}+\cdots,
+	$$
+so that
+	$$
+	\lambda_1(p^m a)
+	\ =\ 
+	\frac{1}{p^n}\big(a_0+a_1p+\cdots+a_{n-1}p^{n-1}\big).
+	$$
+Thus our integral becomes
+	$$
+	\int_{\ZZ_{p}}e^{i2\pi\lambda_{1\!}(p^{-n}a)}da
+	\ =\ 
+	\frac{1}{p^n}\sum_{0\le k<p^n}\!\!e^{i2\pi\tfrac{k}{p^n}}
+	\ =\ 0.
+	$$
+Thus, our Fourier transform is
+	$$
+	\widehat{\mathbbm{1}_{\ZZ_{p}}}\!(b)
+	\ =\ 
+	\mathbbm{1}_{\ZZ_{p}}\!(b).
+	$$
+
+\begin{problem}
+\normalfont
+Compute the $p$-adic Fourier transform of the characteristic function $\mathbbm{1}_{p^{m}\ZZ_{p}}$ of the compact subset $p^{m}\ZZ_{p}\subset\QQ_{p}$, for any $m\in\ZZ$. In other words, compute the integral
+	$$\widehat{\mathbbm{1}}_{p^{m}\ZZ_{p}}\!(b)
+	\ =\ 
+	\int_{\QQ_{p}}\!\!\!\mathbbm{1}_{p^{m}\ZZ_{p}}\!(a)\ e^{i2\pi\lambda_{b\!}(a)}da.
+	$$
+\end{problem}
+
+\noindent
+{\em Solution}.
+We can re-write the integral as
+	$$
+	\int_{p^m\ZZ_{p}}\!\!\!e^{i2\pi\lambda_{b\!}(a)}da
+	\ \ =\ \ 
+	\frac{1}{p^m}\int_{\ZZ_{p}}\!\!\!e^{i2\pi\lambda_{b\!}(p^ma)}da
+	$$
+The analysis is identical to that in Problem \ref{problem: Fourier 1}, except that now the threshold for $b$ occurs at $\text{val}_{p}(b)=-m$, and therefore {\color{red} [FIX THE SCALAR...]}
+	$$
+	\widehat{\mathbbm{1}}_{p^m\ZZ_{p}}\!(b)
+	\ =\ 
+	\tfrac{1}{p^m}\cdot\mathbbm{1}_{\scalebox{.8}{$\tfrac{1}{p^m}$}\ZZ_{p}}\!(b).
+	$$
+
+\begin{problem}
+\normalfont
+Compute the $p$-adic Fourier transform of the character $\chi_{c}(-)=e^{i2\pi\lambda_{c}(-)}$ for any $c\in\QQ^\times_p$. In other words, compute the integral
+	$$\widehat{\chi_c}(b)
+	\ =\ 
+	\int_{\QQ_{p}}\!\!\!e^{i2\pi\lambda_{c}(a)}e^{i2\pi\lambda_{b\!}(a)}da.
+	$$
+This problem is interesting, in part, because we can interpret it as describing ``the shape of the spectrum of pure oscillators on $\QQ_{p}$.'' ...Will we get anything like a Dirac delta at $c$?
+\end{problem}
+
+\noindent
+{\em Solution}.
+We can re-write the integral as
+	$$
+	\int_{\QQ_{p}}\!\!\!e^{i2\pi\lambda_{1\!}((c+b)a)}da.
+	$$
+We have three cases, depending on which of the following inequalities holds:
+	$$
+	\begin{array}{rrcl}
+	& \text{val}_{p}(b) & \!\!<\!\! & \text{val}_{p}(c),
+	\\[10pt]
+	& \text{val}_{p}(b) & \!\!=\!\! & \text{val}_{p}(c),
+	\\[10pt]
+	\text{or}
+	& \text{val}_{p}(b) & \!\!>\!\! & \text{val}_{p}(c).
+	\end{array}
+	$$
+{\color{red} [...]}
+	$$
+	\widehat{\chi_{c}}
+	\ =\ 
+	\delta_{c}.
+	$$
+
 
 \ 
 {\color{red} [A tutorial with examples...]}
@@ -951,6 +1078,42 @@ It is well known that $\QQ_2$ is homeomorphic to the standard ``middle thirds'' 
 	\caption{{\bf Proposed ``{\em p}-adic'' signal approximation in the case $\pmb{p=3}$.}\ {\color{red} [$\frac{T}{p^n}$-sample per second signal approximation... Explain that the specific indexing of the samples indicated in this figure is critical to the harmonic/tonal movement...]} {\color{red} [Explain how this can viewed as an actual signal over $\QQ_{p}$ with its correct topology, with a bit of signal inertia...]}}
 	\label{figure: p-adic signal proposal}
 	\end{figure}
+	
+{\color{red} [Makes Fourier transformation integrals volumetrically correct. Does {\em not} preserve addition. ...What are the musical consequences of this?...]}
+
+	
+%% This declares a command \Comment
+%% The argument will be surrounded by /* ... */
+\SetKwComment{Comment}{/* }{ */}
+
+\begin{algorithm}
+\caption{$p$-Adic coordinates for non-negative real numbers}\label{alg:two}
+\KwData{positive prime base $p\in\ZZ_{>0}$, non-negative real number $t\in\RR_{\ge0}$, positive integer $m\in\ZZ_{>0}$}
+\KwResult{$p$-adic number $a\in\QQ_{p}$ assigned to $t$ at real resolution $p^{-m}$, and non-negative real error $\varepsilon\in\RR_{\ge0}$}
+$r \gets$ {\bf copy of} $t$ \label{line: define r} \tcp*[r]{copy of our argument $t$, to modify over course of algorithm}
+$n \gets 0$\; \label{line: define n}
+\While{$p^{n} \le r$
+}{
+    $n \gets n+1$ \label{line: increase n by 1}  \tcp*[r]{\ref{line: define n}-\ref{line: increase n by 1} end with $n\in\ZZ_{\ge 0}$ such that  $p^{n-1}\le r<p^{n}$}
+}
+{\bf set} $L$ {\bf to empty list}
+\; \label{line: define fractional list}
+\For{$i\gets n-1$ \KwTo $-m$ \KwBy $-1$
+}{
+$a_{-i}=\lfloor\tfrac{r}{p^{i}}\rfloor$
+\;
+%\While{$(a_{-i}+1)\cdot p^i\le r$}{
+%$a_{-i}\gets a_{-i}+1$ \;
+%}
+$r\gets r-a_{-i}p^{i}$ \;
+{\bf append} $a_{-i}$ {\bf to list} $L$ \label{line: append fractional digit} \tcp*[r]{\ref{line: define fractional list}-\ref{line: append fractional digit} end with $L=(a_{-n},\dots,a_{-1},a_0,a_1,\dots,a_{m})$}
+}
+$\varepsilon\gets r$ 
+\tcp*[r]{\ref{line: define fractional list}-\ref{line: positive part} end with $0\le \varepsilon<p^{m}$ such that $t=\varepsilon+\sum_{a_j\in L}a_{j}p^{-j}$}
+\label{line: positive part}
+$a \gets$ {\bf {\em p}-adic number} $p^{-m}\cdot\sum_{a_{j}\in L}a_{j}p^{j}$ \;
+{\bf return} $a$, $\varepsilon$
+\end{algorithm}
 
 \begin{proposal}\label{proposal: p-adic chords}
 {\bf Chords as sums of ``pure oscillators.''}
@@ -999,6 +1162,19 @@ It is well known that $\QQ_2$ is homeomorphic to the standard ``middle thirds'' 
 \begin{remark}
 {\bf Proposals \ref{proposal: p-adic chords} and \ref{proposal: smooth-to-p-adic} are {\em not} mutually exclusive.}
 \normalfont
+{\color{red} [...]}
+\end{remark}
+
+\begin{remark}
+{\bf An approach to {\em p}-adic signals that doesn't quite work.}
+\normalfont
+Another idea I had for deploying $p$-adic signals is the following:
+	\begin{enumerate}[{\bf\ \ \ \ \ \ \ $\star$}]
+	\item\vskip .2cm
+	{\bf Another idea for realizing {\em p}-adic signals.} Use sample audio signals $f:\RR\lra\RR$ only on the rationals $\QQ\subset\RR$. Use the canonical embedding $\QQ\mono\QQ_{p}$ to reinterpret each rational argument of $f$ as a $p$-adic, and multiply the arguments of signals by $\QQ^{\times}_p$ accordingly.
+	\vskip .2cm
+	\end{enumerate}
+The problem is that there's a fatal circularity in this idea.
 {\color{red} [...]}
 \end{remark}
 
