@@ -548,7 +548,9 @@ A
 
 \vskip 1cm
 
-\begin{section}{Representations of the $p$-adic groups $\mathbb{A}^{\!1}(\mathbb{Q}_{p})$ and $\text{GL}_{1}(\mathbb{Q}_{p})$.}
+\begin{section}{Representations of the $p$-adic group $\mathbb{A}^{\!1}(\mathbb{Q}_{p})$
+and $\text{GL}_{1}(\mathbb{Q}_{p})$
+in wavelet signals.}
 
 
 
@@ -561,9 +563,13 @@ A
 	\item
 	\cite[\S VII]{Lang}
 	\item
-	\cite[\S 1]{GHv1}
+	\cite[\S 1]{GHv1} and \cite{GHv2}
 	\item
-	\cite{GHv2}
+	\cite[\S 7.2.3]{Mallat}
+	\item
+	\cite[\S5.5]{SN}
+	\item
+	\cite{Kozyrev} and \cite{KozKhre}
 	\end{enumerate}
 \end{subsection}
 
@@ -1088,31 +1094,26 @@ It is well known that $\QQ_2$ is homeomorphic to the standard ``middle thirds'' 
 
 \begin{algorithm}
 \caption{$p$-Adic coordinates for non-negative real numbers}\label{alg:two}
-\KwData{positive prime base $p\in\ZZ_{>0}$, non-negative real number $t\in\RR_{\ge0}$, positive integer $m\in\ZZ_{>0}$}
-\KwResult{$p$-adic number $a\in\QQ_{p}$ assigned to $t$ at real resolution $p^{-m}$, and non-negative real error $\varepsilon\in\RR_{\ge0}$}
-$r \gets$ {\bf copy of} $t$ \label{line: define r} \tcp*[r]{copy of our argument $t$, to modify over course of algorithm}
-$n \gets 0$\; \label{line: define n}
-\While{$p^{n} \le r$
+\KwData{positive prime $p\in\ZZ_{>0}$, non-negative real $t\in\RR_{\ge0}$, positive integer $m\in\ZZ_{>0}$}
+\KwResult{$p$-adic number $a\in\QQ_{p}$ and non-negative real error $\varepsilon\in\RR_{\ge0}$ such that $t=a+\varepsilon$}
+$\varepsilon \gets$ {\bf copy of real number} $t$ \label{line: define r} \tcp*[r]{running error, to modify over course of algorithm}
+$n \gets$ {\bf integer} $0$\; \label{line: define n}
+\While{$p^{n} \le \varepsilon$
 }{
-    $n \gets n+1$ \label{line: increase n by 1}  \tcp*[r]{\ref{line: define n}-\ref{line: increase n by 1} end with $n\in\ZZ_{\ge 0}$ such that  $p^{n-1}\le r<p^{n}$}
+    $n \gets n+1$ \label{line: increase n by 1}  \tcp*[r]{\ref{line: define n}-\ref{line: increase n by 1} end with $n\in\ZZ_{\ge 0}$ such that  $p^{n-1}\le \varepsilon<p^{n}$}
 }
-{\bf set} $L$ {\bf to empty list}
-\; \label{line: define fractional list}
+$a \gets$ {\bf {\em p}-adic number} $0$
+\; \label{line: define p-adic to update}
 \For{$i\gets n-1$ \KwTo $-m$ \KwBy $-1$
 }{
-$a_{-i}=\lfloor\tfrac{r}{p^{i}}\rfloor$
-\;
+$a_{-i}=\lfloor\tfrac{\varepsilon}{p^{i}}\rfloor$ \tcp*[r]{$a_{-i}\in\ZZ$ satisfies $0\le a_{-i}<p$ and $a_{-i}p^n\le \varepsilon<(a_{-i}+1)p^{n}$}
 %\While{$(a_{-i}+1)\cdot p^i\le r$}{
 %$a_{-i}\gets a_{-i}+1$ \;
 %}
-$r\gets r-a_{-i}p^{i}$ \;
-{\bf append} $a_{-i}$ {\bf to list} $L$ \label{line: append fractional digit} \tcp*[r]{\ref{line: define fractional list}-\ref{line: append fractional digit} end with $L=(a_{-n},\dots,a_{-1},a_0,a_1,\dots,a_{m})$}
-}
-$\varepsilon\gets r$ 
-\tcp*[r]{\ref{line: define fractional list}-\ref{line: positive part} end with $0\le \varepsilon<p^{m}$ such that $t=\varepsilon+\sum_{a_j\in L}a_{j}p^{-j}$}
-\label{line: positive part}
-$a \gets$ {\bf {\em p}-adic number} $\sum_{a_{j}\in L}a_{j}p^{j}$ \;
-{\bf return} $a$, $\varepsilon$
+$\varepsilon\gets$ {\bf real number} $r-a_{-i}p^{i}$ \;
+{$a \gets$ {\bf {\em p}-adic number} $a+a_{-i}p^{-i}$} \tcp*[r]{\ref{line: define p-adic to update}-\ref{line: p-adic update} end with $p$-adic number $a=\sum_{j=-m}^{n-1}a_jp^j$}
+\label{line: p-adic update}}
+{\bf return} $a$, $\varepsilon$ \tcp*[r]{Interpreting $a$ as a rational, we have $t=\varepsilon+a$, with $0\le \varepsilon<\tfrac{1}{p^{m}}$.} 
 \end{algorithm}
 
 \begin{proposal}\label{proposal: p-adic chords}
@@ -1178,6 +1179,76 @@ The problem is that there's a fatal circularity in this idea.
 {\color{red} [...]}
 \end{remark}
 
+\end{subsection}
+
+\begin{subsection}{{\em p}-Adic Daubechies wavelets}
+\ {\color{red} [...]}
+	\begin{figure}[ht]
+	$$
+	\scalebox{.9}{$
+	\begin{xy}
+	(-80,0)*+{\!\!\!\pmb{L^2(\RR)}}="-4";
+	(-60,0)*+{\ \pmb{\cdots}\ }="-3";
+	(-40,0)*+{\ \pmb{V_{-1}}\ }="-2";
+	(-20,0)*+{\ \pmb{V_{0}}\ }="-1";
+	(0,0)*+{\ \pmb{V_1}\ }="0";
+	(20,0)*+{\ \pmb{\cdots}\ }="1";
+	(40,0)*+{\ \pmb{V_{j}}\ }="2";
+	(60,0)*+{\ \pmb{\cdots}\ }="3";
+	(80,0)*+{\ \pmb{\{0\}}\ }="4";
+	%
+	(-65,10)*+{\text{{\color{blue}\smaller rescaling}}};
+	(-66,7)*+{\text{{\color{blue}\smaller operations:}}};
+	%
+	(60, -19)*+{{\color{black!30!red!100} \text{topologically exhaustive:}}};
+	(60, -25)*+{{\color{black!30!red!100} \pmb{\text{cl}\big(\underset{j\in\ZZ}{\bigcup}V_{j}\big)=L^2(\RR)}}};
+	(60, -34)*+{{\color{black!30!red!100} \text{separated:}}};
+	(60, -40)*+{\color{black!30!red!100} \pmb{\underset{j\in\ZZ}{\bigcap}V_{j}=\{0\}}};
+	%
+	{\ar@/^0pt/@{_{(}->} "-3"; "-4"};
+	{\ar@/_37pt/@{->>}_{\text{pr}_0} "-4"; "-1"};
+	{\ar@/_57pt/@{->>}_{\text{pr}_{1}} "-4"; "0"};
+	{\ar@/_97pt/@{->>}_{\text{pr}_{j}} "-4"; "2"};
+	%
+	{\ar@[blue]@/^22pt/@{->}^{\text{{\smaller\smaller\smaller\smaller\color{blue} $1/p$}}} "-3"; "-2"};
+	{\ar@[blue]@/_14pt/@{->}^{\text{{\smaller\smaller\smaller\smaller\color{blue} $p$}}} "-2"; "-3"};
+	{\ar@/^0pt/@{_{(}->} "-2"; "-3"};
+	{\ar@/_5pt/@{->>}_{\text{pr}^{-2}_{-1}} "-3"; "-2"};
+	%
+	{\ar@[blue]@/^22pt/@{->}^{\text{{\smaller\smaller\smaller\smaller\color{blue} $1/p$}}} "-2"; "-1"};
+	{\ar@[blue]@/_14pt/@{->}^{\text{{\smaller\smaller\smaller\smaller\color{blue} $p$}}} "-1"; "-2"};
+	{\ar@/^0pt/@{_{(}->} "-1"; "-2"};
+	{\ar@/_5pt/@{->>}_{\text{pr}^{-1}_{0}} "-2"; "-1"};
+	%
+	{\ar@[blue]@/^22pt/@{->}^{\text{{\smaller\smaller\smaller\smaller\color{blue} $1/p$}}} "-1"; "0"};
+	{\ar@[blue]@/_14pt/@{->}^{\text{{\smaller\smaller\smaller\smaller\color{blue} $p$}}} "0"; "-1"};
+	{\ar@/^0pt/@{_{(}->} "0"; "-1"};
+	{\ar@/_5pt/@{->>}_{\text{pr}^{0}_{1}} "-1"; "0"};
+	%
+	{\ar@[blue]@/^22pt/@{->}^{\text{{\smaller\smaller\smaller\smaller\color{blue} $1/p$}}} "0"; "1"};
+	{\ar@[blue]@/_14pt/@{->}^{\text{{\smaller\smaller\smaller\smaller\color{blue} $p$}}} "1"; "0"};
+	{\ar@/^0pt/@{_{(}->} "1"; "0"};
+	{\ar@/_7pt/@{->>}_{\text{pr}^{1}_{2}} "0"; "1"};
+	%
+	{\ar@[blue]@/^22pt/@{->}^{\text{{\smaller\smaller\smaller\smaller\color{blue} $1/p$}}} "1"; "2"};
+	{\ar@[blue]@/_14pt/@{->}^{\text{{\smaller\smaller\smaller\smaller\color{blue} $p$}}} "2"; "1"};
+	{\ar@/^0pt/@{_{(}->} "2"; "1"};
+	{\ar@/_7pt/@{->>}_{\text{pr}^{j-1}_{j}} "1"; "2"};
+	%
+	{\ar@[blue]@/^22pt/@{->}^{\text{{\smaller\smaller\smaller\smaller\color{blue} $1/p$}}} "2"; "3"};
+	{\ar@[blue]@/_14pt/@{->}^{\text{{\smaller\smaller\smaller\smaller\color{blue} $p$}}} "3"; "2"};
+	{\ar@/^0pt/@{_{(}->} "3"; "2"};
+	{\ar@/_7pt/@{->>}_{\text{pr}^{j}_{j+1}} "2"; "3"};
+	%
+	{\ar@/^0pt/@{_{(}->} "4"; "3"};
+	{\ar@/_7pt/@{->>}_{\text{pr}_\infty} "3"; "4"};
+	\end{xy}
+	$}
+	$$
+	\caption{{\bf The complete structure of a {\em multiresolution approximation} on $\pmb{L^2(\RR)}$.}}
+	\end{figure}
+	
+\ {\color{red} [...]}
 \end{subsection}
 
 \begin{subsection}{A gestural notation.}
@@ -1933,6 +2004,14 @@ What sort of movement through the category $\bold{Rep}\big(\text{SL}_{2}(\CC)\bi
 %$$
 %
 %$$
+%\Big(
+%\Delta_{\beta}G
+%+
+%\mathbb{E}\big[G\big|\beta\!\circ\!\alpha(s)\big]
+%\Big)\
+%$$
+%
+%$$
 %\mathbb{E}_{\pi}[G|\alpha,s]
 %\ =\ 
 %\Delta_{\alpha}G
@@ -1973,23 +2052,23 @@ What sort of movement through the category $\bold{Rep}\big(\text{SL}_{2}(\CC)\bi
 %\ =\ 
 %R_{\alpha_i}+R_{\alpha_{i+1}}+R_{\alpha_{i+2}}+\cdots+R_{\alpha_n}
 %$$
-
-$$
-\begin{array}{rcl}
-\mathscr{L}(\alpha, s)
-&
-\!\!:=\!\!
-& 
-\mathbb{E}[G|\alpha,s]\cdot\text{log}\Big(\frac{1}{\mathscr{Q}(\alpha, s)}\Big)
-\\[12pt]
-&
-\!\!=\!\!
-&
-\Big(\underset{\beta\ge\alpha}{\scalebox{1.2}{$\sum$}}R_{\beta}\Big)
-\cdot
-\text{log}\Big(\frac{1}{\mathscr{Q}(\alpha, s)}\Big)
-\end{array}
-$$
+%
+%$$
+%\begin{array}{rcl}
+%\mathscr{L}(\alpha, s)
+%&
+%\!\!:=\!\!
+%& 
+%\mathbb{E}[G|\alpha,s]\cdot\text{log}\Big(\frac{1}{\mathscr{Q}(\alpha, s)}\Big)
+%\\[12pt]
+%&
+%\!\!=\!\!
+%&
+%\Big(\underset{\beta\ge\alpha}{\scalebox{1.2}{$\sum$}}R_{\beta}\Big)
+%\cdot
+%\text{log}\Big(\frac{1}{\mathscr{Q}(\alpha, s)}\Big)
+%\end{array}
+%$$
 
 
 
