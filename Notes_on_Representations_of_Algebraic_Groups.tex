@@ -1093,7 +1093,7 @@ It is well known that $\QQ_2$ is homeomorphic to the standard ``middle thirds'' 
 \SetKwComment{Comment}{/* }{ */}
 
 \begin{algorithm}
-\caption{$p$-Adic coordinates for non-negative real numbers}\label{alg:two}
+\caption{$p$-Adic coordinates, at resolution-$p^m$, for non-negative real numbers}\label{algorithm: weak p-adic coordinate}
 \KwData{positive prime $p\in\ZZ_{>0}$, non-negative real $t\in\RR_{\ge0}$, positive integer $m\in\ZZ_{>0}$}
 \KwResult{$p$-adic number $a\in\QQ_{p}$ and non-negative real error $\varepsilon\in\RR_{\ge0}$ such that $t=a+\varepsilon$}
 $\varepsilon \gets$ {\bf copy of real number} $t$ \label{line: define r} \tcp*[r]{running error, to modify over course of algorithm}
@@ -1115,6 +1115,54 @@ $\varepsilon\gets$ {\bf real number} $r-a_{-i}p^{i}$ \;
 \label{line: p-adic update}}
 {\bf return} $a$, $\varepsilon$ \tcp*[r]{Interpreting $a$ as a rational, we have $t=\varepsilon+a$, with $0\le \varepsilon<\tfrac{1}{p^{m}}$.} 
 \end{algorithm}
+
+Taking the first output $a$ of Algorithm \ref{algorithm: weak p-adic coordinate} gives us with a map
+	%\begin{equation}\label{equation: weak inverse pre-embed}
+	$
+	\RR_{\ge0}\longrightarrow\tfrac{1}{p^m}\ZZ,
+	$
+	%\end{equation}
+which we can interpret as a map into $\QQ_{p}$ via the natural inclusions
+	$$
+	\tfrac{1}{p^m}\ZZ
+	\ \subset\ 
+	\ZZ\big[\tfrac{1}{p}\big]
+	\ \subset\ 
+	\QQ_{p}.
+	$$
+The resulting map
+	\begin{equation}\label{equation: weak inverse from algorithm}
+	\text{adic}_{p^m}:\RR_{\ge0}\longrightarrow\QQ_p
+	\end{equation}
+provides a ``resolution-$p^{m}$ weak inverse'' to the map
+	\begin{equation}\label{equation: p-adic to real}
+	\text{real}_{p^\infty}:\QQ_{p}\longrightarrow\RR_{\ge0}
+	\end{equation}
+that S.V. Kozyrev denotes ``$\rho$'' in \cite[p. 7, Equation (12)]{Kozyrev}. This map in Equation \eqref{equation: p-adic to real} is given by
+	$$
+	\text{real}_{p^{\infty\!}}\big(a_{-n}\tfrac{1}{p^{n}}+\cdots+a_{-1}\tfrac{1}{p}+a_0+a_1 p+\cdots\big)
+	\ =\ 
+	a_{-n}p^{n-1}+\cdots+a_{-1}+a_0\tfrac{1}{p}+a_1\tfrac{1}{p^{2}}+\cdots
+	$$
+{\color{red} [Need to make indexing here match indexing in Algorithm \ref{algorithm: weak p-adic coordinate}]}
+Kozyrev points out that this map $\text{real}_{p^\infty}$ induces a unitary map between the associated $L^2$ spaces, and takes the Haar wavelet to our character $\chi_{\text{{\smaller\smaller\smaller $\tfrac{1}{p}$}}}$ on the dyadics, i.e., in the special case $p=2$:
+
+\begin{lemma}
+\normalfont
+\cite[Lemmas 5 \& 6]{Kozyrev}
+The map $\text{real}_{p^\infty}:\QQ_{p}\longrightarrow\RR_{\ge0}$ induces a unitary embedding
+	$$
+	\text{real}^\ast_{p^\infty}:L^2(\QQ_{p},\CC)\mono L^2(\RR_{\ge0},\CC).
+	$$
+In the special case that $p=2$, this unitary embedding
+that takes the Haar wavelet $$\psi_{\text{Haar}}:=\mathbbm{1}_{[0,\text{{\smaller\smaller\smaller $\tfrac{1}{2}$}}]}-\mathbbm{1}_{[\text{{\smaller\smaller\smaller $\tfrac{1}{2}$}},1]}$$ to the character $\chi_{\text{{\smaller\smaller\smaller $\tfrac{1}{2}$}}}$:
+	$$
+	\text{real}^\ast_{2^\infty}\psi
+	\ =\ 
+	\chi_{\text{{\smaller\smaller\smaller $\tfrac{1}{2}$}}}.
+	$$
+\end{lemma}
+
 
 \begin{proposal}\label{proposal: p-adic chords}
 {\bf Chords as sums of ``pure oscillators.''}
