@@ -413,6 +413,8 @@
 }
 \def\@tempc#1"#2#3#4#5#6\@nil#7{%
   \chardef\@tempd="#3\relax\set@mathaccent\@tempd{#7}{#2}{#4#5}}
+  
+\renewcommand{\qedsymbol}{$\blacksquare$}
 
 
 \@tempa\widehat
@@ -865,6 +867,55 @@ We have three cases, depending on which of the following inequalities holds:
 \begin{subsection}{A class of tonnetze for $\mathbb{A}^{\!1}(\QQ_{p})$}
 \ 
 {\color{red} [...]}
+	\begin{figure}[ht]
+	\vskip -.3cm
+	$$
+	\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
+	\begin{xy}
+	(0,0)*+{\includegraphics[scale=.1]{3_adic_Berkovich.jpg}};
+	(-34,-29.5)*+{\text{{\smaller\smaller\color{red} $\bullet$}}};
+	(-35.5,-30)*+{\text{{\smaller\smaller\color{red} $0$}}};
+	(-17,-29.5)*+{\text{{\smaller\smaller\color{red} $\bullet$}}};
+	(-17,-31.5)*+{\text{{\smaller\smaller\color{red} $3$}}};
+	(-25.5,-29.5)*+{\text{{\smaller\smaller\color{red} $\bullet$}}};
+	(-25.5,-31.5)*+{\text{{\smaller\smaller\color{red} $3^2$}}};
+	(-30,-29.5)*+{\text{{\smaller\smaller\color{red} $\bullet$}}};
+	(-30,-31.5)*+{\text{{\smaller\smaller\color{red} $3^3$}}};
+	(34,-29.75)*+{\text{{\smaller\smaller\color{red} $\bullet$}}};
+	(49,-30)*+{\text{{\smaller\smaller\color{red} $1+3+3^2+3^3+\cdots$}}};
+	(.7,-29.45)*+{\text{{\smaller\smaller\color{red} $\bullet$}}};
+	(.7,-31.75)*+{\text{{\smaller\smaller\color{red} $1$}}};
+	(17.75,-29.8)*+{\text{{\smaller\smaller\color{red} $\bullet$}}};
+	(17.75,-31.95)*+{\text{{\smaller\smaller\color{red} $1+3$}}};
+	(17.25,-.8)*+{\text{{\smaller\smaller\color{red} $\bullet$}}};
+	(36.25,-.5)*+{\text{{\smaller\smaller\color{red} $1+2\!\cdot\!3+2\!\cdot\!3^2+2\!\cdot\!3^3+\cdots$}}};
+	(-16.8,.6)*+{\text{{\smaller\smaller\color{red} $\bullet$}}};
+	(-18.5,.75)*+{\text{{\smaller\smaller\color{red} $2$}}};
+	(0,29.5)*+{\text{{\smaller\smaller\color{red} $\bullet$}}};
+	(17,32)*+{\text{{\smaller\smaller\color{red} $2+2\!\cdot\!3+2\!\cdot\!3^2+2\!\cdot\!3^3+\cdots$}}};
+	(26,5.5)*+{
+	\begin{tikzpicture}
+	\draw[black, thick, dashed, ->] (0,0) -- (3 * 1.73205080757,3.1);
+	\end{tikzpicture}
+	};
+	(34, 13)*+{\rotatebox{31}{{\smaller to the rest of $\QQ_3$...}}};
+	(-35,20.5)*+{
+	\begin{tikzpicture}
+	\draw[blue, thick, ->] (0,0) -- (.5 * 1.73205080757, -.5);
+	\draw[blue, thick, ->] (0,0) -- (-.5 * 1.73205080757, -.5);
+	\draw[blue, thick, ->] (0,0) -- (0, 1);
+	\node[blue] at (-.6 * 1.73205080757, -.6) {\scalebox{.8}{$0$}};
+	\node[blue] at (.6 * 1.73205080757, -.6) {\scalebox{.8}{$1$}};
+	\node[blue] at (0, 1.3) {\scalebox{.8}{$2$}};
+	\end{tikzpicture}
+	};
+	\end{xy}
+	$$
+	\vskip -.3cm
+	\caption{{\bf The 3-adic unit Berkovich disk.}}
+	\end{figure}
+\ 
+{\color{red} [...]}
 \end{subsection}
 
 \begin{subsection}{One approach to {\em p}-adic signals.}
@@ -1136,32 +1187,74 @@ The resulting map
 	\end{equation}
 provides a ``resolution-$p^{m}$ weak inverse'' to the map
 	\begin{equation}\label{equation: p-adic to real}
-	\text{real}_{p^\infty}:\QQ_{p}\longrightarrow\RR_{\ge0}
+	\text{real}:\QQ_{p}\longrightarrow\RR_{\ge0}
 	\end{equation}
 that S.V. Kozyrev denotes ``$\rho$'' in \cite[p. 7, Equation (12)]{Kozyrev}. This map in Equation \eqref{equation: p-adic to real} is given by
 	$$
-	\text{real}_{p^{\infty\!}}\big(a_{-n}\tfrac{1}{p^{n}}+\cdots+a_{-1}\tfrac{1}{p}+a_0+a_1 p+\cdots\big)
+	\text{real}\big(a_{-n}\tfrac{1}{p^{n}}+\cdots+a_{-1}\tfrac{1}{p}+a_0+a_1 p+\cdots\big)
 	\ =\ 
 	a_{-n}p^{n-1}+\cdots+a_{-1}+a_0\tfrac{1}{p}+a_1\tfrac{1}{p^{2}}+\cdots
 	$$
 {\color{red} [Need to make indexing here match indexing in Algorithm \ref{algorithm: weak p-adic coordinate}]}
-Kozyrev points out that this map $\text{real}_{p^\infty}$ induces a unitary map between the associated $L^2$ spaces, and takes the Haar wavelet to our character $\chi_{\text{{\smaller\smaller\smaller $\tfrac{1}{p}$}}}$ on the dyadics, i.e., in the special case $p=2$:
+Kozyrev points out that this map $\text{real}$ induces a unitary map between the associated $L^2$ spaces, and takes the Haar wavelet to our character $\chi_{\text{{\smaller\smaller\smaller $\tfrac{1}{p}$}}}$ on the dyadics, i.e., in the special case $p=2$:
 
-\begin{lemma}
+\begin{lemma}\label{lemma: Kozyrev}
 \normalfont
 \cite[Lemmas 5 \& 6]{Kozyrev}
-The map $\text{real}_{p^\infty}:\QQ_{p}\longrightarrow\RR_{\ge0}$ induces a unitary embedding
+The map $\text{real}:\QQ_{p}\longrightarrow\RR_{\ge0}$ induces a unitary embedding
 	$$
-	\text{real}^\ast_{p^\infty}:L^2(\QQ_{p},\CC)\mono L^2(\RR_{\ge0},\CC).
+	\text{real}^\ast:L^2(\RR_{\ge0},\CC)\mono L^2(\QQ_{p},\CC).
 	$$
 In the special case that $p=2$, this unitary embedding
 that takes the Haar wavelet $$\psi_{\text{Haar}}:=\mathbbm{1}_{[0,\text{{\smaller\smaller\smaller $\tfrac{1}{2}$}}]}-\mathbbm{1}_{[\text{{\smaller\smaller\smaller $\tfrac{1}{2}$}},1]}$$ to the character $\chi_{\text{{\smaller\smaller\smaller $\tfrac{1}{2}$}}}$:
-	$$
-	\text{real}^\ast_{2^\infty}\psi
+
+\hfill \ \ $
+	\text{real}^\ast\psi_{\text{Haar}}
 	\ =\ 
 	\chi_{\text{{\smaller\smaller\smaller $\tfrac{1}{2}$}}}.
-	$$
+ 	$
+\hfill $\qed$
 \end{lemma}
+
+More generally, if we let $\zeta_p$ denote the $p^\text{th}$ primitive root of unity $\zeta=e^{i2\pi\text{{\smaller\smaller\smaller$\tfrac{1}{p}$}}}$, then we have
+	$$
+	\text{real}^\ast\Big(\sum_{n=0}^{p-1}\zeta^{n}_p\cdot\mathbbm{1}_{[\text{{\smaller\smaller\smaller $\tfrac{n}{p}$}},\text{{\smaller\smaller\smaller $\tfrac{n+1}{p}$}}]}\Big)
+	\ =\ 
+	\chi_{\text{{\smaller\smaller\smaller $\tfrac{1}{p}$}}}
+	$$
+{\color{red} [Is it true that
+	\begin{equation}\label{equation: general roots of unity wavelet}
+	\text{real}^\ast\Big(\sum_{n=0}^{p^{k}-1}\zeta^{n}_{p^k}\cdot\mathbbm{1}_{[\text{{\smaller\smaller\smaller $\tfrac{n}{p^k}$}},\text{{\smaller\smaller\smaller $\tfrac{n+1}{p^k}$}}]}\Big)
+	\ \overset{?}{=}\ 
+	\chi_{\text{{\smaller\smaller\smaller $\tfrac{1}{p^k}$}}}
+	\end{equation}
+The odd way that integers get distributed across $p$-adic coordinates in $\RR_{\ge 0}$ make me suspicious that this is too much to ask for...]}
+
+\begin{question}
+{\bf Implications of measure coincidence?}
+\normalfont
+Kozyrev's Lemma \ref{lemma: Kozyrev} implies that for any function $f\in L^{2}(\QQ_{p}, \CC)$ that can be obtained as a pullback
+	$$
+	f\ =\ \text{real}^\ast g
+	\ \ \ \text{for some}\ g\in L^2(\RR_{\ge0},\CC),
+	$$
+and for any compact region $U\subset \QQ_{p}$, we can compute the integral $\int_{U}f\ d\mu_p$ over $\RR_{\ge0}$ as
+	$$
+	\int_{U}f\ d\mu_p
+	\ =\ 
+	\int_{U}\text{real}^{\ast}\!g\  d\mu_{p}
+	\ =\ 
+	\int_{\text{real}(U)}g\ d\mu_{\infty}.
+	$$
+For example, if $f=\text{real}^\ast g$, then
+	$$
+	\int_{\QQ_{p}}f\cdot\chi_{\text{{\smaller\smaller\smaller $\tfrac{1}{p}$}}}\ d\mu_p
+	\ =\ 
+	\sum_{n=0}^{p-1}\ \zeta^{n}_p\cdot\int^{\text{{\smaller\smaller\smaller $\tfrac{n+1}{p}$}}}_{\!\text{{\smaller\smaller\smaller $\tfrac{n}{p}$}}}
+	\!\!\!\!g\ d\mu_\infty
+	$$
+Does this have sonic/musical implications? What sorts of $p$-adic ``things'' become audible under the unitary embedding $\text{real}^\ast:L^2(\RR_{\ge0},\CC)\mono L^2(\QQ_{p},\CC)$? For instance, does the correct version of Equation \eqref{equation: general roots of unity wavelet} imply that $p$-adic spectral analysis becomes a sort of strange wavelet analysis on $\RR_{\ge0}$? What sorts of sonically/musically ``things'' are the {\em generalized} Haar signals good at keeping track of?
+\end{question}
 
 
 \begin{proposal}\label{proposal: p-adic chords}
