@@ -10,6 +10,7 @@
 \usepackage{cancel}
 \usepackage{pgfplots}
 \usepackage{colortbl,hhline}
+\usepackage{comment}
 \usepackage{tikz}
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{patterns}
@@ -436,12 +437,12 @@
 \maketitle
 
 \begin{abstract}
-   Lots of the structure of tonal harmony emerges from the representation theory of $\text{GL}_{1}(\CC)$. I here begin the project of composing music using tonal structures that emerge from the representation theory of other, higher-dimensional algebraic groups, such as $\text{SL}_{2}(\CC)$. This isn't just some theoretical exercise. As these notes should make clear, implementing these tonal structures in code will be very difficult to pull off without the super detailed outline of the general theory that appears below.
+   Lots of the structure of tonal harmony emerges from the representation theory of $\bold{GL}_{1}(\CC)$. I here begin the project of composing music using tonal structures that emerge from the representation theory of other, higher-dimensional algebraic groups, such as $\bold{SL}_{2}(\CC)$. This isn't just some theoretical exercise. As these notes should make clear, implementing these tonal structures in code will be very difficult to pull off without the super detailed outline of the general theory that appears below.
 \end{abstract}
 
 \tableofcontents
 
-\begin{section}{Navigating tonality through the representation theory of $\text{GL}_{1}(\CC)$.}
+\begin{section}{Navigating tonality through the representation theory of $\bold{GL}_{1}(\CC)$.}\label{section: tonality through rep theory of GL1(C)}
 
 \begin{subsection}{Sources}
 	\begin{enumerate}[{\bf\ \ \ \ \ \ 1.}]
@@ -462,9 +463,9 @@
 	\end{enumerate}
 \end{subsection}
 
-\begin{subsection}{Representation theory of $\text{GL}_{1}(\CC)$.} The {\em general linear group on the $1$-dimensional complex vector space $\CC$}, denoted $\text{GL}_{1}(\CC)$, is the group of invertible $1\times 1$-matrices under the operation of matrix multiplication. We have a natural identification with the multiplicative group of nonzero elements in $\CC$:
+\begin{subsection}{Representation theory of $\bold{GL}_{1}(\CC)$.} The {\em general linear group on the $1$-dimensional complex vector space $\CC$}, denoted $\bold{GL}_{1}(\CC)$, is the group of invertible $1\times 1$-matrices under the operation of matrix multiplication. We have a natural identification with the multiplicative group of nonzero elements in $\CC$:
 	$$
-	\text{GL}_{1}(\CC)
+	\bold{GL}_{1}(\CC)
 	\ \cong\ 
 	\CC^\times.
 	$$
@@ -492,26 +493,60 @@ Here $A$ has units of $A_0 \ e^{20\ \text{dB}}$, where $A_{0}$ is some fixed ref
 	\ =\ 
 	A\ \text{sin}(\omega),
 	\end{equation}
-respectively. The functions of $\omega$ in Equation \eqref{equation: connection to oscillators} are what are sometimes, in music production, called pure oscillators. The latter oscillator is the $\frac{\pi}{4}$-phase shift of the former. In these notes, it will often often be useful to reason using the notation ``$e^{\text{log}(A)+i\omega}$,'' instead of the notation in Equation \eqref{equation: connection to oscillators}. This is because the notation ``$e^{\text{log}(A)+i\omega}$'' is more closely related to the theory of representations of algebraic groups, and becomes extremely useful when we move on to algebraic groups other than $\text{GL}_{1}(\CC)$. I think it is fair to think of $e^{\text{log}(A)+i\omega}$ as being an especially simple, highly formalized instance of a {\em klang}, with properties that make it work well as a primitive building block of complex kangs. One of the main things we will do in these notes is play with ideas about how klangs can move by playing with ways klangs can be built.
+respectively. The functions of $\omega$ in Equation \eqref{equation: connection to oscillators} are what are sometimes, in music production, called pure oscillators. The latter oscillator is the $\frac{\pi}{4}$-phase shift of the former. In these notes, it will often often be useful to reason using the notation ``$e^{\text{log}(A)+i\omega}$,'' instead of the notation in Equation \eqref{equation: connection to oscillators}. This is because the notation ``$e^{\text{log}(A)+i\omega}$'' is more closely related to the theory of representations of algebraic groups, and becomes extremely useful when we move on to algebraic groups other than $\bold{GL}_{1}(\CC)$. I think it is fair to think of $e^{\text{log}(A)+i\omega}$ as being an especially simple, highly formalized instance of a {\em klang}, with properties that make it work well as a primitive building block of complex kangs. One of the main things we will do in these notes is play with ideas about how klangs can move by playing with ways klangs can be built.
 
 A somewhat hidden, made-up premise in these notes is that tonality reflects constraints on performance that makes the parameters of (1) {\em phase} and (2) {\em relative amplitude} random variables that sweep out natural cosets. Thus we restrict attention to the quotient group at right in the short exact sequence
 	$$
 	0
 	\ \lra\ 
 	\text{log}(\RR^\times)\xrightarrow{\ \ e^{(-)}\ }
-	\text{GL}_{1}(\CC)
+	\bold{GL}_{1}(\CC)
 	\lra
 	\mathbb{S}^{1}
 	\lra
 	1.
 	$$
 
-{\color{red} [Say something about how one would get back to $\bold{Rep}\big(\text{GL}_{1}(\CC)\big)$ through induction/restriction...]}
+{\color{red} [Say something about how one would get back to $\bold{Rep}\big(\bold{GL}_{1}(\CC)\big)$ through induction/restriction...]}
 
 	We focus on the category $\bold{Rep}(\mathbb{S}^{1})$. {\color{red} [Decomposition above gives us a direct connection to music. Moving up along tensor powers (multiple interpretations) couple with octave equivalence in human perception corresponds directly to perfect fifths, major thirds, etc...]}
 \end{subsection}
 
 \begin{subsection}{Connection to Fourier series}
+Suppose we're interested in understanding the representation theory some group $G$ that comes with extra geometric structure. For instance, $G$ might be a topological group, an algebraic group, or a Lie group. One common place to go looking for examples of what representations of $G$ might look like is in suitable spaces of functions on $G$. For instance, if $G$'s geometric structure allows us to introduce a natural measure on $G$, then we can consider spaces like $L^2(G,\CC)$, the space of square-summable complex-valued functions on $G$. This space admits a natural $G$-action
+	$$
+	G
+	\ 
+	\overset{
+	\rho
+	}{
+	\lact
+	}
+	\ 
+	L^2(G,\CC),
+	$$
+whereby each $g\in G$ acts on each $f\in L^2(G,\CC)$ according to
+	$$
+	\rho_{g}f(x)
+	\ =\ 
+	f(g^{-1}x).
+	$$
+For many groups with a geometric structure, many of the most important representations of $G$ can be found inside this representation $G\lact L^2(G,\CC)$ (or some comparable representation in functions on $G$) as invariant subspaces, i.e., as sub-representations.
+
+	One way to think about this is with the maxim:
+\begin{enumerate}[{\bf\ \ \ \ \ \ }]
+\item\vskip .2cm
+{\bf Representation theory maxim\ \textendash\ 1\textsuperscript{st} form.}
+Many important representations of $G$ occur in spaces of functions on $G$.
+\vskip .2cm
+\end{enumerate}
+But we can also turn this maxim on its head to get:
+\begin{enumerate}[{\bf\ \ \ \ \ \ }]
+\item\vskip .2cm
+{\bf Representation theory maxim\ \textendash\ 2\textsuperscript{nd} form.} Many functions on $G$ can be decomposed into sums of functions that are more primitive with respect to $G$-translation. {\color{red} [...]}
+\vskip .2cm
+\end{enumerate}
+
 \ 	
 \begin{subsubsection}
 \normalfont
@@ -539,7 +574,7 @@ A somewhat hidden, made-up premise in these notes is that tonality reflects cons
 A
 \end{subsubsection}
 
-\begin{subsection}{Isomorphisms $(\RR\!\times\!\mathbb{S}^{1})^\wedge\cong\RR^\wedge\!\times\!\ZZ$ and $(\RR\!\times\!\pmb{\mu}_{n})^\wedge\cong\RR^\wedge\!\times\!\ZZ/n\ZZ$.}
+\begin{subsection}{Isomorphisms $(\RR\!\times\!\mathbb{S}^{1})^\wedge\cong\RR^\wedge\!\times\!\ZZ$ and $(\RR\!\times\!{\mu}_{n})^\wedge\cong\RR^\wedge\!\times\!\ZZ/n\ZZ$.}
 \ {\color{red} [...]}
 
 \end{subsection}
@@ -550,35 +585,50 @@ A
 
 \vskip 1cm
 
-\begin{section}{Representations of the $p$-adic group $\mathbb{A}^{\!1}(\mathbb{Q}_{p})$
-and $\text{GL}_{1}(\mathbb{Q}_{p})$
-in wavelet signals.}
+\begin{section}{Representations of the $p$-adic group $\bold{A}^{\!1}(\mathbb{Q}_{p})$
+and $\bold{GL}_{1}(\mathbb{Q}_{p})$
+in wavelet signals.}\label{section: reps of 1-dimensional p-adic groups}
 
-
-
-\begin{subsection}{Sources}
+\begin{subsection}{Goals and sources}
+	The main goal of this \S\ref{section: reps of 1-dimensional p-adic groups} is to provide a realization of $p$-adic representation theory in real audio signal processing in such a way that the underlying arithmetic becomes musically salient in the same way that it does for $\bold{GL}_{1}(\CC)$ in \S\ref{section: tonality through rep theory of GL1(C)}. Moreover, I want to do continue the practice from \S\ref{section: tonality through rep theory of GL1(C)} of providing enough detail to make it relatively obvious how one would implement these ideas in standard software libraries.
 	\begin{enumerate}[{\bf\ \ \ \ \ \ 1.}]
 	\item
 	\cite[Chp. 4]{Guillot}\ \textemdash\ My favorite introductory text on $p$-adic fields and their extensions.
 	\item
-	\cite[Chp. XV: {\em J. T. Tate's thesis}, 1950]{CF}
+	\cite[Chp. XV: {\em J. T. Tate's thesis}, 1950]{CF}\ \textemdash\ The last chapter of J. W. S. Cassels and A. Fr\"ohlich's collaborative text on algebraic number theory is a repreint of Tate's  groundbreaking Ph.D. thesis on  Fourier analysis in number fields.
 	\item
-	\cite[\S VII]{Lang}
+	\cite[\S VII]{Lang}\ \textemdash\ A text by Serge Lang on algebraic number theory. Lang's \S VIII provides a treatment of material from Tate's thesis, providing some details not present in Tate's thesis.
 	\item
-	\cite[\S 1]{GHv1} and \cite{GHv2}
+	\cite[\S 1]{GHv1} and \cite{GHv2}\ \textemdash\ This $2$-volume text by Dorian Goldfeld and Joseph Hundley collects many of the major achievements that took place between abstract harmonic analysis, number theory, and representation theory as a result of Tate's accomplishment. The first section of  the first volume goes over much of the material of Tate's thesis. The overarching theme of the two volumes is the representation theory of the algebraic group $\bold{GL}_{n}$, for $n=1,2,\dots$, over $\RR$, $\QQ_{p}$, and the ring of adelles $\mathbb{A}_{\QQ}$.
 	\item
-	\cite{Berkovich}
+	\cite{Berkovich}\ \textemdash\ Vladimir Berkovich's seminal text on geometry over $p$-adic fields.
 	\item
-	\cite[\S 7.2.3]{Mallat}
+	\cite[\S 7.2.3]{Mallat}\ \textemdash\ St\'ephane Mallat's excellent and popular textbook on wavelets and their applications. Wavelets in Mallat's textbook are always dyadic, meaning that they scale by integer powers of $2$. From a From a $p$-adic perspective, this means that Mallat's textbook considers only the prime $p=2$.
 	\item
-	\cite[\S5.5]{SN}
+	\cite[\S5.5]{SN}\ \textemdash\ Gilbert Strang and Truong Nguyen's fantastic textbook on wavelets. This book focusses on wavelets from a much more applied perspective than Mallat's. The focus on  the specifics of how to apply wavelets helps to build insight into what wavelets are all about, insight that can be difficult to arrive at through Mallat's textbook. 
 	\item
-	\cite{Vladimirov88}
-	\item
-	\cite{Kozyrev} and \cite{KozKhre}
+	\cite{Vladimirov88}\ \textemdash\ V. S. Vladimirov's paper on functional analysis over $p$-adic fields, in which he, among other things, extends Fourier analysis over the $p$-adics by looking at eigenfunctions of fractional differential operators over the $p$-adics.
+	\item\label{item: Kozyrev}
+	\cite{Kozyrev} and \cite{KozKhre}\ \textemdash\ Pair of papers setting up a version of V. S. Vladimirov's $p$-adic functional analysis that can be performed with functions over $\RR_{\ge0}$ by extending Cantor-set realizations of $\QQ_{p}$ in $\RR$ to limiting sets that cover $\RR_{\ge0}$. The connection set up in the first of these papers allows the author to establish a strong correspondence between
+	\begin{enumerate}[{\bf\ \ \ \ \ \ {\ref{item: Kozyrev}.}a.}]
+	\item\vskip .1cm
+	Fourier analysis the $2$-adics $\QQ_2$ through the work of Vladimirov.
+	\item\vskip .1cm
+	Haar wavelet theory over $\RR_{\ge0}$.
+	\vskip .2cm
 	\end{enumerate}
+\end{enumerate}
+This last correspondence set up in Item {\bf \ref{item: Kozyrev}} above lends strong evidence to the central, empirical conjecture of this section:
+	
+	\begin{conjecture}
+	{\bf Arithmetic of $\pmb{p}$-adics $\pmb{=}$ one spectral tonality.}
+	\normalfont
+	The arithmetic of $p$-adic numbers gives rise to a high-functioning ``tonal harmony" for spectral music by way of a $p$-adic Haar wavelet bases. 
+	\end{conjecture}
+ 
 \end{subsection}
 
+\begin{comment}
 \begin{subsection}{Adele-ish products}
 \ 
 {\color{red} [...]}
@@ -600,17 +650,16 @@ For example
 	\ \times\ 
 	\ZZ/5^{f}\ZZ,
 	\ \ \ \text{such that}\ \ \frac{2^{d}3^{e}5^{f}}{P}
-	\ \approx\!
+	\ \approx\!\!\!\!\!\!\!
 	\underset{
-	{\smaller\smaller\smaller\smaller
-	\begin{array}{c}
+	\scalebox{.8}{$\begin{array}{c}
 	\text{20\ kHz, doubled for}
 	\\
 	\text{Nyquist–Shannon}
 	\\
 	\text{sampling theorem}
-	\end{array}
-	}\!\!
+	\end{array}$
+	}
 	}{\underbrace{40\ 000\ \text{Hz}}}.
 	$$
 The values $d=0$, $e=4$, $f=4$ achieve this. Moreover, since $2\in(\ZZ/3^{e}\ZZ)^{\times}$ and $2\in(\ZZ/5^{f}\ZZ)^{\times}$ for any $e,f\ge 1$, we have a natural octave equivalence in $\ZZ/3^e\ZZ\times\ZZ/5^f\ZZ$, giving us the multiplicative monoid
@@ -628,11 +677,12 @@ We will sometimes argue directly in $(\QQ_{3}\times\QQ_5)\big/2^{\ZZ}$, and then
 {\color{red} [...]}
 
 \end{subsection}
+\end{comment}
 
 \begin{subsection}{Characters and Fourier transforms over the additive {\em p}-adic group.}
 We define a map
 	\begin{equation}\label{equation: base character}
-	\lambda_{1}:\mathbb{A}^{\!1}(\QQ_p)\lra\RR/\ZZ\cong\mathbb{S}^{1}
+	\lambda_{1}:\bold{A}^{\!1}(\QQ_p)\lra\RR/\ZZ\cong\mathbb{S}^{1}
 	\end{equation}
 as follows. Given $a\in\QQ_p$, write
 	$$
@@ -673,7 +723,7 @@ and we obtain a map as in Equation \eqref{equation: base character}. One checks 
 
 	For each element $b\in\QQ_{p}$, we obtain a new homomorphism
 	$$
-	\lambda_{b}:\mathbb{A}^{\!1}(\QQ_{p})\lra\RR/\ZZ
+	\lambda_{b}:\bold{A}^{\!1}(\QQ_{p})\lra\RR/\ZZ
 	$$
 defined by
 	$$
@@ -684,7 +734,7 @@ In this way, we obtain a bilinear pairing
 	\lambda_{(-)}(-):
 	\QQ_{p}\otimes_{\ZZ}\QQ_{p}\lra\RR/\ZZ.
 	$$
-One can show that this pairing is non-degenerate. In this way, we obtain an isomorphism between $\mathbb{A}^{\!1}(\QQ_{p})$ and its own Pontryagin dual. This is sometimes written
+One can show that this pairing is non-degenerate. In this way, we obtain an isomorphism between $\bold{A}^{\!1}(\QQ_{p})$ and its own Pontryagin dual. This is sometimes written
 	$$
 	\begin{array}{c}
 	\lambda_{(-)}:\QQ^{+}_{p}\xrightarrow{\ \ \sim\ \ }\ \!\widehat{\QQ^{+}_{p}},
@@ -695,7 +745,7 @@ One can show that this pairing is non-degenerate. In this way, we obtain an isom
 	
 	This means that for each $b\in\QQ_{p}$, we obtain a distinct $\CC^\times$-valued character
 	$$
-	\chi_{b}:\mathbb{A}^{\!1}(\QQ_{p})\lra\CC^\times
+	\chi_{b}:\bold{A}^{\!1}(\QQ_{p})\lra\CC^\times
 	$$
 defined by
 	$$
@@ -742,8 +792,8 @@ In the present case, the double-dual introduces a change of sign in the argument
 
 \end{subsection}
 
-\begin{subsection}{Computing Fourier transforms over $\mathbb{A}^{\!1}(\QQ_{p})$}
-This section is dedicated to the explicit computation of the Fourier transforms of several $\CC$-valued functions on $\mathbb{A}^{\!1}(\QQ_{p})$. Serge Lang's \cite[\S VII.1, pp. 92-93]{Lang} provides some fragmentary insight into the problem of computing Fourier transforms over $\mathbb{A}^{1}(\QQ_{p})$ explicitly, but I think my favorite text on this is Dorian Goldfeld and Joseph Hundley's \cite[\S\S 1.5-6, pp. 12-18]{GHv1}.
+\begin{subsection}{Computing Fourier transforms over $\bold{A}^{\!1}(\QQ_{p})$}
+This section is dedicated to the explicit computation of the Fourier transforms of several $\CC$-valued functions on $\bold{A}^{\!1}(\QQ_{p})$. Serge Lang's \cite[\S VII.1, pp. 92-93]{Lang} provides some fragmentary insight into the problem of computing Fourier transforms over $\bold{A}^{\!1}(\QQ_{p})$ explicitly, but I think my favorite text on this is Dorian Goldfeld and Joseph Hundley's \cite[\S\S 1.5-6, pp. 12-18]{GHv1}.
 
 \ 
 {\color{red} [Characterization of continuous maps $f:\QQ_{p}\lra\CC$...]}
@@ -868,7 +918,7 @@ We have three cases, depending on which of the following inequalities holds:
 {\color{red} [A tutorial with examples...]}
 \end{subsection}
 
-\begin{subsection}{A class of tonnetze for $\mathbb{A}^{\!1}(\QQ_{p})$}
+\begin{subsection}{A class of tonnetze for $\bold{A}^{\!1}(\QQ_{p})$}
 \ 
 {\color{red} [...]}
 	\begin{figure}[ht]
@@ -1919,7 +1969,7 @@ This is the same overtone chord, but with voicing that falls of like a geometric
 
 \vskip 1cm
 
-\begin{section}{Representations of the special linear group $\text{SL}_{2}(\CC)$.}
+\begin{section}{Representations of the special linear group $\bold{SL}_{2}(\CC)$.}
 
 \begin{subsection}{Sources}
 	\begin{enumerate}[{\bf\ \ \ \ \ \ 1.}]
@@ -1980,9 +2030,9 @@ and
 	\left(\!\begin{array}{cc} e^z & 0 \\ 0 & e^{-z}\end{array}\!\right),
 	\end{array}
 	$$
-respectively. One recurring theme in these notes is the question ``should we work in the space where our variable is $z$, or in the space where are variable is $q=e^{z}$. Note, though, that this distinction gets confused in $\text{SL}_{2}(\CC)$, since the complex parameter $z$ acts by multiplication directly in the $1$-parameter subgroups $$\{e^{zE}:z\in\CC\}\ \ \text{and}\ \ \{e^{zF}:z\in\CC\}\subset\text{SL}_{2}(\CC),$$ but acts through multiplication by in the $1$-parameter subgroup $$\{e^{zH}:z\in\CC\}\subset\text{SL}_{2}(\CC).$$
+respectively. One recurring theme in these notes is the question ``should we work in the space where our variable is $z$, or in the space where are variable is $q=e^{z}$. Note, though, that this distinction gets confused in $\bold{SL}_{2}(\CC)$, since the complex parameter $z$ acts by multiplication directly in the $1$-parameter subgroups $$\{e^{zE}:z\in\CC\}\ \ \text{and}\ \ \{e^{zF}:z\in\CC\}\subset\bold{SL}_{2}(\CC),$$ but acts through multiplication by in the $1$-parameter subgroup $$\{e^{zH}:z\in\CC\}\subset\bold{SL}_{2}(\CC).$$
 
-Every element $\left(\begin{smallmatrix} a & b \\ c & d\end{smallmatrix}\right)\in\text{SL}_{2}(\CC)$ admits a factorization
+Every element $\left(\begin{smallmatrix} a & b \\ c & d\end{smallmatrix}\right)\in\bold{SL}_{2}(\CC)$ admits a factorization
 	$$
 	\left(\!\begin{array}{cc}a & b \\ c & d\end{array}\!\right)
 	\ =\ 
@@ -2007,11 +2057,11 @@ hence
 	\ \ \ \ \ \ 
 	u=c/d
 	$$
-{\color{red} [...confusing myself... need to come back to this...]} The thing that's confusing me is how $\left(\begin{smallmatrix} 0 & b \\ \!\!-\tfrac{1}{b} & 0\end{smallmatrix}\right)$ appears. Maybe the 1-parameter subgroups at the identity $I=\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1\end{smallmatrix}\right)\in\text{SL}_{2}(\CC)$ doesn't reach any of the cell
+{\color{red} [...confusing myself... need to come back to this...]} The thing that's confusing me is how $\left(\begin{smallmatrix} 0 & b \\ \!\!-\tfrac{1}{b} & 0\end{smallmatrix}\right)$ appears. Maybe the 1-parameter subgroups at the identity $I=\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1\end{smallmatrix}\right)\in\bold{SL}_{2}(\CC)$ doesn't reach any of the cell
 	\begin{equation}\label{stratum 1}
 	S:=\left\{\left(\begin{smallmatrix} 0 & b \\ \!\!-\tfrac{1}{b} & 0\end{smallmatrix}\right):b\in\CC^\times\right\}
 	\ \subset\ 
-	\text{SL}_{2}(\CC).
+	\bold{SL}_{2}(\CC).
 	\end{equation}
 What is the product of two elements of this cell like?
 	$$
@@ -2029,8 +2079,8 @@ In other words, the square of the stratum defined in Equation \eqref{stratum 1} 
 {\color{red} [...]}
 \end{subsection}
 
-\begin{subsection}{Action of $\text{SL}_{2}(\CC)$ on $\CC[x,y]$}
-We let $\text{SL}_{2}(\CC)$ act on $\CC[x,y]$ through its inverse action on the argument $(x,y)$ of each function $f(x,y)\in\CC[x,y]$. Thus the matrix $\left(\begin{smallmatrix}a & b\\ c & d\end{smallmatrix}\right)\in\text{SL}_{2}(\CC)$ acts on each $f(x,y)\in\CC[x,y]$ via the action of its inverse $\left(\begin{smallmatrix}d & -b\ \\ -c\  & a\end{smallmatrix}\right)$
+\begin{subsection}{Action of $\bold{SL}_{2}(\CC)$ on $\CC[x,y]$}
+We let $\bold{SL}_{2}(\CC)$ act on $\CC[x,y]$ through its inverse action on the argument $(x,y)$ of each function $f(x,y)\in\CC[x,y]$. Thus the matrix $\left(\begin{smallmatrix}a & b\\ c & d\end{smallmatrix}\right)\in\bold{SL}_{2}(\CC)$ acts on each $f(x,y)\in\CC[x,y]$ via the action of its inverse $\left(\begin{smallmatrix}d & -b\ \\ -c\  & a\end{smallmatrix}\right)$
 \end{subsection}
 
 \begin{subsection}{Irreducible representations of $\text{SL}_2(\CC)$ in $\CC[x,y]$}
@@ -2049,7 +2099,7 @@ We let $\text{SL}_{2}(\CC)$ act on $\CC[x,y]$ through its inverse action on the 
 
 \begin{question}\label{question: what is harmonic movement}
 \normalfont
-What sort of movement through the category $\bold{Rep}\big(\text{SL}_{2}(\CC)\big)$ is the ``correct'' generalization of the movement through $\bold{Rep}\big(\mathbb{S}^{1}\big)$ that corresponds to $\ZZ$-multiplicative movement through the terms of a Fourier series?
+What sort of movement through the category $\bold{Rep}\big(\bold{SL}_{2}(\CC)\big)$ is the ``correct'' generalization of the movement through $\bold{Rep}\big(\mathbb{S}^{1}\big)$ that corresponds to $\ZZ$-multiplicative movement through the terms of a Fourier series?
 
 \vskip .3cm
 
@@ -2057,7 +2107,7 @@ What sort of movement through the category $\bold{Rep}\big(\text{SL}_{2}(\CC)\bi
 {\em Temporary answers.} There are many reasonable candidates:
 	\begin{enumerate}[{\em\ \ \ \ \ \ {Answer \ref{question: what is harmonic movement}.}1.}]
 	\item
-	Inductive/restrictive functorial movement along homomorphisms $G\longrightarrow\text{SL}_{2}(\CC)$ and/or $\text{SL}_{2}(\CC)\longrightarrow G$;
+	Inductive/restrictive functorial movement along homomorphisms $G\longrightarrow\bold{SL}_{2}(\CC)$ and/or $\bold{SL}_{2}(\CC)\longrightarrow G$;
 	\item
 	Movement along functors $\text{Hom}(V_{n},-)$;
 	\item
