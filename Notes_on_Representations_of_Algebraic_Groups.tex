@@ -1148,11 +1148,6 @@ It is well known that $\QQ_2$ is homeomorphic to the standard ``middle thirds'' 
 	
 {\color{red} [Makes Fourier transformation integrals volumetrically correct. Does {\em not} preserve addition. ...What are the musical consequences of this?...]}
 
-	
-%% This declares a command \Comment
-%% The argument will be surrounded by /* ... */
-\SetKwComment{Comment}{/* }{ */}
-
 \begin{algorithm}
 \caption{$p$-Adic coordinates, at resolution-$p^m$, for non-negative real numbers}\label{algorithm: weak p-adic coordinate}
 \KwData{positive prime $p\in\ZZ_{>0}$, non-negative real $t\in\RR_{\ge0}$, positive integer $m\in\ZZ_{>0}$}
@@ -1265,6 +1260,30 @@ For example, if $f=\text{real}^\ast g$, then
 	$$
 Does this have sonic/musical implications? What sorts of $p$-adic ``things'' become audible under the unitary embedding $\text{real}^\ast:L^2(\RR_{\ge0},\CC)\mono L^2(\QQ_{p},\CC)$? For instance, does the correct version of Equation \eqref{equation: general roots of unity wavelet} imply that $p$-adic spectral analysis becomes a sort of strange wavelet analysis on $\RR_{\ge0}$? What sorts of sonically/musically ``things'' are the {\em generalized} Haar signals good at keeping track of?
 \end{question}
+
+\begin{construction}
+	\normalfont
+
+	$$
+	\begin{xy}
+	(0,0)*+{\RR_{\ge0}}="0";
+	(30,10)*+{\{0,\ \!\dots,\ \!p-1\}^{\NN}}="2";
+	(30,-10)*+{\QQ}="3";
+	(60,-10)*+{\overset{\ }{\QQ}_{\ }}="4";
+	(60,10)*+{\QQ_p}="5";
+	(90,10)*+{\QQ_p/\ZZ_{p}}="6";
+	(90,-10)*+{\QQ/\ZZ}="8";
+	(120,0)*+{\CC}="9";
+	{\ar@/^10pt/_{\!\!\!\!\!\!\!\!\!\!\!\!\!\!\rotatebox{30}{{\smaller\smaller $\text{adic}_{p^m}$}}} "0"; "2"};
+	{\ar^{\rotatebox{-90}{{\smaller\smaller $\text{rational}$}}} "2"; "3"};
+	{\ar^{b\cdot(-)} "3"; "4"};
+	{\ar@{^{(}->} "4"; "5"};
+	{\ar_{\lambda_1} "5"; "6"};
+	{\ar^{\wr} "6"; "8"};
+	{\ar@/_10pt/^{\rotatebox{15}{{\smaller\smaller $e^{i2\pi\cdot(-)}$}}\!\!\!\!} "8"; "9"};
+	\end{xy}
+	$$
+\end{construction}
 
 
 \begin{proposal}\label{proposal: p-adic chords}
