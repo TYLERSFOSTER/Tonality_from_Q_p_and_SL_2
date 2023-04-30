@@ -580,7 +580,7 @@ A somewhat hidden, made-up premise in these notes is that tonality reflects cons
 $$
 \bold{GL}_{1}(\CC)^\wedge
 \ \ \ \cong\ \ \ 
-\underset{\!\!\!\!\text{dB}\!\!\!\!}{\!\!\underbrace{\RR}\!\!}\!\times\!\underset{\!\!\!\!\text{Hz}\!\!\!\!}{\!\!\underbrace{\ZZ}\!\!}
+\underset{\!\!\!\!\text{dB}\!\!\!\!}{\!\!\underbrace{\RR}\!\!}\!\times\!\underset{\lambda_{1}\text{Hz}\!\!\!\!}{\!\!\underbrace{\ZZ}\!\!}
 $$
 \end{subsection}
 
@@ -614,6 +614,7 @@ But we can also turn this maxim on its head to get:
 {\bf Representation theory maxim\ \textendash\ 2\textsuperscript{nd} form.} Many functions on $G$ can be decomposed into sums of functions that are more primitive with respect to $G$'s translative action on itself.
 \vskip .2cm
 \end{enumerate}
+In the case that $G$ is the circle group $\mathbb{S}^{1}$, the functions that are primitive with respective to the action of $\mathbb{S}^{1}$ are the pure oscillators that play a central role in tone synthesis. Our maxim above suggests that other groups $G$ should have corresponding functions that are ``pure $G$-illators,'' i.e., that exhibit the action of $G$ directly, in some kind of irreducible manner.
 {\color{red} [...]}
 
 \ 	
@@ -643,11 +644,29 @@ But we can also turn this maxim on its head to get:
 A
 \end{subsubsection}
 
-\begin{subsection}{Isomorphisms $(\RR\!\times\!\mathbb{S}^{1})^\wedge\cong\RR^\wedge\!\times\!\ZZ$ and $(\RR\!\times\!{\mu}_{n})^\wedge\cong\RR^\wedge\!\times\!\ZZ/n\ZZ$.}
+\end{subsection}
+
+\begin{subsection}{Extending from $\mathbb{S}^{1}$ to $\bold{GL}_{1}(\CC)$}
+
+
+
+\begin{subsubsection}
+\normalfont
+{\bf Isomorphisms $(\RR\!\times\!\mathbb{S}^{1})^\wedge\cong\RR^\wedge\!\times\!\ZZ$ and $(\RR\!\times\!{\mu}_{n})^\wedge\cong\RR^\wedge\!\times\!\ZZ/n\ZZ$.}
 \ {\color{red} [...]}
+A
+\end{subsubsection}
 
 \end{subsection}
 
+\begin{subsection}{Artificiality of real audio signals}
+	Throughout this text, we are going to take functions $f:G\lra\CC$ defined on some topological group $G$ and replace them with associated functions $f_{\text{Re}}:U\lra\RR$, where $U$ is some subset $U\subset\RR$. The basic idea here is to replace something that comes from the representation theory of a topological group, namely $f$, with an audio signal that we can hear in time, namely $f_{\text{Re}}$. The methods we will use to obtain $f_{\text{Re}}$ from $f$ will differ from group to group. There will not be an over-arching approach to or theory behind how we obtain $f_{\text{Re}}$ from $f$. Rather, we will use methods appropriate to each group on a case-by-case basis. To my mind, this has the effect of making the construction of $f_{\text{Re}}$ seem somewhat artificial. In an anticipation of this artificiality, I want to spend a moment pointing out that the way in which we obtain real audio signals from complex-valued periodic functions or from complex valued functions on $\bold{GL}_{1}(\CC)$ is already a bit artificial.
+	
+	{\color{red} [...]}
+	$$
+	f_{\text{Re}}:\ 
+	\RR\overset{\text{mod}}{\overset{2\pi\lambda\ZZ}{\epi}}\!\!{\color{blue} \underset{\!\!\!\!\text{original function}\!\!\!\!}{\underbrace{\ \ \!{\color{black} \mathbb{S}^{1}\!\xrightarrow{\ \ f\ \ }\CC}\ }}}\!\!\xrightarrow{\ \ \text{Re}\ \ }\RR
+	$$
 \end{subsection}
 
 \end{section}
@@ -1463,11 +1482,11 @@ Does this have sonic/musical implications? What sorts of $p$-adic ``things'' bec
 {\color{red} [...]}
 \end{remark}
 
-\begin{proposal}\label{proposal: local L- and zeta functions}
-{\bf Tones as $\bold{GL}_{1}(\QQ_p)$-transforms of local L- and/or local zeta functions.}
+\begin{proposal}\label{proposal: automorphic reps}
+{\bf Tones as automorphic representations of $\bold{GL}_{1}(\QQ_p)$.}
 \normalfont
 
-{\color{red} [Use \cite[\S\S2.3-5]{GHv1}. The local zeta function $Z_p(s,\Phi,\omega)$ can transform under $\bold{GL}_{1}(\QQ_p)$ in its arguments $\Phi$ and $\omega$, whereas the argument $s\in\CC$ gives (multiple) realization(s) as an audio signal...]}
+{\color{red} [Use \cite[\S\S2.3-5]{GHv1}...]}
 \end{proposal}
 
 \begin{remark}
@@ -1482,6 +1501,39 @@ Another idea I had for deploying $p$-adic signals is the following:
 The problem is that there's a fatal circularity in this idea.
 {\color{red} [...]}
 \end{remark}
+
+\end{subsection}
+
+\vskip .3cm
+
+\begin{subsection}{Approach 2: harmonic movement via action on zeta and Mellin integrals.}
+\ 
+
+{\color{red} [Use \cite[\S\S2.3-5 \& 2.8]{GHv1}. The local zeta function $Z_p(s,\Phi,\omega)$ can transform under $\bold{GL}_{1}(\QQ_p)$ in its argument $\Phi$, whereas the argument $s\in\CC$ gives (multiple) realization(s) as an audio signal... Also L-functions...]} 
+	$$
+	\widetilde{f}(s)
+	\ =\ 
+	\int_{\QQ_{p}^{\times}}\!\!f(u)\ \psi(u)\ |u|^{s}_{p}\ d^{\times}u
+	$$
+Define
+	$$
+	\pi_{g}\widetilde{f}(s)
+	\ :=\ 
+	(\widetilde{{\rho_{g}f}})(s).
+	$$
+In other words, each $g\in\bold{GL}_{1}(\CC)$ acts on the $p$-adic Mellin transform $\widetilde{f}(s)$ by acting by the regular representation on the factor $f(u)$ in the integrand of the $p$-adic Mellin transform:
+	$$
+	\pi_{g}\widetilde{f}(s)
+	\ =\ 
+	\int_{\QQ_{p}^{\times}}\!\!f(ug)\ \psi(u)\ |u|^{s}_{p}\ d^{\times}u
+	$$
+The first important question for this approach: Is this action interesting?
+
+	Let $f:\QQ_{p}^{\times}\lra\CC$ be a compactly supported locally constant function with conductor $p^n$. If we know a value $p^{m}$ such that
+	$$
+	\text{supp}(f)\ \subseteq\ 1+p^{m}\ZZ_{p},
+	$$
+then there we should be able to write a algorithm that computes the $p$-adic Mellin transform of $f$ {\color{red} [...]}
 
 \end{subsection}
 
