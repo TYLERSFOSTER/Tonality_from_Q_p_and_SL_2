@@ -436,12 +436,11 @@
 \begin{section}{Introduction}\label{section: introduction}
 
 \begin{subsection}{Short preamble}
-Lots of aspects of music, like harmonic and tonal movement and many aspects of rhythm, seem to arise at an interface between basic audio signal processing and basic number theory. The idea that there is some kind of important interplay between signal processing and number theory lies at the heart of many of the developments in a branch of mathematics called {\em abstract harmonic analysis} throughout the 20\textsuperscript{th} century and continuing into the 21\textsuperscript{st} century.
+Lots of aspects of music, like harmonic/tonal movement and many aspects of rhythm, seem to arise at an interface between basic audio signal processing and basic number theory. The idea that there is some kind of important interplay between signal processing and number theory lies at the heart of many of the developments in a branch of mathematics called {\em abstract harmonic analysis} throughout the 20\textsuperscript{th} century and continuing into the 21\textsuperscript{st} century.
 
-	the present text is a working document in which I collect some of the foundational ideas of postwar abstract harmonic analysis, and attempt to position them in a way that clarifies, for me, how I might use these ideas to arrive at new musical shapes, specifically in the areas of harmonic/tonal and rhythmic movement. The conjecture that guides and motivates all the twists and turns in this text is:
+	the present text is a working document in which I collect some of the foundational ideas of postwar abstract harmonic analysis, and attempt to position them in a way that clarifies, for me, how I might use these ideas to arrive at new musical shapes, specifically in the areas of harmonic/tonal and rhythmic movement. The following conjecture and its immediate corollary drive all the twists and turns in this text.
 	
 \begin{conjecture}
-{\bf Driving conjecture behind this text.}
 \normalfont
 Harmonic/tonal and rhythmic movement comes from natural structures that let one ``move around'' in categories of representations of algebraic groups.
 \end{conjecture}
@@ -461,7 +460,7 @@ In this text, we attempt to develop tonal theories coming from algebraic groups 
 	\begin{conjecture}
 	{\bf Lots of algebraic groups produce ``tonal movement''.}
 	\normalfont
-	The representation theory of algebraic groups beyond $\text{GL}_{1}(\CC)$ provide systems of harmonic and tonal movement not captured in standard tonal harmony. The algebraic groups $\bold{A}^{\!1}(\QQ_{p})$, $\bold{GL}_{1}(\QQ_{p})$, $\bold{SL}_{2}(\CC)$, and $\bold{Sp}_{2n}(\CC)$ provide musically robust examples.
+	The representation theory of algebraic groups beyond $\text{GL}_{1}(\CC)$ provide systems of harmonic and tonal movement not captured in standard tonal harmony. The algebraic groups $\bold{A}^{\!1\!}(\QQ_{p})$, $\bold{GL}_{1}(\QQ_{p})$, $\bold{SL}_{2}(\CC)$, and $\bold{Sp}_{2n}(\CC)$ provide musically robust examples.
 	\end{conjecture}
 
 \vskip .1cm
@@ -899,7 +898,7 @@ and we obtain a map as in Equation \eqref{equation: base character}. One checks 
 
 	For each element $b\in\QQ_{p}$, we obtain a new homomorphism
 	$$
-	\lambda_{b}:\bold{A}^{\!1}(\QQ_{p})\lra\RR/\ZZ
+	\lambda_{b}:\bold{A}^{\!1\!}(\QQ_{p})\lra\RR/\ZZ
 	$$
 defined by
 	$$
@@ -910,7 +909,7 @@ In this way, we obtain a bilinear pairing
 	\lambda_{(-)}(-):
 	\QQ_{p}\otimes_{\ZZ}\QQ_{p}\lra\RR/\ZZ.
 	$$
-One can show that this pairing is non-degenerate. In this way, we obtain an isomorphism between $\bold{A}^{\!1}(\QQ_{p})$ and its own Pontryagin dual. This is sometimes written
+One can show that this pairing is non-degenerate. In this way, we obtain an isomorphism between $\bold{A}^{\!1\!}(\QQ_{p})$ and its own Pontryagin dual. This is sometimes written
 	$$
 	\begin{array}{c}
 	\lambda_{(-)}:\QQ^{+}_{p}\xrightarrow{\ \ \sim\ \ }\ \!\widehat{\QQ^{+}_{p}},
@@ -921,7 +920,7 @@ One can show that this pairing is non-degenerate. In this way, we obtain an isom
 	
 	This means that for each $b\in\QQ_{p}$, we obtain a distinct $\CC^\times$-valued character
 	$$
-	\chi_{b}:\bold{A}^{\!1}(\QQ_{p})\lra\CC^\times
+	\chi_{b}:\bold{A}^{\!1\!}(\QQ_{p})\lra\CC^\times
 	$$
 defined by
 	$$
@@ -968,8 +967,8 @@ In the present case, the double-dual introduces a change of sign in the argument
 
 \end{subsection}
 
-\begin{subsection}{Computing Fourier transforms over $\bold{A}^{\!1}(\QQ_{p})$}
-This section is dedicated to the explicit computation of the Fourier transforms of several $\CC$-valued functions on $\bold{A}^{\!1}(\QQ_{p})$. Serge Lang's \cite[\S VII.1, pp. 92-93]{Lang} provides some fragmentary insight into the problem of computing Fourier transforms over $\bold{A}^{\!1}(\QQ_{p})$ explicitly, but I think my favorite text on this is Dorian Goldfeld and Joseph Hundley's \cite[\S\S 1.5-6, pp. 12-18]{GHv1}.
+\begin{subsection}{Computing Fourier transforms over $\bold{A}^{\!1\!}(\QQ_{p})$}
+This section is dedicated to the explicit computation of the Fourier transforms of several $\CC$-valued functions on $\bold{A}^{\!1\!}(\QQ_{p})$. Serge Lang's \cite[\S VII.1, pp. 92-93]{Lang} provides some fragmentary insight into the problem of computing Fourier transforms over $\bold{A}^{\!1\!}(\QQ_{p})$ explicitly, but I think my favorite text on this is Dorian Goldfeld and Joseph Hundley's \cite[\S\S 1.5-6, pp. 12-18]{GHv1}.
 
 \ 
 {\color{red} [Characterization of continuous maps $f:\QQ_{p}\lra\CC$...]}
@@ -1094,7 +1093,7 @@ We have three cases, depending on which of the following inequalities holds:
 {\color{red} [A tutorial with examples...]}
 \end{subsection}
 
-\begin{subsection}{A class of tonnetze for $\bold{A}^{\!1}(\QQ_{p})$}
+\begin{subsection}{A class of tonnetze for $\bold{A}^{\!1\!}(\QQ_{p})$}
 \ 
 {\color{red} [...]}
 	\begin{figure}[ht]
@@ -1771,7 +1770,7 @@ The restriction $\left.\chi\right|_{\ZZ^\times_p}:\ZZ^\times_p\lra\CC^\times$ is
 	$$
 This means that the factor $\left.\chi\right|_{p^\ZZ}$ is completely determined by its value $\chi(p)$. Define $s\in\CC$ to a complex number with $\text{Re}(s)$, satisfying $|p|^{s}_{p}=\chi(p)$, i.e., satisfying
 	$$
-	\left(\frac{1}{p}\right)^{\!s}\ =\ \chi(p).
+	\left(\frac{1}{p}\right)^{\!\!s}\ =\ \chi(p).
 	$$
 Note that there remains a possibility that $\chi(p)$ is a root of unity other than $1$ in $\CC$.
 
@@ -1828,6 +1827,8 @@ then there we should be able to write a algorithm that computes the $p$-adic Mel
 \end{subsection}
 
 \begin{subsection}{ A weird, modified instance of Pontryagin duality}
+\ {\color{red} [...]}
+
 	\begin{equation}\label{equation: fake Pontryagin dual}
 	\underset{
 	\scalebox{.8}{$
@@ -1892,9 +1893,115 @@ which a factor of $\RR^\times_{>0}$ away from the actual Pontryagin dual
 	\reallywidehat{\bold{GL}_{1}(\QQ_p)}.
 	$$
 In other words, the strange topological group at left in Equation \eqref{equation: fake Pontryagin dual} isn't that far from the standard Pontryagin dual of $\bold{GL}_{1}(\QQ_p)$.
+
+{\color{red} [My point here is that we've begun with a topological group $\bold{GL}_{1}(\QQ_p)$ with a rather different topological structure than $\bold{GL}_{1}(\CC)$, yet there are enough over-arching formal similarities between the two that we are able to associate, to $\bold{GL}_{1}(\QQ_p)$, many close analogues of the basic signal processing objects associated to $\bold{GL}_{1}(\CC)$...]}
+
+\begin{remark}
+{\bf Discontinuous, real-time movement in $\pmb{\widehat{\ZZ^\times_p}}$ and Haar wavelets.}
+\ {\color{red} [...]}
+\end{remark}
+
 \end{subsection}
 
 \begin{subsection}{Computing $p$-adic Mellin transforms using conductors.}
+The topological group $\QQ^\times_p$ admits a basis of open neighborhoods of the identity $1\in\QQ^\times_p$,
+	$$
+	\QQ^\times_p\ \supset\ U_0\ \supset\ U_1\ \supset\ U_2\ \supset\ \cdots\ \ni 1,
+	$$
+such that each of the open neighborhoods $U_{i}$ is also a subgroup of $\QQ^\times_p$. Specifically, we define
+	$$
+	U_{0}\ :=\ \ZZ^{\times}_{p}
+	$$
+and, for each $n\ge 1$,
+	$$
+	U_{n}
+	\ :=\ 
+	1+p^n\ZZ_p.
+	$$
+For each $n\ge1$, the open subgroup $U_{n}$ is a $\bold{A}^{\!1\!}(\QQ_{p})$-translate of one of the compact open $p^n\ZZ_{p}$. Thus $U_n$ is compact. For $n=0$, we observe that
+	$$
+	U_0
+	\ =\ 
+	\ZZ_p\smallsetminus p\ZZ_p.
+	$$
+Since $\ZZ_p$ is compact and $p\ZZ_p$ is open, $U_0$ is a closed subset of a compact space, hence is itself compact.
+
+	Fix a (continuous!) quasicharacter $\omega:\QQ^\times_p\lra\CC^\times$. We claim that there exists some integer $n\ge 0$ such that $\omega$ maps the subgroup $U_{n}\subset\QQ^\times_p$ to the identity $1\in\QQ^\times_p$. First, note that since each $U_{n}$ is compact, $\omega$ must map $U_n$ into the maximal compact subgroup $\mathbb{S}^1=U(1)\subset\CC^\times$. Consider the open subset $\CC_{\text{Re}>0}\subset\CC^\times$ consisting of complex numbers $s$ with $\text{Re}(s)>0$. Since $\omega$ is continuous, the inverse image $\omega^{-1}(\CC_{\text{Re}>0})\subset\QQ^\times_p$ is an open subset containing the identity $1\in\QQ^\times_p$, and therefore the subset
+	$$
+	\omega^{-1}(\CC_{\text{Re}>0})\cap U_0
+	\ \ \subset\ \ 
+	\QQ^\times_p
+	$$
+is an open neighborhood of $U_0$. Because the $U_n$ form a neighborhood basis of $1$, there must exist some integer $n\ge 0$ such that
+	$$
+	U_{n}
+	\ \ \subset\ \ 
+	\omega^{-1}(\CC_{\text{Re}>0})\cap U_0.
+	$$
+Note that this implies that
+	\begin{equation}\label{equation: problematic inclusion for quasicharacter}
+	\omega(U_n)
+	\ \ \subset\ \ 
+	\mathbb{S}^{1}\cap\CC_{\text{Re}>0}.
+	\end{equation}
+If there exists $a\in U_n$ such that $\omega(a)\ne 1$, then some power $\omega(a)^m$ must lie in the closed left half-plane $\CC_{\text{Re}\le 0}$, contradicting Equation \eqref{equation: problematic inclusion for quasicharacter}.
+
+As a consequence, there exists a minimal integer $n\ge 0$ such that $\omega(U^n)$. We call this nonnegative integer $n$ the {\em conductor} of the quaicharacter $\omega$. Observing that the multiplicative cosets of $1+p^n\ZZ_p$ in $\ZZ^\times_p$ are all of the form $k\cdot(1_p^n\ZZ_p)$ for $1\le k<p^n$ with $(k,p^n)=1$, we obtain an isomorphism
+	$$
+	\ZZ^\times_p\big/(1+p^n\ZZ_p)
+	\ \cong\ 
+	\big(\ZZ/p^n\ZZ\big)^{\!\times}
+	$$
+and a unique character
+	$$
+	\omega_\text{Dir}:\big(\ZZ/p^n\ZZ\big)^{\!\times}\lra\mathbb{S}^1
+	$$
+that lifts to $\omega$. In other words, $\omega_{\text{Dir}}$ is the unique group homomorphism making the diagram
+	$$
+	\begin{xy}
+	(0,0)*+{\ZZ^\times_p}="1";
+	(20,0)*+{\mathbb{S}^1}="2";
+	(0,-15)*+{(\ZZ/p^n\ZZ)^{\!\times}}="3";
+	{\ar@{->>}_{\text{pr}_n} "1"; "3"};
+	{\ar@{->}^{\omega} "1"; "2"};
+	{\ar@{-->}_{\omega_{\text{Dir}}} "3"; "2"};
+	\end{xy}
+	$$
+commute. We call $\omega_\text{Dir}$ the {\em Dirichlet character} associated to $\omega$, and we say that $\omega$ descends to its associated Dirichlet character $\omega_{\text{Dir}}$ along its conducting projection.
+
+	This observation provides us with a major simplification in the computation of any $p$-adic Mellin transform of any compactly supported, locally constant function $f:\QQ^\times_p\lra\CC$. Indeed, our assumption that $f$ is compactly supported and locally constant means that there exists some integer $m\ge 0$ and some finite set of elements $a_1,a_2,\dots,a_\ell\in\QQ^\times_p$ and associated coefficients $c_1,c_2,\dots,c_\ell\in\CC\setminus\{0\}$such that
+	\begin{equation}\label{equation: compactly supported locally constant}
+	f
+	\ =\ 
+	c_1\mathbbm{1}_{a_1+p^m\ZZ_p}
+	\ +\ 
+	c_2\mathbbm{1}_{a_2+p^m\ZZ_p}
+	\ +\ 
+	\cdots
+	\ +\ 
+	c_\ell\mathbbm{1}_{a_\ell+p^m\ZZ_p}.
+	\end{equation}
+If we've also fixed a character $\omega:\ZZ^\times_p\lra\mathbb{S}^1$ with conductor $n$, then we can make the reassignment $m\leftarrow\text{max}\{m,n\}$ (in pseudocode), and make the appropriate change to the ``step function'' presentation of $f$ in Equation \eqref{equation: compactly supported locally constant}. Then
+	$$
+	\widetilde{f}(s)
+	\ =\ 
+	\sum^{\ell}_{k=1}\ c_{\ell}\ \cdot\!\!\!\!\!\!\!\underset{{a_\ell+p^m\ZZ_p}}{\int}
+	\!\!\!\!\!\omega(x)\ |x|^{s}_{p}\ d^\times\!x,
+	$$
+which reduces the problem of computing $\widetilde{f}$ to the problem of computing each integral
+	$$
+	\underset{{a_\ell+p^m\ZZ_p}}{\int}
+	\!\!\!\!\!\omega(x)\ |x|^{s}_{p}\ d^\times\!x.
+	$$
+
+\begin{algorithm}
+\caption{Compute $p$-adic Mellin transform $\int_{\QQ^\times_p}f(x)\ \omega(x)\ |x|^{s}_{p}\ d^\times\!x$ as a function of $s\in\CC_{\text{Re}\ge0}$.}
+\vdots
+$m\longleftarrow \text{max}\{m,n\}$;
+\\ 
+\vdots
+\end{algorithm}
+
 \ 
 {\color{red} [...]}
 
