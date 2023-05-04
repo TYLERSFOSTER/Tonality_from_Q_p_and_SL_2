@@ -10,6 +10,7 @@
 \usepackage{cancel}
 \usepackage{pgfplots}
 \usepackage{colortbl,hhline}
+\usepackage{scalerel,stackengine}
 \usepackage{comment}
 \usepackage{tikz}
 \usetikzlibrary{decorations.pathmorphing}
@@ -363,14 +364,7 @@
 \usepackage{caption}
 \captionsetup{font=footnotesize}
 
-\usepackage{graphicx}
-\newcommand\vcent[1]{\vcenter{\hbox{#1}}}
-\newcommand\loudspeaker[1][3]{\ensuremath{\vcent{\rule{.6ex}{.6ex}}\kern-.5ex%
-  \vcent{\scalebox{.6}[1]{\rotatebox[origin=center]{90}{$\blacktriangle$}}}%
-  \ifnum#1>0\relax\kern.1ex\vcent{\scalebox{.4}{)}}\ifnum#1>1\relax\kern-.1ex%
-  \vcent{\scalebox{.55}{)}}\ifnum#1>2\relax\kern-.15ex\vcent{\scalebox{.7}{)}}%
-  \fi\fi\fi}%
-}
+
 
 
 
@@ -402,25 +396,20 @@
 \makeatother
 
 
-\makeatletter
-\def\@tempa#1{\@xp\@tempb\meaning#1\@nil#1}
-\def\@tempb#1>#2#3 #4\@nil#5{%
-  \@xp\ifx\csname#3\endcsname\mathaccent
-    \@tempc#4?"7777\@nil#5%
-  \else
-    \PackageWarningNoLine{amsmath}{%
-      Unable to redefine math accent \string#5}%
-  \fi
-}
-\def\@tempc#1"#2#3#4#5#6\@nil#7{%
-  \chardef\@tempd="#3\relax\set@mathaccent\@tempd{#7}{#2}{#4#5}}
+
   
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
-
-\@tempa\widehat
-\makeatother
-
+\stackMath
+\newcommand\reallywidehat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+  }{\textheight}% 
+}{0.5ex}}%
+\stackon[1pt]{#1}{\tmpbox}%
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -442,7 +431,29 @@
 
 \tableofcontents
 
+\vskip .5cm
+
 \begin{section}{Introduction}\label{section: introduction}
+
+\begin{subsection}{Short preamble}
+Lots of aspects of music, like harmonic and tonal movement and many aspects of rhythm, seem to arise at an interface between basic audio signal processing and basic number theory. The idea that there is some kind of important interplay between signal processing and number theory lies at the heart of many of the developments in a branch of mathematics called {\em abstract harmonic analysis} throughout the 20\textsuperscript{th} century and continuing into the 21\textsuperscript{st} century.
+
+	the present text is a working document in which I collect some of the foundational ideas of postwar abstract harmonic analysis, and attempt to position them in a way that clarifies, for me, how I might use these ideas to arrive at new musical shapes, specifically in the areas of harmonic/tonal and rhythmic movement. The conjecture that guides and motivates all the twists and turns in this text is:
+	
+\begin{conjecture}
+{\bf Driving conjecture behind this text.}
+\normalfont
+Harmonic/tonal and rhythmic movement comes from natural structures that let one ``move around'' in categories of representations of algebraic groups.
+\end{conjecture}
+	
+\begin{corollary}
+\normalfont
+One might find new {\em and musically interesting} instances of harmonic/tonal or rhythmic movement by investigating the representation theory of algebraic groups that do not traditionally appear in musical thinking.
+\end{corollary}
+
+\vskip .2cm
+
+\end{subsection}
 
 \begin{subsection}{Goals of this text.}
 In this text, we attempt to develop tonal theories coming from algebraic groups other than $\bold{GL}_{1}(\CC)$ (the group of invertible $1\!\times\!1$-matrices with entry coming from $\CC$). Hidden in that agenda, there is a claim that tonal harmony, in its standard sense, comes from the representation theory of the algebraic group $\bold{GL}_{1}(\CC)$. This is pretty well understood, and is collected throughout the subjects of \href{https://en.wikipedia.org/wiki/Harmonic_analysis}{{\em harmonic analysis}} and \href{https://en.wikipedia.org/wiki/Audio_signal_processing}{{\em audio signal processing}}. The central conjecture of this text is that the relationship between groups and harmonic/tonal movement extends well beyond $\bold{GL}_{1}(\CC)$, giving rise to new forms of musical movement. Stated somewhat more formally:
@@ -484,7 +495,7 @@ What structures on or in $\bold{Rep}(G)$ are the natural analogues of harmonic/t
 	
 \end{section}
 
-\vskip .2cm
+\vskip 1cm
 
 \begin{section}{Navigating tonality through the representation theory of $\bold{GL}_{1}(\CC)$.}\label{section: tonality through rep theory of GL1(C)}
 
@@ -631,6 +642,79 @@ In the case that $G$ is the circle group $\mathbb{S}^{1}$, the functions that ar
 \ {\color{red} [...]}
 \end{subsection}
 
+\begin{subsection}{Competing interpretations of harmonic and tonal movement}\label{subsection: Competing interpretations of harmonic and tonal movement}
+
+\begin{enumerate}[{\bf\ \ \ \ \ \ {\ref{subsection: Competing interpretations of harmonic and tonal movement}.}1.}]
+\item\label{item: movement proposal ring structure}
+{\bf Proposal \ref{item: movement proposal ring structure}: Multiplicative part of the ring structure on dual space $\pmb{\ZZ}$ or $\pmb{\RR}$.}
+	$$
+	\begin{xy}
+	(0,0)*+{\RR}="1";
+	(20,0)*+{\RR}="2";
+	(0,-20)*+{\mathbb{S}^{1}}="3";
+	(20,-20)*+{\overset{\ }{\ZZ}_{\ }\!\!}="4";
+	(14,.6)*+{\widehat{{\RR}}\cong}="5";
+	(14,-19.9)*+{\widehat{\mathbb{S}^{1}}\!\cong}="6";
+	{\ar@{->>}_{\text{mod}\ \lambda_1} "1"; "3"};
+	{\ar@{_{(}->}_{1\mapsto\lambda_1} "4"; "2"};
+	\end{xy}
+	$$
+\item\label{item: movement proposal action of GL1}
+{\bf Proposal \ref{item: movement proposal action of GL1}: Natural action of $\pmb{\bold{GL}_1(\RR)}$ on the real line.}
+	$$
+	\bold{GL}_{1}(\RR)\ \lact\ \bold{A}^{\!1}(\RR)
+	$$
+\item\label{item: movement proposal induced by group homs}
+{\bf Proposal \ref{item: movement proposal induced by group homs}: Morphisms of function spaces induced by group homomorphisms.}
+	$$
+	\begin{xy}
+	(0,0)*+{
+	\begin{xy}
+	(0,0)*+{\mathbb{S}^{1}}="1";
+	(-12,-12)*+{\mathbb{S}^{1}}="2";
+	(12,-12)*+{\mathbb{S}^{1}}="3";
+	(0,-24)*+{\mathbb{S}^{1}}="4";
+	{\ar@{->>}_{m\!\!} "1"; "2"};
+	{\ar@{->>}^{\!\!n} "1"; "3"};
+	{\ar@{->>}_{n\!\!} "2"; "4"};
+	{\ar@{->>}^{\!\!m} "3"; "4"};
+	\end{xy}
+	\ \ \ \ 
+	}="1";
+	(60,0)*+{
+	\ \ \ \ 
+	\begin{xy}
+	(0,0)*+{\CC[z^{1/mn}]}="1";
+	(-12,-12)*+{\CC[z^{1/m}]}="2";
+	(12,-12)*+{\CC[z^{1/n}]}="3";
+	(0,-24)*+{\CC[z]}="4";
+	{\ar@{^{(}->} "2"; "1"};
+	{\ar@{_{(}->} "3"; "1"};
+	{\ar@{_{(}->} "4"; "2"};
+	{\ar@{^{(}->} "4"; "3"};
+	\end{xy}
+	}="2";
+	{\ar@{<~>} "1"; "2"}
+	\end{xy}
+	$$
+\item\label{item: movement proposal tensor constructions}
+{\bf Proposal \ref{item: movement proposal tensor constructions}: Functorial, tensor-based constructions in $\pmb{\bold{Rep}(\mathbb{S}^1)}$.}
+	If $V_{1}=\CC z$, then
+	$$
+	V_{n}\ \cong\ V^{\otimes n}_{1}\ \cong\ \text{Sym}^{n}V_{1}.
+	$$
+Note here that $\raisebox{1pt}{{{$\bigwedge$}}}^{\!n}V_{1}=\{0\}$ for $n\ge 2$.
+\end{enumerate}
+
+{\color{red} [...]}
+
+\begin{conjecture}
+\normalfont
+For other algebraic groups, analogues of {\em any} of the above produce interesting harmonic movement.
+\end{conjecture}
+
+\end{subsection}
+
 \begin{subsection}{Tonnetze and movement through $\bold{Rep}(\mathbb{S}^{1})$.}
 \ {\color{red} [...]}
 \end{subsection}
@@ -681,9 +765,7 @@ A
 
 \vskip 1cm
 
-\begin{section}{Representations of the $p$-adic group $\bold{A}^{\!1}(\mathbb{Q}_{p})$
-and $\bold{GL}_{1}(\mathbb{Q}_{p})$
-in wavelet signals.}\label{section: reps of 1-dimensional p-adic groups}
+\begin{section}{Representations of the $p$-adic group $\bold{A}^{\!1}(\mathbb{Q}_{p})$ in wavelet signals.}\label{section: reps of 1-dimensional p-adic groups}
 
 \begin{subsection}{Goals and sources}
 	The main goal of this \S\ref{section: reps of 1-dimensional p-adic groups} is to provide a realization of $p$-adic representation theory in real audio signal processing in such a way that the underlying arithmetic becomes musically salient in the same way that it does for $\bold{GL}_{1}(\CC)$ in \S\ref{section: tonality through rep theory of GL1(C)}. Moreover, I want to do continue the practice from \S\ref{section: tonality through rep theory of GL1(C)} of providing enough detail to make it relatively obvious how one would implement these ideas in standard software libraries.
@@ -694,8 +776,6 @@ in wavelet signals.}\label{section: reps of 1-dimensional p-adic groups}
 	\cite[Chp. XV: {\em J. T. Tate's thesis}, 1950]{CF}\ \textemdash\ The last chapter of J. W. S. Cassels and A. Fr\"ohlich's collaborative text on algebraic number theory is a repreint of Tate's  groundbreaking Ph.D. thesis on  Fourier analysis in number fields.
 	\item
 	\cite[\S VII]{Lang}\ \textemdash\ A text by Serge Lang on algebraic number theory. Lang's \S VIII provides a treatment of material from Tate's thesis, providing some details not present in Tate's thesis.
-	\item
-	\cite[\S 1]{GHv1} and \cite{GHv2}\ \textemdash\ This $2$-volume text by Dorian Goldfeld and Joseph Hundley collects many of the major achievements that took place between abstract harmonic analysis, number theory, and representation theory as a result of Tate's accomplishment. The first section of  the first volume goes over much of the material of Tate's thesis. The overarching theme of the two volumes is the representation theory of the algebraic group $\bold{GL}_{n}$, for $n=1,2,\dots$, over $\RR$, $\QQ_{p}$, and the ring of adelles $\mathbb{A}_{\QQ}$.
 	\item
 	\cite{Berkovich}\ \textemdash\ Vladimir Berkovich's seminal text on geometry over $p$-adic fields.
 	\item
@@ -1431,6 +1511,19 @@ Does this have sonic/musical implications? What sorts of $p$-adic ``things'' bec
 	$$
 \end{construction}
 
+\begin{algorithm}
+\caption{``Real audio signal'' (up to conductor), from $p$-adic function. Implementation of Construction [...]}\label{algorithm: UMM}
+\KwData{positive prime $p\in\ZZ_{>0}$, non-negative real $t\in\RR_{\ge0}$, positive integer $m\in\ZZ_{>0}$}
+\KwResult{$p$-adic number $a\in\QQ_{p}$ and non-negative real error $\varepsilon\in\RR_{\ge0}$ such that $t=a+\varepsilon$}
+$\varepsilon \gets$ {\bf copy of real number} $t$ \label{line: define r} \tcp*[r]{running error, to modify over course of algorithm}
+$n \gets$ {\bf integer} $0$\; \label{line: define n}
+\While{$p^{n} \le \varepsilon$
+}{
+    $n \gets n+1$ \label{line: increase n by 1}  \tcp*[r]{\ref{line: define n}-\ref{line: increase n by 1} end with $n\in\ZZ_{\ge 0}$ such that  $p^{n-1}\le \varepsilon<p^{n}$}
+}
+{\bf return} $a$,\ \ $\varepsilon$,\ \  $n-1$ \tcp*[r]{Interpreting $a$ as $\in\QQ$, we have $t=\varepsilon+a$, with $0\le \varepsilon<\tfrac{1}{p^{m}}$.} 
+\end{algorithm}
+
 
 \begin{proposal}\label{proposal: p-adic chords}
 {\bf Chords as sums of ``pure oscillators.''}
@@ -1482,13 +1575,6 @@ Does this have sonic/musical implications? What sorts of $p$-adic ``things'' bec
 {\color{red} [...]}
 \end{remark}
 
-\begin{proposal}\label{proposal: automorphic reps}
-{\bf Tones as automorphic representations of $\bold{GL}_{1}(\QQ_p)$.}
-\normalfont
-
-{\color{red} [Use \cite[\S\S2.3-5]{GHv1}...]}
-\end{proposal}
-
 \begin{remark}
 {\bf An approach to {\em p}-adic signals that doesn't quite work.}
 \normalfont
@@ -1505,37 +1591,6 @@ The problem is that there's a fatal circularity in this idea.
 \end{subsection}
 
 \vskip .3cm
-
-\begin{subsection}{Approach 2: harmonic movement via action on zeta and Mellin integrals.}
-\ 
-
-{\color{red} [Use \cite[\S\S2.3-5 \& 2.8]{GHv1}. The local zeta function $Z_p(s,\Phi,\omega)$ can transform under $\bold{GL}_{1}(\QQ_p)$ in its argument $\Phi$, whereas the argument $s\in\CC$ gives (multiple) realization(s) as an audio signal... Also L-functions...]} 
-	$$
-	\widetilde{f}(s)
-	\ =\ 
-	\int_{\QQ_{p}^{\times}}\!\!f(u)\ \psi(u)\ |u|^{s}_{p}\ d^{\times}u
-	$$
-Define
-	$$
-	\pi_{g}\widetilde{f}(s)
-	\ :=\ 
-	(\widetilde{{\rho_{g}f}})(s).
-	$$
-In other words, each $g\in\bold{GL}_{1}(\CC)$ acts on the $p$-adic Mellin transform $\widetilde{f}(s)$ by acting by the regular representation on the factor $f(u)$ in the integrand of the $p$-adic Mellin transform:
-	$$
-	\pi_{g}\widetilde{f}(s)
-	\ =\ 
-	\int_{\QQ_{p}^{\times}}\!\!f(ug)\ \psi(u)\ |u|^{s}_{p}\ d^{\times}u
-	$$
-The first important question for this approach: Is this action interesting?
-
-	Let $f:\QQ_{p}^{\times}\lra\CC$ be a compactly supported locally constant function with conductor $p^n$. If we know a value $p^{m}$ such that
-	$$
-	\text{supp}(f)\ \subseteq\ 1+p^{m}\ZZ_{p},
-	$$
-then there we should be able to write a algorithm that computes the $p$-adic Mellin transform of $f$ {\color{red} [...]}
-
-\end{subsection}
 
 \begin{subsection}{{\em p}-Adic Daubechies wavelets}
 \ {\color{red} [...]}
@@ -1607,7 +1662,245 @@ then there we should be able to write a algorithm that computes the $p$-adic Mel
 \ {\color{red} [...]}
 \end{subsection}
 
-\begin{subsection}{A gestural notation.}
+
+\begin{subsection}{A gestural notation for $\bold{A}^{\!1}(\QQ_p)$ signals.}
+\ 
+{\color{red} [...]}
+
+\end{subsection}
+
+\end{section}
+
+\vskip 1cm
+
+\begin{section}{Representations of the $p$-adic group $\bold{GL}_{1}(\mathbb{Q}_{p})$
+in real periodic audio signals.}
+
+\begin{subsection}{Goals and sources}
+	The main goal of this \S\ref{section: reps of 1-dimensional p-adic groups} is to provide a realization of $p$-adic representation theory in real audio signal processing in such a way that the underlying arithmetic becomes musically salient in the same way that it does for $\bold{GL}_{1}(\CC)$ in \S\ref{section: tonality through rep theory of GL1(C)}. Moreover, I want to do continue the practice from \S\ref{section: tonality through rep theory of GL1(C)} of providing enough detail to make it relatively obvious how one would implement these ideas in standard software libraries.
+	\begin{enumerate}[{\bf\ \ \ \ \ \ 1.}]
+	\item
+	\cite[Chp. XV: {\em J. T. Tate's thesis}, 1950]{CF}\ \textemdash\ {\color{red} [Now used for the Fourier analysis...]}
+	\item
+	\cite[\S VII.2]{Lang}\ \textemdash\ {\color{red} [Now focussed on Lang's explication on character theory...]}
+	\item
+	\cite[\S 1]{GHv1} and \cite{GHv2}\ \textemdash\ This $2$-volume text by Dorian Goldfeld and Joseph Hundley collects many of the major achievements that took place between abstract harmonic analysis, number theory, and representation theory as a result of Tate's accomplishment. The first section of  the first volume goes over much of the material of Tate's thesis. The overarching theme of the two volumes is the representation theory of the algebraic group $\bold{GL}_{n}$, for $n=1,2,\dots$, over $\RR$, $\QQ_{p}$, and the ring of adelles $\mathbb{A}_{\QQ}$.\\ 
+	\indent
+	From the perspective of music making, I approach this $2$-volume text as if it was a hardcore guide on ``{\em how number theory meets signal processing}.''
+	\item
+	\cite[Chp. VII]{Weil} An influential text on Number Theory by Andr\'e Weil, based in on a course taught at Princeton in 1961-2. Chapter VII contains a little more detail on quasicharacters than appears in \cite{Lang}.
+\end{enumerate}
+{\color{red} [...]}
+	
+	\begin{conjecture}
+	{\bf {\color{red} [...]}}
+	\normalfont
+	{\color{red} [...]}
+	\end{conjecture}
+ 
+\end{subsection}
+
+\begin{proposal}\label{proposal: automorphic reps}
+{\bf Tones as automorphic representations of $\bold{GL}_{1}(\QQ_p)$.}
+\normalfont
+
+{\color{red} [Use \cite[\S\S2.3-5]{GHv1}...]}
+\end{proposal}
+
+\begin{subsection}{Representation/``Fourier'' theory of $\bold{GL}_{1}(\QQ_p)$ via $p$-adic Mellin tranforms.}\label{subsection: mellin}
+	I take most of the present \S\ref{subsection: mellin} directly from \cite[\S\S2.3 \& 2.8]{GHv1}.
+	
+	For each triple $(s,\ \Phi,\ \omega)$ consisting of
+	\begin{enumerate}[{\bf\ \ \ \ \ \ $\bullet$}]
+	\item
+	A complex number $s\in\CC$ with $\text{Re}(s)>0$.
+	\item
+	A locally constant, compactly supported function $\Phi:\QQ_{p}\lra\CC$.
+	\item
+	A continuous character $\omega:\QQ_{p}^\times\lra\CC^\times$ with image in $\mathbb{S}^{1}=U(1)\subset\CC^{\times}$.
+	\end{enumerate}
+The {\em local zeta integral} ({\em at $p$}) associated to this triple is the value
+	$$
+	Z_{p}(s,\Phi,\omega)
+	\ :=\ 
+	\int_{\QQ^{\times}_{p}}\Phi(x)\ \omega(x)\ |x|^{s}_{p}\ d^{\times\!}x.
+	$$
+We often think of $Z_{p}(s,\Phi,\omega)$ as being a function of $s$ determined by the parameters $\Phi$ and $\omega$. Note that under this interpretation, we get a complex-valued function defined on the right open half-plane in $\CC$:
+	$$
+	Z_p(-,\Phi,\omega)
+	:
+	\ 
+	\CC_{\text{Re}>0}\lra\CC.
+	$$
+
+\begin{subsubsection}{{\bf Meromorphic continuation.}}
+	In fact, the local Zeta integral, interpreted as a function of $s$, has meromorphic continuation to all of $\CC$ (note this this does mean that it might have poles throughout $\CC$). This fact comes from the {\color{red} [...]}
+	
+\end{subsubsection}
+
+\begin{remark}{{\bf This is representation theory of $\pmb{GL}_{1}(\QQ_{p})$.}}
+\ {\color{red} [...]}
+\end{remark}
+
+\begin{remark}{{\bf Aside on continuous characters.}} I take this directly from \cite[\S VII.2]{Lang}.
+{\bf\color{red} [Not yet correct. Need to deal with $\pmb{s}$ power...]}
+Suppose given a continuous homomorphism
+	$$
+	\chi:\QQ^{\times}_{p}\lra\CC^\times.
+	$$
+Lang calls such a homomorphism a {\em quasi-character}.
+For any $x\in\QQ^\times_p$, we have a {\em unique} factorization $x=p^n\ u$, where $n=\text{ord}_{p}(x)$ and $u\in\ZZ^\times_p$. This corresponds to a factorization
+	$$
+	\QQ^\times_{p}
+	\ \cong\ 
+	p^{\ZZ}\times\ZZ^\times_p.
+	$$
+Note that $\ZZ^\times_p\subset\QQ^\times_p$ is a compact subgroup.
+
+	This implies that we can factor any quasi-character $\chi:\QQ^{\times}_p\lra\CC^\times$ as a product of two restrictions:
+	$$
+	\chi
+	\ =\ 
+	\left.\chi\right|_{\ZZ^\times_p}
+	\cdot
+	\left.\chi\right|_{p^\ZZ}.
+	$$
+The restriction $\left.\chi\right|_{\ZZ^\times_p}:\ZZ^\times_p\lra\CC^\times$ is a continuous map from a compact topological group into the topological group $\CC^\times$. Thus it must have image inside the maximal compact subgroup $\mathbb{S}^1=U(1)\subset\CC^\times$. In other words, {\em the factor $\left.\chi\right|_{\ZZ^\times_p}$ must be a unitary character on $\ZZ^\times_p$}. The factor $\left.\chi\right|_{p^\ZZ}$, on the other hand, satisfies
+	$$
+	\left.\chi\right|_{p^\ZZ\!\!}(p^n)\ =\ \chi(p)^n.
+	$$
+This means that the factor $\left.\chi\right|_{p^\ZZ}$ is completely determined by its value $\chi(p)$. Define $s\in\CC$ to a complex number with $\text{Re}(s)$, satisfying $|p|^{s}_{p}=\chi(p)$, i.e., satisfying
+	$$
+	\left(\frac{1}{p}\right)^{\!s}\ =\ \chi(p).
+	$$
+Note that there remains a possibility that $\chi(p)$ is a root of unity other than $1$ in $\CC$.
+
+Putting all this together, we see that $\chi$ can be written as a product
+	$$
+	\chi(x)
+	\ =\ 
+	\omega(x)\cdot|x|^{s}_{p},
+	$$
+where $\omega:\QQ^{\times}_p\lra\mathbb{S}^1$ is a continuous character that factors through the projection
+	$$
+	\text{pr}:\QQ^\times_p\epi\ZZ^\times_p
+	$$
+that maps $p^nu\mapsto u$. Another way to state the requirement on $\omega$ is that $\omega(p)=1$. The standard term for this is that $\omega$ is {\em normalized}.
+
+	The conclusion of all of this is that we can re-organized the parameters of the local zeta function a bit to view it as a kind of $\CC^\times$-based Fourier transform\footnote{\ Extended from an $\mathbb{S}^1$-version of Pontryagin duality to a $\CC^\times$-version of it.} on the topological group, obtained by computing expectations of functions against $\CC^\times$-valued characters:
+	\begin{equation}\label{Mellin as Fourier}
+	\widetilde{\Phi}(\chi)
+	\ =\ 
+	\int_{\bold{GL}_{1}(\QQ_p)}\!\!\!\Phi(x)\ \chi(x)\ d\mu_{\text{Haar}}.
+	\end{equation}
+\end{remark}
+
+\begin{subsubsection}{{\bf Local zeta function as a strange kind of Fourier transform.}}
+Strictly speaking, because the character $\chi$ is allowed to take values in $\CC^{\times}$ rather than $\mathbb{S}^1$, the integral that appears in Equation \eqref{Mellin as Fourier} isn't a Fourier transform of $\Phi$. The proper name for this integral is a ({\em general}) {\em $p$-adic Mellin transform}.\footnote{\ Named after the Finnish mathematician Hjalmar Mellin, who introduced a closely related integral in 1897, in a purely complex setting.}
+ 
+{\color{red} [Use \cite[\S\S2.3-5 \& 2.8]{GHv1}. The local zeta function $Z_p(s,\Phi,\omega)$ can transform under $\bold{GL}_{1}(\QQ_p)$ in its argument $\Phi$, whereas the argument $s\in\CC$ gives (multiple) realization(s) as an audio signal... Also L-functions...]} 
+	$$
+	\widetilde{f}(s)
+	\ =\ 
+	\int_{\QQ_{p}^{\times}}\!\!f(u)\ \psi(u)\ |u|^{s}_{p}\ d^{\times}u
+	$$
+Define
+	$$
+	\pi_{g}\widetilde{f}(s)
+	\ :=\ 
+	(\widetilde{{\rho_{g}f}})(s).
+	$$
+In other words, each $g\in\bold{GL}_{1}(\CC)$ acts on the $p$-adic Mellin transform $\widetilde{f}(s)$ by acting by the regular representation on the factor $f(u)$ in the integrand of the $p$-adic Mellin transform:
+	$$
+	\pi_{g}\widetilde{f}(s)
+	\ =\ 
+	\int_{\QQ_{p}^{\times}}\!\!f(ug)\ \psi(u)\ |u|^{s}_{p}\ d^{\times}u
+	$$
+The first important question for this approach: Is this action interesting?
+
+	Let $f:\QQ_{p}^{\times}\lra\CC$ be a compactly supported locally constant function with conductor $p^n$. If we know a value $p^{m}$ such that
+	$$
+	\text{supp}(f)\ \subseteq\ 1+p^{m}\ZZ_{p},
+	$$
+then there we should be able to write a algorithm that computes the $p$-adic Mellin transform of $f$ {\color{red} [...]}
+
+\end{subsubsection}
+\end{subsection}
+
+\begin{subsection}{ A weird, modified instance of Pontryagin duality}
+	\begin{equation}\label{equation: fake Pontryagin dual}
+	\underset{
+	\scalebox{.8}{$
+	\begin{array}{c}
+	\text{Pontryagin}
+	\\
+	\text{dual}
+	\end{array}
+	$}
+	}{
+	\underbrace{
+	\widehat{
+	\ZZ^\times_{p}
+	\!\!
+	}
+	}}
+	\!\!\!\!\!\!\!\!\!
+	\times
+	\underset{
+	\ \ 
+	\scalebox{.8}{$
+	\begin{array}{c}
+	\text{``time''}
+	\\
+	\text{domain}
+	\end{array}
+	$}
+	}{
+	\underbrace{
+	\rquot{\CC_{\text{Re}>0}}{i2\pi\ZZ}
+	}}
+	\ \ \ 
+	\xleftrightarrow{\text{``duality''}}
+	\underset{
+	\scalebox{.8}{$
+	\begin{array}{c}
+	\text{``frequency''}
+	\\
+	\text{domain}
+	\end{array}
+	$}
+	}{
+	\underbrace{
+	\bold{GL}_{1}(\QQ_{p})
+	}}
+	\end{equation}
+{\color{red} [Here, periodic time occurs in the imaginary dimension in $\CC_{\text{Re}>0}$...]}
+Note that, as a topological group, the left hand side of Equation \eqref{equation: fake Pontryagin dual} is isomorphic to
+	$$
+	\widehat{\ZZ^\times_p}\times\RR^\times_{>0}\times\mathbb{S}^{1},
+	$$
+which a factor of $\RR^\times_{>0}$ away from the actual Pontryagin dual
+	$$
+	\widehat{\ZZ^\times_p}\!\!\times\mathbb{S}^1
+	\ \ \cong\ \ 
+	\widehat{\ZZ^\times_p}\!\!\times\!\widehat{\ZZ}
+	\ \ \cong\ \ 
+	\reallywidehat{{\ZZ^\times_p\!\!\times\!\ZZ}}
+	\ \ \cong\ \ 
+	\widehat{\QQ^\times_p}
+	\ \ \cong\ \ 
+	\reallywidehat{\bold{GL}_{1}(\QQ_p)}.
+	$$
+In other words, the strange topological group at left in Equation \eqref{equation: fake Pontryagin dual} isn't that far from the standard Pontryagin dual of $\bold{GL}_{1}(\QQ_p)$.
+\end{subsection}
+
+\begin{subsection}{Computing $p$-adic Mellin transforms using conductors.}
+\ 
+{\color{red} [...]}
+
+\end{subsection}
+
+\begin{subsection}{A gestural notation for $\bold{GL}_{1}(\QQ_p)$ signals.}
 \ 
 {\color{red} [...]}
 
@@ -2240,7 +2533,7 @@ What sort of movement through the category $\bold{Rep}\big(\bold{SL}_{2}(\CC)\bi
 \vskip .3cm
 
 \noindent
-{\em Temporary answers.} There are many reasonable candidates:
+{\em Temporary answers.} As we pointed out on \S\ref{subsection: Competing interpretations of harmonic and tonal movement}, there are competing interpretations of standard tonal and harmonic and tonal movement within $\bold{Rep}(\mathbb{S}^1)$ or $\bold{Rep}\big(\bold{GL}_{1}(\CC)\big)$. Because meany There are many reasonable candidates:
 	\begin{enumerate}[{\em\ \ \ \ \ \ {Answer \ref{question: what is harmonic movement}.}1.}]
 	\item
 	Inductive/restrictive functorial movement along homomorphisms $G\longrightarrow\bold{SL}_{2}(\CC)$ and/or $\bold{SL}_{2}(\CC)\longrightarrow G$;
@@ -2249,7 +2542,10 @@ What sort of movement through the category $\bold{Rep}\big(\bold{SL}_{2}(\CC)\bi
 	\item
 	Movement along functors $T^{n}=(-)^{\otimes n}$;
 	\item
-	Movement along functors $\text{Sym}^{n}$;
+	Movement along functors $\text{Sym}^{n}$.
+	\end{enumerate}
+There are also candidates for new types of harmonic movement:
+	\begin{enumerate}[{\em\ \ \ \ \ \ {New possibility \ref{question: what is harmonic movement}.}5.}]
 	\item
 	Movement along functors $\Lambda^{n}$.
 	\end{enumerate}
