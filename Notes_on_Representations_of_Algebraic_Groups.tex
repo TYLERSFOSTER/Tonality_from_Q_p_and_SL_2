@@ -1529,6 +1529,14 @@ $n \gets$ {\bf integer} $0$\; \label{line: define n}
 \normalfont
 
 {\color{red} [Problem: The graphs of these oscillators are {\em really} dense... Not sure there's anything sonically interesting there...]}
+
+	$$
+	\includegraphics[scale=.33]{001.jpg}
+	$$
+{\color{red} [...]}
+	$$
+	\includegraphics[scale=.33]{002.jpg}
+	$$
 \end{proposal}
 
 \begin{proposal}\label{proposal: smooth-to-p-adic}
@@ -1992,6 +2000,52 @@ which reduces the problem of computing $\widetilde{f}$ to the problem of computi
 	$$
 	\underset{{a_\ell+p^m\ZZ_p}}{\int}
 	\!\!\!\!\!\omega(x)\ |x|^{s}_{p}\ d^\times\!x.
+	$$
+{\color{red} [...]}
+Say $x=p^ku$ for $k\in\ZZ$ and $u\in\ZZ^\times_p$. Write $$s\ =\ r+i\theta,\ \ \ \text{for}\ r\in\RR_{>0}\ \ \text{and}\ \ 0\le \theta<2\pi.$$ Then
+	$$
+	\begin{array}{rcl}
+	|x|^{s}_p
+	&
+	\!\!=\!\!
+	&
+	|p^ku|^{s}_p
+	\\[10pt]
+	&
+	\!\!=\!\!
+	&
+	|p^k|^{s}_p
+	\\[10pt]
+	&
+	\!\!=\!\!
+	&
+	|p|^{ks}_p
+	\\[10pt]
+	&
+	\!\!=\!\!
+	&
+	\left(\frac{1}{p}\right)^{\!\!ks}
+	\\[10pt]
+	&
+	\!\!=\!\!
+	&
+	e^{\text{log}(\tfrac{1}{p})\cdot ks}
+	\\[10pt]
+	&
+	\!\!=\!\!
+	&
+	e^{\text{log}(\left(\tfrac{1}{p}\right)^{\!kr})\ +\ i\ \text{log}(\tfrac{1}{p})k\theta}
+	\end{array}
+	$$
+If we define
+	$$
+	A_{1}
+	\ :=\ 
+	\left(\frac{1}{p}\right)^{\!\!r}
+	\ \ \ \ \ \ \text{and}\ \ \ \ \ \ 
+	\lambda_1
+	\ :=\ 
+	\text{log}\Big(\ \!\frac{1}{p}\ \!\Big)
 	$$
 
 \begin{algorithm}
