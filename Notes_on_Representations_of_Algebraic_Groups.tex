@@ -628,15 +628,15 @@ In the case that $G$ is the circle group $\mathbb{S}^{1}$, the functions that ar
 {\color{red} [...]}
 
 \ 	
-\begin{subsubsection}
+\begin{ssubsection}
 \normalfont
 {\bf Timbre as some kind of high frequency tonality.}
-\end{subsubsection}
+\end{ssubsection}
 
-\begin{subsubsection}
+\begin{ssubsection}
 \normalfont
 {\bf Rhythm as some kind of low frequency tonality.}
-\end{subsubsection}
+\end{ssubsection}
 
 \ {\color{red} [...]}
 \end{subsection}
@@ -721,11 +721,11 @@ For other algebraic groups, analogues of {\em any} of the above produce interest
 \begin{subsection}{Modal changes and functors along homomorphisms $\mathbb{S}^{1}\longrightarrow\mathbb{S}^{1}$.}
 \ {\color{red} [...]}
 
-\begin{subsubsection}
+\begin{ssubsection}
 \normalfont
 {\bf Approximating functors and 12-TET.}
 A
-\end{subsubsection}
+\end{ssubsection}
 
 \end{subsection}
 
@@ -733,12 +733,12 @@ A
 
 
 
-\begin{subsubsection}
+\begin{ssubsection}
 \normalfont
 {\bf Isomorphisms $(\RR\!\times\!\mathbb{S}^{1})^\wedge\cong\RR^\wedge\!\times\!\ZZ$ and $(\RR\!\times\!{\mu}_{n})^\wedge\cong\RR^\wedge\!\times\!\ZZ/n\ZZ$.}
 \ {\color{red} [...]}
 A
-\end{subsubsection}
+\end{ssubsection}
 
 \end{subsection}
 
@@ -1740,10 +1740,11 @@ We often think of $Z_{p}(s,\Phi,\omega)$ as being a function of $s$ determined b
 	\CC_{\text{Re}>0}\lra\CC.
 	$$
 
-\begin{subsubsection}{{\bf Meromorphic continuation.}}
+\begin{ssubsection}{{\bf Meromorphic continuation.}}
+\normalfont
 	In fact, the local Zeta integral, interpreted as a function of $s$, has meromorphic continuation to all of $\CC$ (note this this does mean that it might have poles throughout $\CC$). This fact comes from the {\color{red} [...]}
 	
-\end{subsubsection}
+\end{ssubsection}
 
 \begin{remark}{{\bf This is representation theory of $\pmb{GL}_{1}(\QQ_{p})$.}}
 \ {\color{red} [...]}
@@ -1802,7 +1803,8 @@ that maps $p^nu\mapsto u$. Another way to state the requirement on $\omega$ is t
 	\end{equation}
 \end{remark}
 
-\begin{subsubsection}{{\bf Local zeta function as a strange kind of Fourier transform.}}
+\begin{ssubsection}{{\bf Local zeta function as a strange kind of Fourier transform.}}
+\normalfont
 Strictly speaking, because the character $\chi$ is allowed to take values in $\CC^{\times}$ rather than $\mathbb{S}^1$, the integral that appears in Equation \eqref{Mellin as Fourier} isn't a Fourier transform of $\Phi$. The proper name for this integral is a ({\em general}) {\em $p$-adic Mellin transform}.\footnote{\ Named after the Finnish mathematician Hjalmar Mellin, who introduced a closely related integral in 1897, in a purely complex setting.}
  
 {\color{red} [Use \cite[\S\S2.3-5 \& 2.8]{GHv1}. The local zeta function $Z_p(s,\Phi,\omega)$ can transform under $\bold{GL}_{1}(\QQ_p)$ in its argument $\Phi$, whereas the argument $s\in\CC$ gives (multiple) realization(s) as an audio signal... Also L-functions...]} 
@@ -1831,7 +1833,7 @@ The first important question for this approach: Is this action interesting?
 	$$
 then there we should be able to write a algorithm that computes the $p$-adic Mellin transform of $f$ {\color{red} [...]}
 
-\end{subsubsection}
+\end{ssubsection}
 \end{subsection}
 
 \begin{subsection}{ A weird, modified instance of Pontryagin duality}
@@ -1956,7 +1958,7 @@ If there exists $a\in U_n$ such that $\omega(a)\ne 1$, then some power $\omega(a
 
 As a consequence, there exists a minimal integer $n\ge 0$ such that $\omega(U^n)$. We call this nonnegative integer $n$ the {\em conductor} of the quaicharacter $\omega$. Observing that the multiplicative cosets of $1+p^n\ZZ_p$ in $\ZZ^\times_p$ are all of the form $k\cdot(1_p^n\ZZ_p)$ for $1\le k<p^n$ with $(k,p^n)=1$, we obtain an isomorphism
 	$$
-	\ZZ^\times_p\big/(1+p^n\ZZ_p)
+	\ZZ^\times_p\big/(1\!+\!p^n\ZZ_p)
 	\ \cong\ 
 	\big(\ZZ/p^n\ZZ\big)^{\!\times}
 	$$
@@ -1977,6 +1979,9 @@ that lifts to $\omega$. In other words, $\omega_{\text{Dir}}$ is the unique grou
 	$$
 commute. We call $\omega_\text{Dir}$ the {\em Dirichlet character} associated to $\omega$, and we say that $\omega$ descends to its associated Dirichlet character $\omega_{\text{Dir}}$ along its conducting projection.
 
+\begin{ssubsection}\label{ssubsection: simplifying Mellin transform}
+{{\bf Simplificatied expression for the {\em p}-adic Mellin transform.}}
+\normalfont
 	This observation provides us with a major simplification in the computation of any $p$-adic Mellin transform of any compactly supported, locally constant function $f:\QQ^\times_p\lra\CC$. Indeed, our assumption that $f$ is compactly supported and locally constant means that there exists some integer $m\ge 0$ and some finite set of elements $a_1,a_2,\dots,a_\ell\in\QQ^\times_p$ and associated coefficients $c_1,c_2,\dots,c_\ell\in\CC\setminus\{0\}$such that
 	\begin{equation}\label{equation: compactly supported locally constant}
 	f
@@ -1990,20 +1995,21 @@ commute. We call $\omega_\text{Dir}$ the {\em Dirichlet character} associated to
 	c_\ell\mathbbm{1}_{a_\ell+p^m\ZZ_p}.
 	\end{equation}
 If we've also fixed a character $\omega:\ZZ^\times_p\lra\mathbb{S}^1$ with conductor $n$, then we can make the reassignment $m\leftarrow\text{max}\{m,n\}$ (in pseudocode), and make the appropriate change to the ``step function'' presentation of $f$ in Equation \eqref{equation: compactly supported locally constant}. Then
-	$$
+	\begin{equation}\label{equation: sum breakdown for Mellin transform}
 	\widetilde{f}(s)
 	\ =\ 
-	\sum^{\ell}_{k=1}\ c_{\ell}\ \cdot\!\!\!\!\!\!\!\underset{{a_\ell+p^m\ZZ_p}}{\int}
+	\sum^{\ell}_{k=1}\ c_{k}\ \cdot\!\!\!\!\!\!\!\underset{{a_\ell+p^m\ZZ_p}}{\int}
 	\!\!\!\!\!\omega(x)\ |x|^{s}_{p}\ d^\times\!x,
-	$$
+	\end{equation}
 which reduces the problem of computing $\widetilde{f}$ to the problem of computing each integral
 	$$
 	\underset{{a_\ell+p^m\ZZ_p}}{\int}
 	\!\!\!\!\!\omega(x)\ |x|^{s}_{p}\ d^\times\!x.
 	$$
 {\color{red} [...]}
-Say $x=p^ku$ for $k\in\ZZ$ and $u\in\ZZ^\times_p$. Write $$s\ =\ r+i\theta,\ \ \ \text{for}\ r\in\RR_{>0}\ \ \text{and}\ \ 0\le \theta<2\pi.$$ Then
+Say $x=p^ku$ for $k\in\ZZ$ and $u\in\ZZ^\times_p$. Write $$s\ =\ r(t)+i2\pi t,\ \ \ \text{for}\ r(t)\in\RR_{>0}\ \ \text{and}\ \ 0\le \theta<2\pi.$$ Then
 	$$
+	\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
 	\begin{array}{rcl}
 	|x|^{s}_p
 	&
@@ -2034,20 +2040,68 @@ Say $x=p^ku$ for $k\in\ZZ$ and $u\in\ZZ^\times_p$. Write $$s\ =\ r+i\theta,\ \ \
 	&
 	\!\!=\!\!
 	&
-	e^{\text{log}(\left(\tfrac{1}{p}\right)^{\!kr})\ +\ i\ \text{log}(\tfrac{1}{p})k\theta}
+	e^{\text{log}(\left(\tfrac{1}{p}\right)^{\!kr(t)})\ +\ i2\pi\ \!\text{log}(\tfrac{1}{p})\ \!kt}.
 	\end{array}
 	$$
 If we define
 	$$
-	A_{1}
+	A(t)
 	\ :=\ 
-	\left(\frac{1}{p}\right)^{\!\!r}
+	\left(\frac{1}{p}\right)^{\!\!r(t)}
 	\ \ \ \ \ \ \text{and}\ \ \ \ \ \ 
-	\lambda_1
+	\lambda
 	\ :=\ 
-	\text{log}\Big(\ \!\frac{1}{p}\ \!\Big)
+	\text{log}\Big(\ \!\frac{1}{p}\ \!\Big),
 	$$
+then
+	$$
+	|x|^{s}_p
+	\ \ =\ \ 
+	A(t)^k\ e^{i2\pi\ \!k\lambda\ \!t}.
+	$$
+Write $a_\ell=p^{k_\ell}\ \!u_\ell$. This implies that $a_\ell+p^m\ZZ_p=p^k\ \!(u_\ell+p^m\ZZ_p)$. Hence
+	$$
+	\underset{{a_\ell+p^m\ZZ_p}}{\int}
+	\!\!\!\!\!\omega(x)\ |x|^{s}_{p}\ d^\times\!x
+	\ \ \ \ =\ \ \ 
+	\omega(u_\ell)\ A(t)^k\ e^{i2\pi\ \!k\lambda\ \!t}\cdot
+	\!\!\!\!\!\!\!
+	\underset{p^k\ \!(u_\ell+p^m\ZZ_p)}{\int}
+	\!\!\!\!\!\!d^\times\!x,
+	$$
+which we can rewrite as {\color{red} [double-check this...]}
+	$$
+	{\color{blue}
+	\underset{\text{adjustment}}{
+	\underset{\text{base-}p\ \text{amplitude}}{
+	\underbrace{
+	{\color{black}
+	\frac{1}{p^m}\cdot\frac{1}{\ 1\!-\!\tfrac{1}{p}\ }
+	}}}}
+	{\color{black} \cdot\ A(t)^k\cdot}
+	\underset{\!\!\!\text{adjustment}\!\!\!}{
+	\underset{\text{phase}}{
+	\underbrace{
+	{\color{black}
+	\ \omega(u_\ell)}
+	}}}}
+	{\color{black} \ e^{i2\pi\ \!k\lambda\ \!t}
+	}
+	$$
+Combining this with Equation \eqref{equation: sum breakdown for Mellin transform}, we obtain a more explicit formula for the $p$-adic Mellin transform of $f$:
+	\begin{equation}\label{equation: an explicit formula for Mellin transform}
+	\widetilde{f}(t)
+	\ \ =\ \ \ 
+	\frac{1}{p^m}\cdot\frac{1}{\ 1\!-\!\tfrac{1}{p}\ }\cdot
+	\sum^{\ell}_{k=1}\ c_{k}
+	\ A(t)^k\ \omega(u_\ell)\ e^{i2\pi\ \!k\lambda\ \!t}.
+	\end{equation}
+\end{ssubsection}
 
+\begin{ssubsection}{{\bf Algorithm for computing {\em p}-adic Mellin transforms.}}
+\normalfont
+Although \S\ref{ssubsection: simplifying Mellin transform} above provides us with a rough sketch of how such an algorithm should proceed, the details of the the algorithm depend on how we've decided to represent compactly supported, locally constant functions $f:\QQ^\times_{p}\lra\CC$.
+{\color{red} [...]}
 \begin{algorithm}
 \caption{Compute $p$-adic Mellin transform $\int_{\QQ^\times_p}f(x)\ \omega(x)\ |x|^{s}_{p}\ d^\times\!x$ as a function of $s\in\CC_{\text{Re}\ge0}$.}
 \vdots
@@ -2058,6 +2112,13 @@ $m\longleftarrow \text{max}\{m,n\}$;
 
 \ 
 {\color{red} [...]}
+
+\end{ssubsection}
+
+\end{subsection}
+
+\begin{subsection}{Using conductors to compute $\bold{GL}_1(\QQ_p)$-action on {\em p}-adic Mellin transforms}
+\ {\color{red} [...]}
 
 \end{subsection}
 
