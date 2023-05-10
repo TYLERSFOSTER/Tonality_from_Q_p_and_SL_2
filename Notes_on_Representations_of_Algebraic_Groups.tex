@@ -491,6 +491,10 @@ What structures on or in $\bold{Rep}(G)$ are the natural analogues of harmonic/t
 \end{question}
 
 \end{subsection}
+
+\begin{subsection}{We're looking for movement, not for material.}
+\ {\color{red} [...]}
+\end{subsection}
 	
 \end{section}
 
@@ -2077,14 +2081,15 @@ which we can rewrite as {\color{red} [double-check this...]}
 	\underbrace{
 	{\color{black}
 	\frac{1}{p^m}\cdot\frac{1}{\ 1\!-\!\tfrac{1}{p}\ }
-	}}}}
+	}}}}\!
 	{\color{black} \cdot\ A(t)^k\cdot}
+	\underset{\!\!\!\text{via}\ \mu_n\subset\CC^\times\!\!\!\!\!}{
 	\underset{\!\!\!\text{adjustment}\!\!\!}{
 	\underset{\text{phase}}{
 	\underbrace{
 	{\color{black}
 	\ \omega(u_\ell)}
-	}}}}
+	}}}}}
 	{\color{black} \ e^{i2\pi\ \!k\lambda\ \!t}
 	}
 	$$
@@ -2097,6 +2102,11 @@ Combining this with Equation \eqref{equation: sum breakdown for Mellin transform
 	\ A(t)^k\ \omega(u_\ell)\ e^{i2\pi\ \!k\lambda\ \!t}.
 	\end{equation}
 \end{ssubsection}
+
+\begin{remark}
+{\bf Movement, not material.}
+\ {\color{red} [...]}
+\end{remark}
 
 \begin{ssubsection}{{\bf Algorithm for computing {\em p}-adic Mellin transforms.}}
 \normalfont
@@ -2115,10 +2125,44 @@ $m\longleftarrow \text{max}\{m,n\}$;
 
 \end{ssubsection}
 
+\begin{example}
+{\bf {\em p}-Adic Mellin transform of indicator $\pmb{\mathbbm{1}_{\ZZ^\times_p}}$.}
+\normalfont
+	$$
+	\widetilde{{\mathbbm{1}_{\ZZ^\times_p}}}(s)
+	\ \ =\ \ 
+	\int_{\QQ^\times_{p}}
+	\!\!\mathbbm{1}_{\ZZ^\times_p}(x)\ \omega(x)\ |x|^{s}_{p}\ d^\times\!x,
+	$$
+which we can rewrite as
+	$$
+	\int_{\ZZ^\times_p}\!\!\omega(x)\ |x|^{s}_{p}\ d^\times\!x.
+	$$
+Let $n$ be the conductor of $\omega$.
+	$$
+	{\color{red} (\text{scalar})\ \cdot}
+	\sum_{k=0}^{p^{n}-1}\!\omega(k)
+	$$
+\end{example}
+
 \end{subsection}
 
 \begin{subsection}{Using conductors to compute $\bold{GL}_1(\QQ_p)$-action on {\em p}-adic Mellin transforms}
 \ {\color{red} [...]}
+
+\begin{example}
+{\bf Mellin transform of translation $\pmb{\rho_{a}\psi}$ of arbitrary character $\pmb{\psi:\ZZ^\times_p\lra\mathbb{S}^1}$.}
+\normalfont
+	$$
+	\widetilde{{\rho_{a}\psi}}(s)
+	\ \ =\ \ 
+	\int_{\QQ^\times_{p}}
+	\psi(a^{-1}x)\ \omega(x)\ |x|^{s}_{p}\ d^\times\!x,
+	$$
+Let $n$ be the conductor of $\omega$, and let $m$ be the conductor of $\psi$ (that is, before translating).
+
+{\color{red} [...]}
+\end{example}
 
 \end{subsection}
 
