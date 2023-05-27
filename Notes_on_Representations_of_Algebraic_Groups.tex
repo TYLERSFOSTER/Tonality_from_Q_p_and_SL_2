@@ -2103,28 +2103,6 @@ Combining this with Equation \eqref{equation: sum breakdown for Mellin transform
 	\end{equation}
 \end{ssubsection}
 
-\begin{remark}
-{\bf Movement, not material.}
-\ {\color{red} [...]}
-\end{remark}
-
-\begin{ssubsection}{{\bf Algorithm for computing {\em p}-adic Mellin transforms.}}
-\normalfont
-Although \S\ref{ssubsection: simplifying Mellin transform} above provides us with a rough sketch of how such an algorithm should proceed, the details of the the algorithm depend on how we've decided to represent compactly supported, locally constant functions $f:\QQ^\times_{p}\lra\CC$.
-{\color{red} [...]}
-\begin{algorithm}
-\caption{Compute $p$-adic Mellin transform $\int_{\QQ^\times_p}f(x)\ \omega(x)\ |x|^{s}_{p}\ d^\times\!x$ as a function of $s\in\CC_{\text{Re}\ge0}$.}
-\vdots
-$m\longleftarrow \text{max}\{m,n\}$;
-\\ 
-\vdots
-\end{algorithm}
-
-\ 
-{\color{red} [...]}
-
-\end{ssubsection}
-
 \begin{example}
 {\bf {\em p}-Adic Mellin transform of indicator $\pmb{\mathbbm{1}_{\ZZ^\times_p}}$.}
 \normalfont
@@ -2143,6 +2121,117 @@ Let $n$ be the conductor of $\omega$.
 	{\color{red} (\text{scalar})\ \cdot}
 	\sum_{k=0}^{p^{n}-1}\!\omega(k)
 	$$
+\end{example}
+
+\begin{remark}
+{\bf Movement, not material.}
+\ {\color{red} [...]}
+\end{remark}
+
+\begin{ssubsection}{{\bf Algorithm for computing {\em p}-adic Mellin transforms.}}
+\normalfont
+Although \S\ref{ssubsection: simplifying Mellin transform} above provides us with a rough sketch of how such an algorithm should proceed, the details of the the algorithm depend on how we've decided to represent compactly supported, locally constant functions $f:\QQ^\times_{p}\lra\CC$.
+{\color{red} [...]}
+\begin{algorithm}
+\caption{Compute $p$-adic Mellin transform $\int_{\QQ^\times_p}
+\label{algorithm: Mellin}
+f(x)\ \omega(x)\ |x|^{s}_{p}\ d^\times\!x$ as a function of $s\in\CC_{\text{Re}\ge0}$.}
+\vdots
+$m\longleftarrow \text{max}\{m,n\}$;
+\\ 
+\vdots
+\end{algorithm}
+
+\ 
+{\color{red} [...]}
+
+\end{ssubsection}
+
+\begin{example}
+\normalfont
+	Let $f:\QQ_p\lra\CC$ be the compactly supported locally constant function with conductor $\text{cond}_5(f)=5$, defined as a sum of indicator functions according to
+	\begin{equation}\label{equation: cslc f for Mellin 01}
+	\scalebox{.9}{$
+	f(x)=\sum^{4}_{k=1}c_{j}\ \!\mathbbm{1}_{U_{\!j}\!}(x)
+	\ \ \ \text{for}\ \ 
+	\scalebox{.9}{$
+	\left\{
+	\begin{array}{rclcrcl}
+	U_1
+	&\!\!\!\!=\!\!\!\!&
+	5^{2}(1+2\!\cdot\!5+2\!\cdot\!5^{2}+3\!\cdot\!5^3+2\!\cdot\!5^4+5^5\ZZ_{5}),
+	&
+	\!\!\!\!\!\!
+	&
+	c_1
+	&\!\!\!\!=\!\!\!\!&
+	5,
+	\\[3pt]
+	U_2
+	&\!\!\!\!=\!\!\!\!&
+	5^{3}(2+2\!\cdot\!5+2\!\cdot\!5^{2}+2\!\cdot\!5^3+5^5\ZZ_{5}),
+	&
+	\!\!\!\!\!\!
+	&
+	c_2
+	&\!\!\!\!=\!\!\!\!&
+	5^{2}(1+i),
+	\\[3pt]
+	U_3
+	&\!\!\!\!=\!\!\!\!&
+	5^{4}(2+2\!\cdot\!5+4\!\cdot\!5^{2}+4\!\cdot\!5^3+2\!\cdot\!5^4+5^5\ZZ_{5}),
+	&
+	\!\!\!\!\!\!
+	&
+	c_3
+	&\!\!\!\!=\!\!\!\!&
+	5^{3}\big(\tfrac{1}{2}+i\big),
+	\\[3pt]
+	U_4
+	&\!\!\!\!=\!\!\!\!&
+	5^{5}(2+2\!\cdot\!5+4\!\cdot\!5^{2}+4\!\cdot\!5^3+2\!\cdot\!5^4+5^5\ZZ_{5}),
+	&
+	\!\!\!\!\!\!
+	&
+	c_4
+	&\!\!\!\!=\!\!\!\!&
+	5^{5}\big(-\!1+\tfrac{1}{2}i\big).
+	\end{array}
+	\right.
+	$}
+	$}
+	\end{equation}
+% Support disks of 𝑓: [(2, [1, 2, 2, 3, 2]), (3, [2, 2, 2, 2, 0]), (4, [2, 2, 4, 4, 2]), (5, [2, 2, 4, 4, 2])]
+% Corresponding values of 𝑓: [(5+0j), (25+25j), (62.5+125j), (-725+362.5j)]
+% Primitive root modulo pⁿ=125 used by ω: 2
+% Totient: 𝜑(pⁿ)= 100
+% Normalized unitary character defined by 2 ↦ exp(𝒊2π·8/100) 
+Let $\omega:\QQ^\times_p\lra\CC^\times$ be the normalized unitary character uniquely defined by the condition
+	\begin{equation}\label{equation: norm un char for Mellin 00}
+	\omega(2)\ =\ e^{i\pi 4/25}
+	\ \ \ \text{with cond}_5(\omega)=5^3.
+	\end{equation}
+In other words, $\omega(2)=\zeta^{8}$, where $\zeta$ is the primitive $\varphi(5^3)^\text{th}$ root of $1$ given by
+	$$
+	\zeta=e^{i2\pi/\varphi(5^3)}.
+	$$
+Here $\varphi(5^3)=\#(\ZZ/5^3\ZZ)^\times$, the value of Euler's totient function at $5^3$. The significance of the element $2\in\ZZ_5$ in our definition of $\omega$ is that $2$ is a primitive root modulo $5^3$, which is to say that it is a generator of the multiplicative group $\ZZ^{\times}_5/(1+5^3\ZZ_5)\cong(\ZZ/5^3\ZZ)^\times$.
+
+	Then we can use an implementation of Algorithm \ref{algorithm: Mellin} in Python {\color{red} [link...]} to compute the $p$-adic Mellin transform $\widetilde{f}(\omega, s)$ numerically as a function of the complex parameter $s$. The graph that appears in Figure \ref{figure: Mellin 00} depicts the real-valued function
+	$$
+	F(t)\ :=\ \text{Re}\ \widetilde{f}(\omega,1+it)
+	$$
+obtained from this $p$-adic Mellin transform.
+	\begin{figure}[ht]
+	\vskip -.2cm
+	$$
+	\includegraphics[scale=.35]{Mellin_00.jpg}
+	$$
+	\vskip -.4cm
+	\caption{{\bf Real part of Mellin transform of $\pmb{f}$ and $\pmb{\omega}$ in Equations \eqref{equation: cslc f for Mellin 01} and \eqref{equation: norm un char for Mellin 00}.} [...]}
+	\label{figure: Mellin 00}
+	\end{figure}
+	
 \end{example}
 
 \end{subsection}
