@@ -411,6 +411,8 @@
 \stackon[1pt]{#1}{\tmpbox}%
 }
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2150,7 +2152,7 @@ $m\longleftarrow \text{max}\{m,n\}$;
 \begin{example}
 {\bf Period audio signal computed from $\pmb{p}$-adic Mellin transform computed numerically.}
 \normalfont
-	Let $f:\QQ_p\lra\CC$ be the compactly supported locally constant function with conductor $\text{cond}_5(f)=5$, defined as a sum of indicator functions according to
+	Fix $p=5$. Let $f:\QQ_5\lra\CC$ be the compactly supported locally constant function with conductor $\text{cond}_5(f)=5$, defined as a sum of indicator functions according to
 	\begin{equation}\label{equation: cslc f for Mellin 01}
 	\scalebox{.9}{$
 	f(x)=\sum^{4}_{k=1}c_{j}\ \!\mathbbm{1}_{U_{\!j}\!}(x)
@@ -2207,49 +2209,241 @@ $m\longleftarrow \text{max}\{m,n\}$;
 % Primitive root modulo pⁿ=125 used by ω: 2
 % Totient: 𝜑(pⁿ)= 100
 % Normalized unitary character defined by 2 ↦ exp(𝒊2π·8/100) 
-Let $\omega:\QQ^\times_p\lra\CC^\times$ be the normalized unitary character uniquely defined by the condition
+Let $\omega:\QQ^\times_5\lra\CC^\times$ be the normalized unitary character uniquely defined by the condition
 	\begin{equation}\label{equation: norm un char for Mellin 00}
 	\omega(2)\ =\ e^{i\pi 4/25}
 	\ \ \ \text{with cond}_5(\omega)=5^3.
 	\end{equation}
 In other words, $\omega(2)=\zeta^{8}$, where $\zeta$ is the primitive $\varphi(5^3)^\text{th}$ root of $1$ given by
-	$$
+	\begin{equation}\label{equation: primitive totienth root}
 	\zeta=e^{i2\pi/\varphi(5^3)}.
-	$$
+	\end{equation}
 Here $\varphi(5^3)=\#(\ZZ/5^3\ZZ)^\times$, the value of Euler's totient function at $5^3$. The significance of the element $2\in\ZZ_5$ in our definition of $\omega$ is that $2$ is a primitive root modulo $5^3$, which is to say that it is a generator of the multiplicative group $\ZZ^{\times}_5/(1+5^3\ZZ_5)\cong(\ZZ/5^3\ZZ)^\times$.
 
 	Then we can use an implementation of Algorithm \ref{algorithm: Mellin} in Python {\color{red} [link...]} to compute the $p$-adic Mellin transform $\widetilde{f}(\omega, s)$ numerically as a function of the complex parameter $s$. The graph that appears in Figure \ref{figure: Mellin 00} depicts the real-valued function
-	$$
-	F(t)\ :=\ \text{Re}\ \widetilde{f}(\omega,1+it)
-	$$
+	\begin{equation}\label{equation: real part of Mellin 00}
+	F(t)\ :=\ \text{Re}\ \widetilde{f}(\omega,1\!+\!i2\pi t)
+	\end{equation}
 obtained from this $p$-adic Mellin transform.
 	\begin{figure}[ht]
 	\vskip -.2cm
 	$$
-	\includegraphics[scale=.35]{Mellin_00.jpg}
+	\includegraphics[scale=.325]{Mellin_00.jpg}
 	$$
 	\vskip -.4cm
-	\caption{{\bf Real part of Mellin transform of $\pmb{f}$ and $\pmb{\omega}$ in Equations \eqref{equation: cslc f for Mellin 01} and \eqref{equation: norm un char for Mellin 00}.} [...]}
+	\caption{{\bf Real part of Mellin transform of $\pmb{f}$ and $\pmb{\omega}$ in Equations \eqref{equation: cslc f for Mellin 01} and \eqref{equation: norm un char for Mellin 00}.} {\color{red} [...]}}
 	\label{figure: Mellin 00}
+	\end{figure}
+	
+	Observe that the real-valued function defined in Equation \ref{equation: real part of Mellin 00} depends not only on the parameter $s=1+i2\pi t$, but also on the normalized unitary character $\omega$. There exist $\varphi(5^3)=(5-1)\!\cdot\! 5^2=100$ distinct normalized unitary characters on $\QQ^\times_5$ with conductor $3$. Each such character is uniquely determine by the power $\zeta$ to which it takes the element $2\in\ZZ_5$. Let us denote by $\omega_k$, for $1\le k\le 100$, the normalized unitary character satisfying
+	$$
+	\omega_k(2)\ =\ \zeta^k,
+	\ \ \ \text{with cond}_5(\omega)=5^3.
+	$$
+
+	As demonstrated by Figure \ref{figure: char changes Mellin 00} below, variation of the parameter $\omega$ in Equation \eqref{equation: real part of Mellin 00} through these characters $\omega_k$ leads to timbral changes in resulting audio signal, while still keeping features of the signal's underlying tone intact.
+	\begin{figure}[ht]
+	\vskip -.3cm
+	$$
+	\begin{array}{rl}
+	\pmb{\omega_1(2)=\zeta:}
+	&
+	\begin{xy}
+	(0,0)*+{
+	\includegraphics[scale=.25]{Mellin_001.jpg}
+	};
+	\end{xy}
+	\\[-2pt]
+	\pmb{\omega_2(2)=\zeta^2:}
+	&
+	\begin{xy}
+	(0,0)*+{
+	\includegraphics[scale=.25]{Mellin_002.jpg}
+	};
+	\end{xy}
+	\\[-2pt]
+	\pmb{\omega_3(2)=\zeta^3:}
+	&
+	\begin{xy}
+	(0,0)*+{
+	\includegraphics[scale=.25]{Mellin_003.jpg}
+	};
+	\end{xy}
+	\\[-2pt]
+	\pmb{\omega_4(2)=\zeta^4:}
+	&
+	\begin{xy}
+	(0,0)*+{
+	\includegraphics[scale=.25]{Mellin_004.jpg}
+	};
+	\end{xy}
+	\end{array}
+	$$
+	\vskip -.5cm
+	\caption{{\bf Timbral changes coming from variation of $\pmb{\omega}$ in Equation \eqref{equation: real part of Mellin 00}.} As we vary the normalized unitary character $\omega$ that appears in Equation \ref{equation: real part of Mellin 00}, the timbral character of the resulting audio signal changes, even though its underlying tone remains intact.}
+	\label{figure: char changes Mellin 00}
 	\end{figure}
 	
 \end{example}
 
 \end{subsection}
 
-\begin{subsection}{Using conductors to compute $\bold{GL}_1(\QQ_p)$-action on {\em p}-adic Mellin transforms}
+\begin{subsection}{Harmonic movement from $\bold{GL}_1(\QQ_p)$-action on {\em p}-adic Mellin transforms}
 \ {\color{red} [...]}
 
+One important point here is that because $\QQ^\times\!\subset\QQ^\times_p$, every instance of just-intonal harmonic movement, in the standard sense, has a direct counterpart for ``$p$-adic" audio signals obtain via $p$-adic Mellin transform. Thus every $p$-adic audio signal $\widetilde{f}(\omega, s)$ can be translated along all the standard just intervals:
+\vskip -.3cm
+	$$
+	\begin{array}{rrcl}
+	\text{an octave ``up":}
+	&
+	\widetilde{f}(\omega,s)
+	&
+	\!\!\!\mapsto\!\!\!
+	&
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!f\!\circ\!\tfrac{1}{2}}(\omega, s),
+	\\[6pt]
+	\text{an octave ``down":}
+	&
+	\widetilde{f}(\omega,s)
+	&
+	\!\!\!\mapsto\!\!\!
+	&
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!f\!\circ\!2}(\omega, s),
+	\\[6pt]
+	\text{a just perfect fifth ``up":}
+	&
+	\widetilde{f}(\omega,s)
+	&
+	\!\!\!\mapsto\!\!\!
+	&
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!f\!\circ\!\tfrac{2}{3}}(\omega, s),
+	\\[6pt]
+	\text{a just perfect fifth ``down":}
+	&
+	\widetilde{f}(\omega,s)
+	&
+	\!\!\!\mapsto\!\!\!
+	&
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!f\!\circ\!\tfrac{3}{2}}(\omega, s),
+	\\[6pt]
+	\text{a just perfect fourth ``up":}
+	&
+	\widetilde{f}(\omega,s)
+	&
+	\!\!\!\mapsto\!\!\!
+	&
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!f\!\circ\!\tfrac{3}{4}}(\omega, s),
+	\\[6pt]
+	\text{a just perfect fourth ``down":}
+	&
+	\widetilde{f}(\omega,s)
+	&
+	\!\!\!\mapsto\!\!\!
+	&
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!f\!\circ\!\tfrac{4}{3}}(\omega, s),
+	\\[6pt]
+	\text{a just major third ``up":}
+	&
+	\widetilde{f}(\omega,s)
+	&
+	\!\!\!\mapsto\!\!\!
+	&
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!f\!\circ\!\tfrac{4}{5}}(\omega, s),
+	\\[6pt]
+	\text{a just major third ``down":}
+	&
+	\widetilde{f}(\omega,s)
+	&
+	\!\!\!\mapsto\!\!\!
+	&
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!f\!\circ\!\tfrac{5}{4}}(\omega, s),
+	\\[6pt]
+	\text{a just minor third ``up":}
+	&
+	\widetilde{f}(\omega,s)
+	&
+	\!\!\!\mapsto\!\!\!
+	&
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!f\!\circ\!\tfrac{5}{6}}(\omega, s),
+	\\[6pt]
+	\text{a just minor third ``down":}
+	&
+	\widetilde{f}(\omega,s)
+	&
+	\!\!\!\mapsto\!\!\!
+	&
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!f\!\circ\!\tfrac{6}{5}}(\omega, s).
+	\end{array}
+	\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
+	$$
+\vskip .5cm
+	
 \begin{example}
-{\bf Mellin transform of translation $\pmb{\rho_{a}\psi}$ of arbitrary character $\pmb{\psi:\ZZ^\times_p\lra\mathbb{S}^1}$.}
 \normalfont
+To provide a concrete example, suppose $p=3$, and that we have an audio signal obtained as a $3$-adic Mellin transform
+	\begin{equation}\label{equation: 3-adic Mellin pre-translate}
+	\widetilde{f}(\omega,s)
+	\ \ =\ 
+	\underset{\QQ^\times_3}{\int}\!f(x)\ \omega(x)\ |x|^{s}_3\ d^\times\!x.
+	\end{equation}
+Let us be agnostic about the conductor of either $f$ or $\omega$. Imagine that we want to translate this $3$-adic audio signal ``up" by a just major third. This means that we want to replace the $3$-adic Mellin transform in Equation \eqref{equation: 3-adic Mellin pre-translate} with the $3$-adic Mellin transform
 	$$
-	\widetilde{{\rho_{a}\psi}}(s)
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!f\!\circ\!\tfrac{4}{5}}(\omega, s)
+	\ \ =\  
+	\underset{\QQ^\times_3}{\int}\!f\big(\tfrac{4}{5}x\big)\ \omega(x)\ |x|^{s}_3\ d^\times\!x.
+	$$
+Because the product $\tfrac{4}{5}x$ appearing in this integral takes place in $\QQ^\times_3$, we first need to represent $\tfrac{4}{5}$ as an element in $\QQ^\times_3$. In fact, $4,\tfrac{1}{5}\in\ZZ_3$. We have $4=1+1\!\cdot\!3$, and we can use the fact that $5=2+1\!\cdot\!3$ to compute the representation of $\tfrac{1}{5}$ in $\ZZ_3$ as
+	$$
+	\frac{1}{5}
 	\ \ =\ \ 
-	\int_{\QQ^\times_{p}}
-	\psi(a^{-1}x)\ \omega(x)\ |x|^{s}_{p}\ d^\times\!x,
+	2+0\!\cdot\!3+1\!\cdot\!3^2+2\!\cdot\!3^3+1\!\cdot\!3^4+\cdots+0\!\cdot\!3^{4n+1}+1\!\cdot\!3^{4n+2}\!\cdot\!3^{4n+3}+1\!\cdot\!3^{4n+4}+\cdots.
 	$$
-Let $n$ be the conductor of $\omega$, and let $m$ be the conductor of $\psi$ (that is, before translating).
+
 
 {\color{red} [...]}
 \end{example}
