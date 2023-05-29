@@ -806,11 +806,8 @@ This last correspondence set up in Item {\bf \ref{item: Kozyrev}} above lends st
 	\normalfont
 	The arithmetic of $p$-adic numbers gives rise to a high-functioning ``tonal harmony" for spectral music by way of a $p$-adic Haar wavelet bases. 
 	\end{conjecture}
- 
-\end{subsection}
 
-\begin{comment}
-\begin{subsection}{Adele-ish products}
+\begin{comment}{Adele-ish products}
 \ 
 {\color{red} [...]}
 
@@ -856,9 +853,17 @@ controlling pitch-class movement. Observe that we have a surjective map
 We will sometimes argue directly in $(\QQ_{3}\times\QQ_5)\big/2^{\ZZ}$, and then use the projection $\text{pr}_{e,f}$ to derive the appropriate computable approximation.
 
 {\color{red} [...]}
+\end{comment}
 
 \end{subsection}
-\end{comment}
+
+\begin{subsubsection}
+{\bf Tate's thesis and ``arithmetic Pontryagin duality."}
+\normalfont
+{\color{red} [...] }
+\end{subsubsection}
+
+\vskip .3cm
 
 \begin{subsection}{Characters and Fourier transforms over the additive {\em p}-adic group.}
 We define a map
@@ -2420,6 +2425,7 @@ One important point here is that because $\QQ^\times\!\subset\QQ^\times_p$, ever
 \vskip .5cm
 	
 \begin{example}
+{\bf Translating a $3$-adio signal ``up" a just major third.}
 \normalfont
 To provide a concrete example, suppose $p=3$, and that we have an audio signal obtained as a $3$-adic Mellin transform
 	\begin{equation}\label{equation: 3-adic Mellin pre-translate}
@@ -2428,7 +2434,7 @@ To provide a concrete example, suppose $p=3$, and that we have an audio signal o
 	\underset{\QQ^\times_3}{\int}\!f(x)\ \omega(x)\ |x|^{s}_3\ d^\times\!x.
 	\end{equation}
 Let us be agnostic about the conductor of either $f$ or $\omega$. Imagine that we want to translate this $3$-adic audio signal ``up" by a just major third. This means that we want to replace the $3$-adic Mellin transform in Equation \eqref{equation: 3-adic Mellin pre-translate} with the $3$-adic Mellin transform
-	$$
+	\begin{equation}\label{equation: translated 3-adic Mellin}
 	\overset{
 	\begin{tikzpicture}
 	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
@@ -2436,16 +2442,41 @@ Let us be agnostic about the conductor of either $f$ or $\omega$. Imagine that w
 	}{\!f\!\circ\!\tfrac{4}{5}}(\omega, s)
 	\ \ =\  
 	\underset{\QQ^\times_3}{\int}\!f\big(\tfrac{4}{5}x\big)\ \omega(x)\ |x|^{s}_3\ d^\times\!x.
-	$$
+	\end{equation}
+\vskip -.2cm
+\noindent
 Because the product $\tfrac{4}{5}x$ appearing in this integral takes place in $\QQ^\times_3$, we first need to represent $\tfrac{4}{5}$ as an element in $\QQ^\times_3$. In fact, $4,\tfrac{1}{5}\in\ZZ_3$. We have $4=1+1\!\cdot\!3$, and we can use the fact that $5=2+1\!\cdot\!3$ to compute the representation of $\tfrac{1}{5}$ in $\ZZ_3$ as
 	$$
 	\frac{1}{5}
 	\ \ =\ \ 
-	2+0\!\cdot\!3+1\!\cdot\!3^2+2\!\cdot\!3^3+1\!\cdot\!3^4+\cdots+0\!\cdot\!3^{4n+1}+1\!\cdot\!3^{4n+2}\!\cdot\!3^{4n+3}+1\!\cdot\!3^{4n+4}+\cdots.
+	2+
+	{\color{blue}
+	\underset{\text{repeats}}{\underbrace{
+	{\color{black}
+	0\!\cdot\!3+1\!\cdot\!3^2+2\!\cdot\!3^3+1\!\cdot\!3^4}
+	}
+	}
+	}
+	+\cdots+0\!\cdot\!3^{4n+1}+1\!\cdot\!3^{4n+2}\!\cdot\!3^{4n+3}+1\!\cdot\!3^{4n+4}+\cdots.
 	$$
-
-
-{\color{red} [...]}
+From this and the presentation $4=1+1\!\cdot\!3$ we obtain the presentation
+	$$
+	\scalebox{.9}{$
+	\frac{4}{5}
+	\ =\ 
+	2+2\!\cdot\!3+1\!\cdot\!3^2+
+	{\color{blue}
+	\underset{\text{repeats}}{\underbrace{
+	{\color{black}
+	0\!\cdot\!3^3+1\!\cdot\!3^4+2\!\cdot\!3^5+1\!\cdot\!3^6
+	}
+	}
+	}
+	}
+	+\cdots+0\!\cdot\!3^{4n+3}+1\!\cdot\!3^{4n+4}+ 2\!\cdot\!3^{4n+5}+1\!\cdot\!3^{4n+6}+\cdots
+	$}.
+	$$
+Truncating this last expression at $\text{cond}_3(f)$ lets us evaluate the integral in Equation \eqref{equation: translated 3-adic Mellin}.
 \end{example}
 
 \end{subsection}
