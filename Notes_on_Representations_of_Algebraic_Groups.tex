@@ -141,6 +141,7 @@
 \newtheorem{assumption}[theorem]{Assumption}
 \newtheorem{construction}[theorem]{Construction}
 \newtheorem{example}[theorem]{Example}
+\newtheorem{trial}[theorem]{Trial}
 \newtheorem{examples}[theorem]{Examples}
 \newtheorem{audio example}[theorem]{\loudspeaker[3] Example}
 \newtheorem{quasi-theorem}[theorem]{Quasi-Theorem}
@@ -349,13 +350,13 @@
                 --++ (0.6, 0) 
                 --++ (0, -1);
             \path[draw, 
-                line width = 0.5, 
+                line width = 1.0, 
                 rounded corners=0.5] 
                 (0,0) rectangle (1,1);
         \end{scope}
-        \path[draw, line width = 0.5] (0.5, 0.5) 
+        \path[draw, line width = 1.0] (0.5, 0.5) 
             -- (1, 1);
-        \path[draw, line width = 0.5] (0.6, 1) 
+        \path[draw, line width = 1.0] (0.6, 1) 
             -- (1, 1) -- (1, 0.6);
         }
     }
@@ -2476,6 +2477,58 @@ From this and the presentation $4=1+1\!\cdot\!3$ we obtain the presentation
 	$$
 Truncating this last expression at $\text{cond}_3(f)$ lets us evaluate the integral in Equation \eqref{equation: translated 3-adic Mellin}.
 \end{example}
+
+\begin{trial}
+{\bf Ramified \& unramified movement of three voices at different primes.}
+\normalfont
+\href{https://drive.google.com/file/d/15h0im6nR1iaH2bCNj41s0U5UlE_6i3fM/view?usp=sharing}{\ExternalLink{\em p-adic\underline{\ \ }GL1\underline{\ \ }trial\underline{\ \ }003.wav}}
+The movement of the voices here is built over the tonics $110$, $110$, and $220$, respectively. {\color{red} [roughly]}
+	$$
+	f(x)\ =\ \sum_{n=1}^{3^6-1}n\cdot\mathbbm{1}_{[n]^{\le 5}+3^{6}\ZZ_3}(x)
+	$$
+	$$
+	g(x)\ =\ \sum_{n=1}^{5^4-1}n\cdot\mathbbm{1}_{[n]^{\le 3}+5^{4}\ZZ_5}(x)
+	$$
+	$$
+	h(x)\ =\ \sum_{n=1}^{7^4-1}n\cdot\mathbbm{1}_{[n]^{\le 3}+7^{4}\ZZ_7}(x)
+	$$
+Each voice in the three-part texture is essentially a chorale built from chords of $p$-adic Mellin transforms of the form
+	$$
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!f\!\circ\!\tfrac{1}{k}}(\omega, s)
+	+
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!g\!\circ\!\tfrac{1}{\ell}}(\omega, s)
+	+
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=15, in=195] (.7,0);
+	\end{tikzpicture}
+	}{\!h\!\circ\!\tfrac{1}{m}}(\omega, s),
+	\ \ \ \text{for certain}\ k,\ell,m\in\ZZ_{\ge1}.
+	$$
+\end{trial}
+
+\begin{trial}
+{\bf Unramified movement of a single voice superimposed with itself.}
+\normalfont
+\end{trial}
+
+\begin{trial}
+{\bf Ramified movement of a single voice superimposed with itself.}
+\normalfont
+\end{trial}
+
+\begin{trial}
+{\bf Ramified \& unramified movement of a voice and its $\pmb{\varepsilon}$ tonic deformation.}
+\normalfont
+\end{trial}
 
 \end{subsection}
 
