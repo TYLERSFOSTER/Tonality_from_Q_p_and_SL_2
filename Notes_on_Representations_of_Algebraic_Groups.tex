@@ -2143,9 +2143,12 @@ Although \S\ref{ssubsection: simplifying Mellin transform} above provides us wit
 \begin{algorithm}
 \caption{Compute $p$-adic Mellin transform $\int_{\QQ^\times_p}
 \label{algorithm: Mellin}
-f(x)\ \omega(x)\ |x|^{s}_{p}\ d^\times\!x$ as a function of $s\in\CC_{\text{Re}\ge0}$.}
-\vdots
-$m\longleftarrow \text{max}\{m,n\}$;
+f(x)\ \!\omega(x)\ \!|x|^{s}_{p}\ \!d^\times\!x$ as a function of $s$.}
+\KwData{{\bf (i)} positive integers $m,n,k\in\ZZ_{>0}$, {\bf (ii)} a set of $k$ distinct $m$-dimensional vectors $v_1,\dots,v_k\in\FF_{\!p}^m$ such that the first entry of each vector is nonzero, {\bf (iii)} a set of $k$ integers $e_1,\dots,e_k\in\ZZ$, {\bf (iv)} a primitive root $q$ modulo $p^n$, {{\bf (v)}} a primitive $p^{n-1}(p-1)^\text{st}$-root of unity $\zeta\in\CC^\times$.}
+\KwResult{A set of complex numbers $c_1,\cdots,c_\ell$ and positive real numbers $\lambda_1,\dots,\lambda_\ell$ such that the function $F(s)=c_1 e^{i2\pi\lambda_1s}+\cdots+c_\ell e^{i2\pi\lambda_\ell s}$ is the $p$-adic Mellin transform.}
+
+$q \gets$ {\bf primitive root modulo} $p^n$ \tcp*[r]{running error, to modify over course of algorithm}
+$m\gets \text{max}\{m,n\}$;
 \\ 
 \vdots
 \end{algorithm}
