@@ -2144,14 +2144,63 @@ Although \S\ref{ssubsection: simplifying Mellin transform} above provides us wit
 \caption{Compute $p$-adic Mellin transform $\int_{\QQ^\times_p}
 \label{algorithm: Mellin}
 f(x)\ \!\omega(x)\ \!|x|^{s}_{p}\ \!d^\times\!x$ as a function of $s$.}
-\KwData{{\bf (i)} positive integers $m,n,k\in\ZZ_{>0}$, {\bf (ii)} a set of $k$ distinct $m$-dimensional vectors $v_1,\dots,v_k\in\FF_{\!p}^m$ such that the first entry of each vector is nonzero, {\bf (iii)} a set of $k$ integers $e_1,\dots,e_k\in\ZZ$, {\bf (iv)} a primitive root $q$ modulo $p^n$, {{\bf (v)}} a primitive $p^{n-1}(p-1)^\text{st}$-root of unity $\zeta\in\CC^\times$.}
+\KwData{{\bf (i)} positive integers $m,n,k\in\ZZ_{>0}$, {\bf (ii)} an ordered set $V=(v_1,\dots,v_k)$ of $k$ {\em distinct} vectors in $\FF_{\!p}^m$ such that the first entry of each vector is nonzero, {\bf (iii)} an ordered set $E=(e_1,\dots,e_k)$ of $k$ integers, {\bf (iv)} an ordered set $Z=(z_1,\dots,z_k)$ of $k$ complex numbers, {\bf (v)} a primitive root $q$ modulo $p^n$, {{\bf (vi)}} a $p^{n-1}(p-1)^\text{st}$-root of unity $\zeta\in\CC^\times$.\\ The idea here is that $v_i=(v_{i,0}, v_{i,2},\dots,v_{i,m-1})$ and $e_i$ together represent the compact open $U_i=p^{e_i}(v_{i,0}+v_{i,1}p+\cdots+v_{i,m-1}p^{m-1})+p^{m+e_{i}}\ZZ_{p}$, with $f(U_i)=z_i$, and that $\omega$ is uniquely determined by the condition $\omega(q)=\zeta$.}
 \KwResult{A set of complex numbers $c_1,\cdots,c_\ell$ and positive real numbers $\lambda_1,\dots,\lambda_\ell$ such that the function $F(s)=c_1 e^{i2\pi\lambda_1s}+\cdots+c_\ell e^{i2\pi\lambda_\ell s}$ is the $p$-adic Mellin transform.}
-
-$q \gets$ {\bf primitive root modulo} $p^n$ \tcp*[r]{running error, to modify over course of algorithm}
-$m\gets \text{max}\{m,n\}$;
-\\ 
-\vdots
+$W\gets$ {\bf empty dictionary} $\{\}$\;
+\For{$j$ {\bf in range} $1\le j\le p^{n-1}(p-1)$}{
+$W[q^j]\gets\zeta^j$ \tcp*[r]{Log values of $\omega$ for all elements in $\ZZ_p^\times/(1+p^n\ZZ_p)\cong(\ZZ/p^n\ZZ)^\times$}
+}
+\If{$n>m$}{
+$V'\gets$ {\bf empty\ ordered\ set} $()$\;
+$E'\gets$ {\bf empty\ ordered\ set} $()$\;
+$Z'\gets$ {\bf empty\ ordered\ set} $()$\;
+\For{$v_i$ {\bf in} $V$}{
+      \For{$u$ {\bf in} $\FF^{n-m}_{\!p}$}{
+      $v\gets$ {\bf concatenated} $v_i|u\in\FF^{n}_{\!p}$\;
+      $V'\gets V'+(v)$\;
+      $E'\gets E'+(e_i)$\;
+      $C'\gets Z'+(z_i)$\;
+   }
+   }
+   $V\gets V'$\;
+   $E\gets E'$\;
+   $Z\gets Z'$\;
+   $m\gets n$ \tcp*[r]{$f$ now described at resolution finer than or equal to that of $\omega$}
+   }
+$C\gets$ {\bf empty\ ordered\ set} $()$\;
+$\Lambda\gets$ {\bf empty\ ordered\ set} $()$\;
+\For{$v_i=(v_{i,0},\ \!v_{i,1},\ \!\dots,\ \!v_{i,m-1})$ {\bf in} $V$}{
+$x\gets v_{i,0}+v_{i,1}p+\cdots+v_{i,m-1}p^{m-1}$  \tcp*[r]{$x$ is an element of $(\ZZ/p^m\ZZ)^\times$}
+$x\gets x\ (\text{mod}\ p^n)$  \tcp*[r]{pass to the image of $x$ is in $(\ZZ/p^n\ZZ)^\times$}
+$\omega_i\gets W[x]$  \tcp*[r]{compute $\omega(x)$ via look-up in $W$}
+$c_i\gets\frac{p^{m+1}}{p^{e_{i}}(p-1)}\ \omega_i$ \;
+$\lambda_i\gets -e_i\ \text{log}(p)$\;
+$C\gets C+(c_i)$\;
+$\Lambda\gets \Lambda+(\lambda_i)$ \tcp*[r]{$C=(c_1,...,c_\ell)$ and $\Lambda=(\lambda_1,...,\lambda_\ell)$ with $\widetilde{f}(s,\omega)=c_1 e^{i2\pi\lambda_1s}+\cdots+c_\ell e^{i2\pi\lambda_\ell s}$\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!}
+}
 \end{algorithm}
+
+%        for k in range(self.supp_count):
+%            c_k = self.func.values[k]
+%            x_k = self.func.supp[k]
+%            n_k = x_k.ord_p
+%            w_k = self.char.eval(x_k)
+%            
+%            order_list.append(n_k)
+%            
+%            new_coeff = (p/(p-1)) * p**(-m) * c_k * w_k
+%            coeff_list.append(new_coeff)
+%            
+%            A_k = float(p**(-n_k))
+%            ampl_list.append(A_k)
+%            
+%            new_freq = -n_k * np.log(p)
+%            freq_list.append(new_freq)
+
+\begin{remark}
+{\bf Finding a primitive root modulo $\pmb{p^n}$ for use in Algorithm \ref{algorithm: Mellin}.}
+{\color{red} [...]}
+\end{remark}
 
 \ 
 {\color{red} [...]}
