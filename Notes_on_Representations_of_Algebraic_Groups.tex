@@ -3253,6 +3253,108 @@ There are also candidates for new types of harmonic movement:
 
 \vskip 1cm
 
+\begin{section}{Representations of $\bold{GL}_{2}(\QQ_p)$}
+
+\begin{subsection}{Important aspects of the structure of $\bold{GL}_2(\QQ_p)$}
+
+\begin{ssubsection}
+{\bf The Iwasawa decomposition.}
+\normalfont
+Fix an element $g\in\bold{GL}_2(\QQ_p)$. Write
+	$$
+	g
+	\ \ =\ \ 
+	\left(\!
+	\begin{array}{rl}
+	a & b \\
+	c & d
+	\end{array}
+	\!\right),
+	\ \ \text{with}
+	\ \ a,b,c,d\in\QQ_p.
+	$$
+Note that invertibility implies that $\text{det}(g)=ad-bc\neq0$. We claim that there exists a matrix $k\in\bold{GL}_{2}(\ZZ_p)$ such that $gk$ is upper triangular. Indeed, if $c=0$ we're done, since in this case we must have $d\neq0$. If $c\neq0$ and $d=0$, then it suffices to multiply by $\left(\begin{smallmatrix} 0 & 1\\ 1 & 0 \end{smallmatrix}\right)\in\bold{GL}_{2}(\QQ_p)$. Assume that $c,d\neq0$. If $\text{ord}_p(c)<\text{ord}_{p}$, multiply by $\left(\begin{smallmatrix} 0 & 1\\ 1 & 0 \end{smallmatrix}\right)$. Let $m=\big|\text{ord}_p(c)-\text{ord}_{p}(d)\big|$. Then there exists $u\in\ZZ^\times_p$ such that
+	$$
+	\left(\!
+	\begin{array}{cc}
+	a & b \\
+	c & d
+	\end{array}
+	\!\right)
+	\cdot
+	{\color{blue}
+	\underset{\text{in\ }\bold{GL}_{2}(\ZZ_p)}{
+	\underbrace{
+	{\color{black}
+	\left(\!
+	\begin{array}{cc}
+	0 & 1 \\
+	1 & 0
+	\end{array}
+	\!\right)^{\!\!\text{bool}(d\ \!\overset{?}{=}\ \!0)}
+	\!\!
+	\cdot
+	\left(\!
+	\begin{array}{cc}
+	0 & 1 \\
+	1 & 0
+	\end{array}
+	\!\right)^{\!\!\text{bool}\big(\text{ord}_p(c)\ \!\overset{?}{<}\ \!\text{ord}_{p}(d)\big)}
+	\!\!
+	\cdot
+	\left(\!
+	\begin{array}{cc}
+	1 & 0 \\
+	p^{m}u & 1
+	\end{array}
+	\right)
+	}
+	}
+	}
+	}
+	$$
+is upper triangular. Here we use the conventions that $\text{ord}_{p}(0)=\infty$ and $p^\infty=0$, so that the expression remains meaningful in all cases. In fact, the case $d=0$ subsumes the case $\text{ord}_{p}(c)<\text{ord}_{p}(d)$ for this reason, and we can rewrite the above as
+	$$
+	\left(\!
+	\begin{array}{cc}
+	a & b \\
+	c & d
+	\end{array}
+	\!\right)
+	\cdot
+	{\color{blue}
+	\underset{\text{in\ }\bold{GL}_{2}(\ZZ_p)}{
+	\underbrace{
+	{\color{black}
+	\left(\!
+	\begin{array}{cc}
+	0 & 1 \\
+	1 & 0
+	\end{array}
+	\!\right)^{\!\!\text{bool}\big(\text{ord}_p(c)\ \!\overset{?}{<}\ \!\text{ord}_{p}(d)\big)}
+	\!\!
+	\cdot
+	\left(\!
+	\begin{array}{cc}
+	1 & 0 \\
+	p^{m}u & 1
+	\end{array}
+	\right)
+	}
+	}
+	}
+	}
+	$$
+\end{ssubsection}
+
+
+{\color{red} [...]}
+\end{subsection}
+
+\end{section}
+
+\vskip 1cm
+
 \begin{section}{Hamiltonian optics and representations of the symplectic group $\text{Sp}_{2n}(\CC)$}
 
 \begin{subsection}{Sources}
