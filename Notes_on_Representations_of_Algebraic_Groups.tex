@@ -167,20 +167,20 @@
 \newenvironment{notation}{\begin{not1}\em}{\end{not1}}
 
 %% Math Blackboard
-\newcommand{\A}{{\mathbb{A}}}           
+\newcommand{\A}{{\mathbbm{A}}}           
 \newcommand{\CC} {{\mathbb C}}       
-\newcommand{\DD} {{\mathbb D}}
-\newcommand{\EE}{\mathbb{E}}
-\newcommand{\GG}{\mathbb{G}}
-\newcommand{\LL}{\mathbb{L}}
-\newcommand{\NN} {{\mathbb N}}		
-\newcommand{\PP}{\mathbb{P}}         
-\newcommand{\QQ} {{\mathbb Q}}		
+\newcommand{\DD} {{\mathbbm D}}
+\newcommand{\EE}{\mathbbm{E}}
+\newcommand{\GG}{\mathbbm{G}}
+\newcommand{\LL}{\mathbbm{L}}
+\newcommand{\NN} {{\mathbbm N}}		
+\newcommand{\PP}{\mathbbm{P}}         
+\newcommand{\QQ} {{\mathbbm Q}}		
 \newcommand{\RR} {{\mathbb R}}		
-\newcommand{\Circ} {{\mathbb S}}		
-\newcommand{\ZZ} {{\mathbb Z}}		
-\newcommand{\TT} {{\mathbb T}}	
-\newcommand{\FF}{{\mathbb F}}
+\newcommand{\Circ} {{\mathbbm S}}		
+\newcommand{\ZZ} {{\mathbbm Z}}		
+\newcommand{\TT} {{\mathbbm T}}	
+\newcommand{\FF}{{\mathbbm F}}
 
 %%Presuperscript
 \def\presuper#1#2%
@@ -2584,8 +2584,129 @@ Each voice in the three-part texture is essentially a chorale built from chords 
 
 \end{subsection}
 
-\begin{subsection}{A gestural notation for $\bold{GL}_{1}(\QQ_p)$ signals.}
-\ 
+\vskip .3cm
+
+\begin{subsection}{On the structure of $\pmb{\bold{GL}_{1}(\mathbbm{A})}$-signals.}\label{subsection: structure of idelic signals}
+In this \S\ref{subsection: structure of idelic signals}, we describe some of the structure hidden in $\bold{GL}_{1}(\mathbbm{A})$-signals that is especially relevant to musical considerations. We begin with an example, and then provide general statements.
+
+\begin{example}
+{\bf Structure of $\pmb{\bold{GL}_{1}(\mathbbm{A})}$-signals supported at 3 and 5.}
+\normalfont
+Suppose that we have a function $f:\bold{GL}_{1}(\A)\lra\CC$ supported at the primes $3$ and $5$. This means that $f$ can be written as a product
+	$$
+	f(x)
+	\ =\ 
+	f_3(x_3)\cdot f_5(x_5),
+	\ \ \ \text{where}\ x_3\in\QQ_3\ \text{and}\ x_5\in\QQ_5.
+	$$
+Assume that the factors $f_3$ and $f_5$ are locally constant and compactly supported. Let $\omega:\bold{GL}_{1}(\A)\lra\CC^\times$ be any character obtained as a product
+	$$
+	\omega(x)\ =\ \omega_3(x_3)\cdot\omega_{5}(x_5)
+	$$
+of normalized unitary characters $\omega_3:\bold{GL}_{1}(\QQ_3)\lra\CC^\times$ and $\omega_5:\bold{GL}_{1}(\QQ_5)\lra\CC^\times$.
+Then the ({\em adelic}) {\em Mellin transform} of $f$ at $\omega$ is the product of $p$-adic Mellin transforms
+	$$
+	\widetilde{f}(\omega, s)
+	\ =\ 
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=35, in=215] (.35,0);
+	\end{tikzpicture}
+	}{\!\!f_{3}\!\!}(\omega_3, s)
+	\cdot
+	\overset{
+	\begin{tikzpicture}
+	\draw[black, thick] (0,0) to [out=35, in=215] (.35,0);
+	\end{tikzpicture}
+	}{\!\!f_{5}\!\!}(\omega_5, s).
+	$$
+(See \cite[p. {\color{red} ???}\ \!\!]{GHv1} for details.) Suppose that $f_3$ and $f_5$ are supported on the subsets
+	$$
+	\bigsqcup_{m=1}^{M_{\text{max}}}3^{m}\ \ZZ_{3}^\times
+	\ \ \subset\ \ \bold{GL}_{1}(\QQ_3)
+	\ \ \ \ \ \ \ \ \ \text{and}\ \ \ \ \ \ \ \ \ 
+	\bigsqcup_{n=1}^{N_{\text{max}}}5^{n}\ \ZZ_{5}^\times
+	\ \ \subset\ \ \bold{GL}_{1}(\QQ_5),
+	$$
+respectively, for $M_\text{max},N_\text{max}>1$. Then the adelic Mellin transform $\widetilde{f}(\omega,i2\pi\lambda_0 t)$ of $f$ is of the form
+	$$
+	\Big(\sum_{m=1}^{M_\text{max}}c_m e^{i 2\pi\ \text{log}(3^m)\ \lambda_0 t}\Big)
+	\cdot
+	\Big(\sum_{n=1}^{N_\text{max}}c_n e^{i 2\pi\ \text{log}(5^n)\ \lambda_0 t}\Big)
+	\ \ =\ \ 
+	\sum_{m=1}^{M_\text{max}}\sum_{n=1}^{N_\text{max}}c_{mn}e^{i2\pi\ \!\big(\ \!m\ \!\text{log}(3)+n\ \!\text{log}(5)\ \!\big)\ \!\lambda_0 t}.
+	$$
+This factor $m\ \text{log}(3)+n\ \text{log}(5)$ of the frequency in the terms on the right-hand side of the above equation imply that the signal contains multiple independent overtone series (see Figure \ref{figure: overtone series in signal}).
+	\begin{figure}[ht]
+	\vskip -.3cm
+	$$
+	\includegraphics[scale=.05]{log.jpg}
+	$$
+	\vskip -.3cm
+	\caption{{\bf Overtone series within a $\text{GL}\pmb{{}_{1}(\A)}$-signal supported at 3 and 5.} {\color{red} [...]} The diagonal {\color{gray} gray lines} in the figure are equi-frequency level curves, meaning that all signals along a given diagonal {\color{gray} gray line} have the same frequency.}
+	\label{figure: overtone series in signal}
+	\end{figure}
+Indeed, {\color{red} [...]}
+
+	Note also that we can ensure that the lowest tone sounded in the adelic Mellin transform $\widetilde{f}(\omega,\ \!i 2\pi\lambda_0t)$ has frequency
+	$$
+	\text{log}(3\!\cdot\!5)\ \lambda_0\ \ \text{Hz}.
+	$$
+Thus we can ensure that the lowest tone in $\widetilde{f}(\omega,\ \!i 2\pi\lambda_0t)$ is $\lambda_0$ by making the replacement
+	$$
+	\lambda_0
+	\ \longmapsto\ 
+	\frac{\lambda_0}{\text{log}(3\!\cdot\!5)}.
+	$$
+	
+{\color{red} [Explain how all the sub-signals are interrelated, with a special focus on how adelic multiplication by $\ZZ$ affects the signals. A main goal here is to arrive at the observation that its really powers of primes that connect (loosely) to standard tonal movement...]}
+	
+\end{example}
+
+{\color{red} [...]}
+
+\end{subsection}
+
+\vskip .3cm
+
+\begin{subsection}{Perfect fifths, major thirds, and Galois actions.}
+\ {\color{red} [All wrong. Need to fix... should be about equal temperament...]} Lots of important intervals arise from ``down-shifting overtones into the octave,'' i.e., as the octave translate of a given overtone that puts the resulting tone in the first octave over the root. Stated mathematically, if $n$ is a positive integer with corresponding overtone $n\lambda_0$ over the tonic $\lambda_0$, then there exists a unique positive integer $k$ such that
+	$$
+	{\color{blue}\underset{\text{tonic}}{\underbrace{{\color{black}\lambda_0}}}}
+	\ \ \le\ \
+	\frac{n}{2^k}\lambda_0
+	\ \ <
+	{\color{blue}\underset{\text{over tonic}}{\underset{\text{1 octave}}{\underbrace{{\color{black}2\lambda_0}}}}}.
+	$$
+The uniqueness of $k$ becomes clear when you see that the above condition is equivalent to the condition that $2^k\le n<2^{k+1}$. For example, a just-intoned perfect fifth is
+	$$
+	\frac{3}{2}\lambda_0,
+	$$
+a just-intoned major third is 
+	$$
+	\frac{5}{4}\lambda_0=\frac{5}{2^2}\lambda_0,
+	$$
+a just-intoned major second is
+	$$
+	\frac{9}{8}\lambda_0=\frac{9}{2^3}\lambda_0,
+	$$
+a just-intoned major seventh is
+	$$
+	\frac{15}{8}\lambda_0=\frac{15}{2^3}\lambda_0,
+	$$
+and a (just-intoned) harmonic seventh is
+	$$
+	\frac{7}{4}\lambda_0=\frac{7}{2^2}\lambda_0.
+	$$
+In fact, many of the familiar intervals that don't appear in this list arises by running s similar trick with undertones.
+
+	In terms of standard audio signals {\color{red} [...]}
+	$$
+	f(\lambda_0t)\mapsto f\big(\tfrac{n}{2^k}\lambda_0t\big).
+	$$
+If we want to attempt to do the ``same'' thing with $p$-adic or adelic audio signals, we have to introduce either a local or global 
+
+
 {\color{red} [...]}
 
 \end{subsection}
@@ -3261,6 +3382,24 @@ There are also candidates for new types of harmonic movement:
 \begin{ssubsection}
 {\bf Matrix coefficients.}
 \normalfont
+Fix a field $K$ and let $V$ be a $K$-vector space with $K$-linear dual 
+	$$
+	V^\ast\ :=\ \ \text{Hom}_{K\text{-{\bf Vec}}}(V,K).
+	$$
+Consider the tensor product $V^\ast\otimes_{K}V$. An element $\beta$ can be expressed as a tensor product is a sum
+	$$
+	\beta\ =\ \sum_{i=1}^{n}a_{i}\ \varphi_{i}\otimes v_{i}
+	$$
+for functionals $\varphi_i\in V^\ast$ and vectors $v_i\in V$. Note that this sum defines a function $\beta:V\lra V$ given by
+	$$
+	\beta(u)\ =\ \sum_{i=1}^{n}a_{i}\ \varphi_{i}(u)\ v_{i}
+	$$
+for each $u\in V$. We claim that this function is independent of the presentation of the element $\beta$ given by the sum {\color{red} [...Indeed...]}
+
+If $V$ is finite-dimensional, say $d=\text{dim}_{K}d$, then we can fix a basis $\{e_i\}_{i=1}^{d}$ of $V$ and its dual basis $\{e^\ast_i\}_{i=1}^{d}$ of $V^\ast$, so that the sum above becomes unique:
+	$$
+	\sum_{1\le i,j\le d}\!\!a_{ij}\ e^\ast_i\otimes e_j.
+	$$
 \end{ssubsection}
 
 \begin{ssubsection}
